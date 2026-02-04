@@ -10,4 +10,6 @@ package Interfaces;
  */
 public interface Juego {
     
+    //jjj
+    
 }
