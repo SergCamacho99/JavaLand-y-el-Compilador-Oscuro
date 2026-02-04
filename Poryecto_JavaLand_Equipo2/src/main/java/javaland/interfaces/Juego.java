@@ -10,6 +10,14 @@ package javaland.interfaces;
  */
 public interface Juego {
     
-    //jjj
+    public void IniciarJuego();
+    
+    public void creacionOEleccionValiente();
+    
+    public void mostrarMenuPrincipal();
+    
+    public void explorarMapa();
+    
+    public void mostrarEstadoJuego();
     
 }
