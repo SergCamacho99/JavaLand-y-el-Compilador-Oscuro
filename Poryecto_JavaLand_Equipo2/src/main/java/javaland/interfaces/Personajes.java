@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package Interfaces;
+package javaland.interfaces;
 
 /**
  *
  * @author dam125
  */
-public interface Gestores {
+public interface Personajes {
     
-    //Esta Interface va a ser usada por GestorValientes y GestorMonstruos
+    //Esta interfaz va a ser usada por Valientes y Monstruos
     
 }
