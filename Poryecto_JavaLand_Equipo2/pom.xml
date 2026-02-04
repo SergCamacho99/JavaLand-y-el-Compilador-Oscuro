@@ -10,4 +10,5 @@
         <maven.compiler.release>24</maven.compiler.release>
         <exec.mainClass>com.mycompany.poryecto_javaland_equipo2.Poryecto_JavaLand_Equipo2</exec.mainClass>
     </properties>
+    <name>Proyecto_JavaLand_Equipo2</name>
 </project>
