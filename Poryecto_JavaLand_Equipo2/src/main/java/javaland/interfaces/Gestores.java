@@ -11,5 +11,6 @@ package javaland.interfaces;
 public interface Gestores {
     
     //Esta Interface va a ser usada por GestorValientes y GestorMonstruos
+    //El metodo se llamara crear y sera comun para todos los personajes
     
 }
