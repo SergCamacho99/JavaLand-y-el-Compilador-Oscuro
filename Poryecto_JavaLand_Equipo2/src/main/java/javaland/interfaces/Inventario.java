@@ -10,4 +10,7 @@ package javaland.interfaces;
  */
 public interface Inventario {
     
+    
+    //hector
+    
 }
