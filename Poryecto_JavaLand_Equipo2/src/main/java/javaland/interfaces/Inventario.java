@@ -10,6 +10,8 @@ package javaland.interfaces;
  */
 public interface Inventario {
     
+    //prueba
+    
     public void agregarObjeto();
     
     public void usarObjeto();
