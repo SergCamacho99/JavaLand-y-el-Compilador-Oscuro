@@ -17,5 +17,9 @@ public interface Inventario {
     public void mostrarInventario();
     
     
+<<<<<<< HEAD
+=======
+    
+>>>>>>> main
     
 }
