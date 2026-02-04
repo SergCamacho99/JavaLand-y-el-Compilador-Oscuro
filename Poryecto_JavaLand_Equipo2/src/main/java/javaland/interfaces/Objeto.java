@@ -10,6 +10,10 @@ package javaland.interfaces;
  */
 public interface Objeto {
     
+    public void agregarObjeto();
     
+    public void usarObjeto();
+    
+    public void mostrarInventario();
     
 }

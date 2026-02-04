@@ -10,6 +10,6 @@ package javaland.interfaces;
  */
 public interface Inventario {
     
-    
+    public void equipar();
     
 }
