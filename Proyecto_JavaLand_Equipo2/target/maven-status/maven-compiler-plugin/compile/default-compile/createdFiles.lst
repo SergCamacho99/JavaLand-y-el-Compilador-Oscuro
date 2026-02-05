@@ -1,0 +1,12 @@
+javaland\interfaces\Juego.class
+Juego\NewClass.class
+Combate\NewClass.class
+Objetos\NewClass.class
+Mapa\NewClass.class
+javaland\interfaces\Gestores.class
+javaland\interfaces\Personajes.class
+javaland\interfaces\Mapa.class
+javaland\interfaces\Objeto.class
+javaland\interfaces\Combate.class
+javaland\interfaces\Inventario.class
+Personajes\NewClass.class
