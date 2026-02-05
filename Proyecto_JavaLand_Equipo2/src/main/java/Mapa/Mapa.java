@@ -8,6 +8,6 @@ package Mapa;
  *
  * @author dam125
  */
-public class NewClass {
+public class Mapa {
     
 }

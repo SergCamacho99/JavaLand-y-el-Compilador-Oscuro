@@ -8,6 +8,8 @@ package javaland.interfaces;
  *
  * @author dam125
  */
-public interface Mapa {
+public interface PersonajesInterface {
+    
+    //Esta interfaz va a ser usada por Valientes y Monstruos
     
 }

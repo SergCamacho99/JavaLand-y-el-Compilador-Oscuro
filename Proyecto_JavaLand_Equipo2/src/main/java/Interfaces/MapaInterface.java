@@ -8,16 +8,6 @@ package javaland.interfaces;
  *
  * @author dam125
  */
-public interface Juego {
-    
-    public void IniciarJuego();
-    
-    public void creacionOEleccionValiente();
-    
-    public void mostrarMenuPrincipal();
-    
-    public void explorarMapa();
-    
-    public void mostrarEstadoJuego();
+public interface MapaInterface {
     
 }

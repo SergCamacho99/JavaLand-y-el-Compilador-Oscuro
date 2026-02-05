@@ -8,9 +8,14 @@ package javaland.interfaces;
  *
  * @author dam125
  */
-public interface Gestores {
+public interface InventarioInterface {
     
-    //Esta Interface va a ser usada por GestorValientes y GestorMonstruos
-    //El metodo se llamara crear y sera comun para todos los personajes
+    
+    
+    public void agregarObjeto();
+    
+    public void usarObjeto();
+    
+    public void mostrarInventario();
     
 }
