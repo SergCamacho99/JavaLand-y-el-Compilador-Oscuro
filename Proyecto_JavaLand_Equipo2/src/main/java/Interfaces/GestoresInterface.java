@@ -8,8 +8,9 @@ package javaland.interfaces;
  *
  * @author dam125
  */
-public interface Combate {
-    //Esta interface va a ser usada por Combate
+public interface GestoresInterface {
     
+    //Esta Interface va a ser usada por GestorValientes y GestorMonstruos
+    //El metodo se llamara crear y sera comun para todos los personajes
     
 }

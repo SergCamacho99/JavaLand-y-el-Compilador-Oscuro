@@ -8,7 +8,7 @@ package javaland.interfaces;
  *
  * @author dam125
  */
-public interface Objeto {
+public interface ObjetoInterface {
     
     public void equipar();
     

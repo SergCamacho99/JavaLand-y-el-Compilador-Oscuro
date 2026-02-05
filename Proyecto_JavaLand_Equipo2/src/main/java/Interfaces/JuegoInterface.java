@@ -8,8 +8,16 @@ package javaland.interfaces;
  *
  * @author dam125
  */
-public interface Personajes {
+public interface JuegoInterface {
     
-    //Esta interfaz va a ser usada por Valientes y Monstruos
+    public void IniciarJuego();
+    
+    public void creacionOEleccionValiente();
+    
+    public void mostrarMenuPrincipal();
+    
+    public void explorarMapa();
+    
+    public void mostrarEstadoJuego();
     
 }

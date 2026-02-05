@@ -8,14 +8,8 @@ package javaland.interfaces;
  *
  * @author dam125
  */
-public interface Inventario {
+public interface CombateInterface {
+    //Esta interface va a ser usada por Combate
     
-    
-    
-    public void agregarObjeto();
-    
-    public void usarObjeto();
-    
-    public void mostrarInventario();
     
 }
