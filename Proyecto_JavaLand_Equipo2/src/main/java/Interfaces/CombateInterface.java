@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package javaland.interfaces;
+package interfaces;
 
 /**
  *
@@ -10,6 +10,8 @@ package javaland.interfaces;
  */
 public interface CombateInterface {
     //Esta interface va a ser usada por Combate
+    
+    public <T> void turno(T Defensor, T Atacante);
     
     
 }
