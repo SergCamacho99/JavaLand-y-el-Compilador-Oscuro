@@ -22,43 +22,75 @@ public class Juego implements JuegoInterface {
 
     @Override
     public void creacionOEleccionValiente() {
+
         int opcion = 0;
+
         do {
+
             mostrarMenuInicio();
+
             System.out.println("Introduce tu opcion:");
+
             try {
+
                 opcion = Integer.parseInt(teclado.nextLine());
+
             } catch (NumberFormatException e) {
+
                 opcion = -1;
+
             }
+
             if (opcion < 1 || opcion > 6) { //validacion para que no se introduzca un numero fuera de rango
-                System.out.println("Por favor elige un numero del 1 al 5, aunque intuyo que quizas prefieras el 6.");
+
+            System.out.println("Por favor elige un numero del 1 al 5, aunque intuyo que quizas prefieras el 6.");
+
+        }
+
+        switch (opcion) {
+
+            case 1: {
+                Marginado m1 = new Marginado();
+                System.out.println("====[###]");
+                System.out.println("Se ha creado un Marginado con las siguientes estadisticas: \nFuerza: "+ m1.getFuerza()+"\nDefensa: "+m1.getDefensa()+"\nVelocidad: "+m1.getVelocidad()+"\nHabilidad: "+m1.getHabilidad());
+                //Llamar al metodo que inicia la partida.
+                break;
             }
-            switch (opcion) {
-                case 1 -> {
-                    Marginado m1 = new Marginado();
-                    System.out.println("====[###]");
-                    System.out.println("Se ha creado un Marginado con las siguientes estadisticas: \nFuerza: " + m1.getFuerza() + "\nDefensa: " + m1.getDefensa() + "\nVelocidad: " + m1.getVelocidad() + "\nHabilidad: " + m1.getHabilidad());
-                    //Llamar al metodo que inicia la partida.
-                }
-                case 2 -> {
-                    //Llamada al metodo de gestionar valientes (Guerrero)
-                }
-                case 3 -> {
-                    //Llamada al metodo de gestionar valientes (Paladin)
-                }
-                case 4 -> {
-                    //Llamada al metodo de gestionar valientes (Mago)
-                }
-                case 5 -> {
-                    //Llamada al metodo de gestionar valientes (Picaro)
-                }
-                case 6 -> {
-                    System.out.println("Buena decision, ni si quiera creo que tengas la habilidad para salir de esta con vida.");
-                }
-                default -> {
-                }
+            case 2: {
+
+                //Llamada al metodo de gestionar valientes (Guerrero)
+                break;
             }
+
+            case 3: {
+
+                //Llamada al metodo de gestionar valientes (Paladin)
+                break;
+            }
+
+            case 4: {
+
+                //Llamada al metodo de gestionar valientes (Mago)
+                break;
+            }
+
+            case 5: {
+
+                //Llamada al metodo de gestionar valientes (Picaro)
+                break;
+            }
+
+            case 6: {
+
+                System.out.println("Buena decision, ni si quiera creo que tengas la habilidad para salir de esta con vida.");
+                break;
+
+            }
+
+            default:
+        }
+            
+
         } while (opcion != 6);
     }
 
@@ -69,7 +101,7 @@ public class Juego implements JuegoInterface {
 
     @Override
     public void explorarMapa() {
-
+        
     }
 
     @Override
@@ -101,4 +133,7 @@ public class Juego implements JuegoInterface {
 
     }
 
+        
+
+    
 }
