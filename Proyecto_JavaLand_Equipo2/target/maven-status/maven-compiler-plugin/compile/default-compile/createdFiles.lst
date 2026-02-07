@@ -2,6 +2,7 @@ Combate\NewClass.class
 Mapa\Mapa.class
 Juego\Juego.class
 javaland\interfaces\CombateInterface.class
+Juego\Marginado.class
 javaland\interfaces\PersonajesInterface.class
 Objetos\NewClass.class
 javaland\interfaces\JuegoInterface.class
