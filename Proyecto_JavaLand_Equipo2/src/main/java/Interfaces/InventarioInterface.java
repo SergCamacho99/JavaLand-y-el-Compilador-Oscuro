@@ -4,18 +4,19 @@
  */
 package interfaces;
 
+import Objetos.Objeto;
+import Personajes.Valiente;
+
 /**
  *
  * @author dam125
  */
 public interface InventarioInterface {
     
-    
-    
-    public void agregarObjeto();
-    
-    public void usarObjeto();
-    
-    public void mostrarInventario();
-    
+  void agregarObjeto(Objeto obj);
+
+    void usarObjeto(String nombre, Valiente valiente);
+
+    void mostrarInventario();
 }
+    
