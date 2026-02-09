@@ -4,7 +4,7 @@
  */
 package Juego;
 
-import javaland.interfaces.JuegoInterface;
+import interfaces.JuegoInterface;
 import java.util.Scanner;
 
 /**

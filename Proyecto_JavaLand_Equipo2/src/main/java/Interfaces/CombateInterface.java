@@ -13,7 +13,7 @@ public interface CombateInterface {
     
     public <T> void turno(T Defensor, T Atacante);
     
-    public void iniciarCombate (Valiente valiente, Monstruo monstruo);
+   // public void iniciarCombate (Valiente valiente, Monstruo monstruo);
     
     
     
