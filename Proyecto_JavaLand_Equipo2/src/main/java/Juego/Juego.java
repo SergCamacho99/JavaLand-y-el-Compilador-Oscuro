@@ -90,8 +90,10 @@ public class Juego implements JuegoInterface {
             default:
         }
             
-
-        } while (opcion != 6);
+        
+        
+        
+        } while (opcion != 6 && opcion < 1 || opcion > 6);
     }
 
     @Override
