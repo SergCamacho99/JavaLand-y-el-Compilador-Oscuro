@@ -1,0 +1,14 @@
+Combate\NewClass.class
+Mapa\Mapa.class
+Juego\Juego.class
+Juego\Marginado.class
+javaland\interfaces\PersonajesInterface.class
+Objetos\NewClass.class
+javaland\interfaces\JuegoInterface.class
+javaland\interfaces\MapaInterface.class
+javaland\interfaces\ObjetoInterface.class
+javaland\interfaces\GestoresInterface.class
+javaland\interfaces\InventarioInterface.class
+Juego\MainPruebas.class
+interfaces\CombateInterface.class
+Personajes\NewClass.class
