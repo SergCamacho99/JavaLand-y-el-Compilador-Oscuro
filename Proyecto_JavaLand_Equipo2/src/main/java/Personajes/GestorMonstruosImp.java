@@ -14,6 +14,8 @@ import java.util.Random;
  */
 public class GestorMonstruosImp implements GestoresInterface {
   private Random random = new Random();
+  private int contadorMonstruos = 0;
+  
     @Override
     public void crearValientesIniciales() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -42,7 +44,8 @@ public class GestorMonstruosImp implements GestoresInterface {
             };
             nombreSeleccionado = nivelAlto[random.nextInt(nivelAlto.length)];
         }
-
+        
+        this.contadorMonstruos++;
         return new Monstruo(nombreSeleccionado, nivel);
     }
 
@@ -51,4 +54,10 @@ public class GestorMonstruosImp implements GestoresInterface {
         System.out.println("El monstruo " + m.getNombre() + " ha sido eliminado y desaparece del mapa");
     }
 
+    public int getContadorMonstruos(){
+        
+        return this.contadorMonstruos;
+        
+    }
+    
 }
