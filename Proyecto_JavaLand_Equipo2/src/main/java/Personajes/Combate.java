@@ -16,9 +16,15 @@ import java.util.Random;
 public class Combate implements CombateInterface {
     Random random=new Random();
     public boolean tieneExito;
+    public static int turno;
+    
     @Override
-    public <T> boolean turno(T Defensor, T Atacante) {
-        
+    public  boolean turno(Valiente valiente, Monstruo monstruo) {
+        if(turno == 0){
+            
+        }else if(turno == 1){
+            
+        }
     }
 
     
@@ -37,8 +43,9 @@ public class Combate implements CombateInterface {
      * @param valiente
      * @param monstruo
     */
+    
     @Override
-    public void iniciarCombate(Object valiente, Object monstruo) {
+    public void iniciarCombate(Valiente valiente, Monstruo monstruo) {
         
         
         System.out.println("╔════════════════════════════════════════════════╗");
@@ -54,18 +61,22 @@ public class Combate implements CombateInterface {
             }while(iniciativa_Valiente!=iniciativa_Monstruo);
             if(iniciativa_Monstruo>iniciativa_Valiente){
                 System.out.println("Turno del rival");
-                Combate.turno(monstruo);
+                turno=0;
+                Combate.turno(valiente, monstruo);
                 //poner if si ha tenido exito el ataque y mostrar el daño
             }else{
                 System.out.println("Es tu turno");
-                Combate.turno(valiente);
+                turno =1;
+                Combate.turno(valiente, monstruo);
                 //poner si ha tenido exito el ataque y mostrar el daño
             }
             
             
             
-        } while (defensor.getVida() > 0 && monstruo.getVida() > 0);
+        } while (valiente.getVida() > 0 && monstruo.getVida() > 0);
     }
+
+    
     
     
 }

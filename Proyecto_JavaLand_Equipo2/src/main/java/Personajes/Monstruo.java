@@ -30,63 +30,78 @@ public class Monstruo extends Personaje implements PersonajesInterface {
         System.out.println(this.nombre + " ha recibido daño. Vida restante: " + this.vida);
     }
 
+    @Override
     public String getNombre() {
         return nombre;
     }
 
+    @Override
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    @Override
     public int getVida() {
         return vida;
     }
 
+    @Override
     public void setVida(int vida) {
         this.vida = vida;
     }
 
+    @Override
     public int getFuerza() {
         return fuerza;
     }
 
+    @Override
     public void setFuerza(int fuerza) {
         this.fuerza = fuerza;
     }
 
+    @Override
     public int getDefensa() {
         return defensa;
     }
 
+    @Override
     public void setDefensa(int defensa) {
         this.defensa = defensa;
     }
 
+    @Override
     public int getHabilidad() {
         return habilidad;
     }
 
+    @Override
     public void setHabilidad(int habilidad) {
         this.habilidad = habilidad;
     }
 
+    @Override
     public int getVelocidad() {
         return velocidad;
     }
 
+    @Override
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
     }
 
+    @Override
     public int getNivel() {
         return nivel;
     }
 
+    @Override
     public void setNivel(int nivel) {
         this.nivel = nivel;
     }
 
 
+    @Override
     public <T extends Personaje> double atacar(T Personaje) {
         double danioRealizado = (double) this.fuerza; 
         System.out.println("El monstruo " + this.nombre + " ataca a " + Personaje.getNombre() + " causando " + danioRealizado + " de daño");
