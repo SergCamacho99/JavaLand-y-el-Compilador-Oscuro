@@ -4,6 +4,9 @@
  */
 package Juego;
 import Mapa.Mapa;
+import Enumerados.TipoClase;
+import Personajes.Personaje;
+import Personajes.Valiente;
 import Personajes.GestorMonstruosImp;
 import Personajes.GestorValientesImp;
 import interfaces.JuegoInterface;
@@ -14,12 +17,13 @@ import java.util.Scanner;
  * @author dam125
  */
 public class Juego implements JuegoInterface {
-
-    Scanner teclado = new Scanner(System.in);
-    Mapa map = new Mapa(); 
+    Mapa map;
+    Scanner teclado = new Scanner(System.in); 
     @Override
     public void IniciarJuego() {
+        
         creacionOEleccionValiente();
+        
     }
 
     @Override
@@ -52,9 +56,10 @@ public class Juego implements JuegoInterface {
         switch (opcion) {
 
             case 1: {
-                Marginado m1 = new Marginado();
+                Marginado m1 = new Marginado("Marginado",TipoClase.MARGINADO,0,0,0,0);
                 System.out.println("====[###]");
-                System.out.println("Se ha creado un Marginado con las siguientes estadisticas: \nFuerza: "+ m1.getFuerza()+"\nDefensa: "+m1.getDefensa()+"\nVelocidad: "+m1.getVelocidad()+"\nHabilidad: "+m1.getHabilidad());
+                System.out.println("Se ha creado un Marginado con las siguientes estadisticas\n:"+m1.toString());
+                this.map = new Mapa();
                 jugar(m1);
                 break;
             }
@@ -144,8 +149,7 @@ public class Juego implements JuegoInterface {
 
     }
 
-    public void jugar(Marginado m1) {
-        
+    public void jugar(Valiente v) {
         map.mostrarMapa();
         mostrarMenuPrincipal();
         

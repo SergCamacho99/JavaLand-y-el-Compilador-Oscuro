@@ -1,11 +1,13 @@
 Mapa\MainMapa.class
 Mapa\NewMain.class
+Personajes\GestorMonstruosImp.class
 interfaces\ObjetoInterface.class
 Juego\CompiladorOscuro.class
 Objetos\Arma.class
 interfaces\MapaInterface.class
 interfaces\PersonajesInterface.class
 Personajes\Valiente.class
+Personajes\GestorValientesImp.class
 interfaces\GestoresInterface.class
 interfaces\JuegoInterface.class
 Personajes\Personaje.class

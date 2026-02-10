@@ -17,6 +17,7 @@ public class Valiente extends Personaje implements PersonajesInterface {
     private int ataqueArma = 0;
     private int defensaEscudo = 0;
 
+    
     public Valiente(String nombre, TipoClase tipo, int fuerza, int defensa, int habilidad, int velocidad) throws IllegalArgumentException {
         super(nombre, 100, fuerza, defensa, habilidad, velocidad, 1);
         this.tipo = tipo;
