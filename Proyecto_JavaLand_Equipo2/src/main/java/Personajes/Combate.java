@@ -15,6 +15,7 @@ import java.util.Random;
 public class Combate implements CombateInterface {
     Random random=new Random();
     public boolean tieneExito;
+    
     @Override
     public <T> boolean turno(T Defensor, T Atacante) {
         
@@ -24,8 +25,9 @@ public class Combate implements CombateInterface {
     
 
     
+    
     @Override
-    public void combateTerminado(Object valiente, Object monstruo) {
+    public void combateTerminado(Valiente valiente, Monstruo monstruo) {
         System.out.println("╔════════════════════════════════════════════════╗");
         System.out.println("║              Fin del combate             ║");
         System.out.println("╚════════════════════════════════════════════════╝");
@@ -36,8 +38,9 @@ public class Combate implements CombateInterface {
      * @param valiente
      * @param monstruo
      */
+    
     @Override
-    public void iniciarCombate(Object valiente, Object monstruo) {
+    public void iniciarCombate(Valiente valiente, Monstruo monstruo) {
         
         
         System.out.println("╔════════════════════════════════════════════════╗");
@@ -63,7 +66,7 @@ public class Combate implements CombateInterface {
             
             
             
-        } while (defensor.getVida() > 0 && monstruo.getVida() > 0);
+        } while (valiente.getVida() > 0 && monstruo.getVida() > 0);
     }
     
     

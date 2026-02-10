@@ -18,9 +18,9 @@ public interface CombateInterface {
     
     public <T>  boolean turno(T Defensor, T Atacante);
     
-    public  void iniciarCombate(Valiente valiente, Monstruo monstruo);
+    public void iniciarCombate(Valiente valiente, Monstruo monstruo);
     
-    public <T> void combateTerminado (T valiente, T monstruo);
+    public  void combateTerminado (Valiente valiente, Monstruo monstruo);
     
     
     
