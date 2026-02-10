@@ -25,7 +25,9 @@ public class GestorValientesImp implements GestoresInterface {
         listaValientes.add(new Valiente("Loki", TipoClase.PÍCARO, 8, 7, 10, 15));
         System.out.println("Valientes iniciales creados");
     }
-
+    public Valiente crearExploradorEspecial(String nombre) {
+        return new Valiente(nombre, TipoClase.EXPLORADOR, 9, 9, 11, 11);
+    }
     @Override
     public Monstruo generarMonstruos(int nivel) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
