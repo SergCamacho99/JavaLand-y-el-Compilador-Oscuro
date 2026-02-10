@@ -14,7 +14,8 @@ import java.util.Scanner;
 public class Juego implements JuegoInterface {
 
     Scanner teclado = new Scanner(System.in);
-
+    //Mapa map = new Mapa();
+    
     @Override
     public void IniciarJuego() {
         creacionOEleccionValiente();
@@ -53,7 +54,7 @@ public class Juego implements JuegoInterface {
                 Marginado m1 = new Marginado();
                 System.out.println("====[###]");
                 System.out.println("Se ha creado un Marginado con las siguientes estadisticas: \nFuerza: "+ m1.getFuerza()+"\nDefensa: "+m1.getDefensa()+"\nVelocidad: "+m1.getVelocidad()+"\nHabilidad: "+m1.getHabilidad());
-                //Llamar al metodo que inicia la partida.
+                jugar(m1);
                 break;
             }
             case 2: {
@@ -98,11 +99,18 @@ public class Juego implements JuegoInterface {
 
     @Override
     public void mostrarMenuPrincipal() {
-
+        
+        System.out.println("╔═════════════════════════════════════════════════════════╗");
+        System.out.println("║                                                  ║");
+        System.out.println("║ 1. Mostrar valiente 2. Equipar Objeto 3. Salir   ║");
+        System.out.println("║                                                  ║");
+        System.out.println("╚═════════════════════════════════════════════════════════╝");
     }
 
     @Override
     public void explorarMapa() {
+        
+        
         
     }
 
@@ -135,7 +143,12 @@ public class Juego implements JuegoInterface {
 
     }
 
+    public void jugar(Marginado m1) {
         
+        //map.ImprimirTablero();
+        mostrarMenuPrincipal();
+        
+    } 
 
     
 }

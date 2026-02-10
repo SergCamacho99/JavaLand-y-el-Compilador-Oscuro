@@ -10,4 +10,14 @@ package Mapa;
  */
 public class Mapa {
     
+    char[][] map = new char[10][10];
+
+
+    public void mostrarMapa(){
+        
+       
+        
+    }
+    
 }
+

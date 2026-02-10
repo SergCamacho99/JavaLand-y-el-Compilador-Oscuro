@@ -258,4 +258,6 @@ public class Marginado {
         this.habilidad = habilidad;
     }
 
+       
+    
 }
