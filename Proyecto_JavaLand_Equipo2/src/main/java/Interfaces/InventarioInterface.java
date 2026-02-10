@@ -13,10 +13,10 @@ import Personajes.Valiente;
  */
 public interface InventarioInterface {
     
-  void agregarObjeto(Objeto obj);
+  public void agregarObjeto(Objeto obj);
 
-    void usarObjeto(String nombre, Valiente valiente);
+    public void usarObjeto(String nombre, Valiente valiente);
 
-    void mostrarInventario();
+    public void mostrarInventario();
 }
     
