@@ -12,6 +12,10 @@ import Personajes.Valiente;
  */
 public class Espada extends Arma {
 
+    public Espada(String nombre, int valor) {
+        super(nombre, valor);
+    }
+
     @Override
     public void usar(Valiente Valiente) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

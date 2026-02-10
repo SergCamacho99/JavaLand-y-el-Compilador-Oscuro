@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Juego;
+import Mapa.Mapa;
 import Personajes.GestorMonstruosImp;
 import Personajes.GestorValientesImp;
 import interfaces.JuegoInterface;
@@ -15,7 +16,7 @@ import java.util.Scanner;
 public class Juego implements JuegoInterface {
 
     Scanner teclado = new Scanner(System.in);
-    //Mapa map = new Mapa(); 
+    Mapa map = new Mapa(); 
     @Override
     public void IniciarJuego() {
         creacionOEleccionValiente();
@@ -145,7 +146,7 @@ public class Juego implements JuegoInterface {
 
     public void jugar(Marginado m1) {
         
-        
+        map.mostrarMapa();
         mostrarMenuPrincipal();
         
     } 
