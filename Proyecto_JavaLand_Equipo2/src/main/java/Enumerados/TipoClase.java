@@ -9,5 +9,5 @@ package Enumerados;
  * @author Leila
  */
 public enum TipoClase {
-  GUERRERO, PALADÍN, MAGO, PÍCARO  
+  GUERRERO, PALADÍN, MAGO, PÍCARO, EXPLORADOR  
 }

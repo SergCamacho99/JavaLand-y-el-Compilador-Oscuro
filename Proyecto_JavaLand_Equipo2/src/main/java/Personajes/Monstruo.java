@@ -16,10 +16,6 @@ public class Monstruo extends Personaje implements PersonajesInterface {
         super(nombre, 50 + (nivel * 10), 5 + nivel, 5 + nivel, 5 + nivel, 5 + nivel, nivel);
     }
 
-    public void atacar(Valiente valiente) {
-
-    }
-
     @Override
     public void subirNivel() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

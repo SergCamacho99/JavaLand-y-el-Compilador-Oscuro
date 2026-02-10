@@ -4,6 +4,9 @@
  */
 package interfaces;
 
+import Personajes.Monstruo;
+import Personajes.Valiente;
+
 
 
 /**

@@ -49,6 +49,11 @@ public class Valiente extends Personaje implements PersonajesInterface {
                 System.out.println(nombre + " usa 'Ataque Crítico' (Doble de fuerza)");
                 enemigo.recibirDaño(fuerza * 2);
                 break;
+            case EXPLORADOR:
+            System.out.println(nombre + " usa 'Ojo del Halcón'");
+            System.out.println("Revelando casillas adyacentes y permitiendo movimiento diagonal");
+            enemigo.recibirDaño(fuerza + velocidad); 
+            break;
         }
     }
 
@@ -69,4 +74,29 @@ public class Valiente extends Personaje implements PersonajesInterface {
         Personaje.recibirDaño((int) danioTotal);
         return danioTotal;
     }
+
+    public TipoClase getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoClase tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getAtaqueArma() {
+        return ataqueArma;
+    }
+
+    public void setAtaqueArma(int ataqueArma) {
+        this.ataqueArma = ataqueArma;
+    }
+
+    public int getDefensaEscudo() {
+        return defensaEscudo;
+    }
+
+    public void setDefensaEscudo(int defensaEscudo) {
+        this.defensaEscudo = defensaEscudo;
+    }
+    
 }
