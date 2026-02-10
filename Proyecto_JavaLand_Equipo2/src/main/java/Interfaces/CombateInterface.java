@@ -4,6 +4,8 @@
  */
 package interfaces;
 
+
+
 /**
  *
  * @author dam125
@@ -11,11 +13,11 @@ package interfaces;
 public interface CombateInterface {
     //Esta interface va a ser usada por Combate
     
-    public <T> void turno(T Defensor, T Atacante);
+    public <T>  boolean turno(T Defensor, T Atacante);
     
-    public void iniciarCombate (Valiente valiente, Monstruo monstruo);
+    public  void iniciarCombate(Valiente valiente, Monstruo monstruo);
     
-    public void combateTerminado (Valiente valiente, Monstruo monstruo);
+    public <T> void combateTerminado (T valiente, T monstruo);
     
     
     

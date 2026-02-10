@@ -4,6 +4,7 @@
  */
 package Personajes;
 
+
 import interfaces.CombateInterface;
 import java.util.Random;
 
@@ -15,12 +16,29 @@ public class Combate implements CombateInterface {
     Random random=new Random();
     public boolean tieneExito;
     @Override
-    public <T> void turno(T Defensor, T Atacante) {
+    public <T> boolean turno(T Defensor, T Atacante) {
         
     }
 
+    
+    
+
+    
+    @Override
+    public void combateTerminado(Object valiente, Object monstruo) {
+        System.out.println("╔════════════════════════════════════════════════╗");
+        System.out.println("║              Fin del combate             ║");
+        System.out.println("╚════════════════════════════════════════════════╝");
+    }
+
+    /**
+     *
+     * @param valiente
+     * @param monstruo
+     */
     @Override
     public void iniciarCombate(Object valiente, Object monstruo) {
+        
         
         System.out.println("╔════════════════════════════════════════════════╗");
         System.out.println("║            Comienza el combate           ║");
@@ -47,22 +65,8 @@ public class Combate implements CombateInterface {
             
         } while (defensor.getVida() > 0 && monstruo.getVida() > 0);
     }
-
-    @Override
-    public void combateTerminado(Object valiente, Object monstruo) {
-        System.out.println("╔════════════════════════════════════════════════╗");
-        System.out.println("║              Fin del combate             ║");
-        System.out.println("╚════════════════════════════════════════════════╝");
-    }
-
-    public boolean isTieneExito() {
-        return tieneExito;
-    }
-
-    public void setTieneExito(boolean tieneExito) {
-        this.tieneExito = tieneExito;
-    }
     
     
-
 }
+
+
