@@ -12,7 +12,7 @@ import java.util.Random;
  *
  * @author dam125
  */
-/*
+
 public class Combate implements CombateInterface {
     Random random=new Random();
     public boolean tieneExito;
@@ -36,7 +36,7 @@ public class Combate implements CombateInterface {
      *
      * @param valiente
      * @param monstruo
-     
+    */
     @Override
     public void iniciarCombate(Object valiente, Object monstruo) {
         
@@ -69,5 +69,4 @@ public class Combate implements CombateInterface {
     
     
 }
-*/
 
