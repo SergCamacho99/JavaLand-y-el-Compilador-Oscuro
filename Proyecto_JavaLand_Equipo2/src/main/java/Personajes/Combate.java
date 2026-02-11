@@ -15,11 +15,32 @@ import java.util.Random;
 public class Combate implements CombateInterface {
     Random random=new Random();
     public boolean tieneExito;
-    
+    public int orden;
     
     
     @Override
-    public  boolean turno(Valiente valiente, Monstruo monostruo) {
+    public  boolean turno(Valiente valiente, Monstruo monstruo) {
+        int numeroAleatorio;
+        double calculo;
+        if(this.orden==0){
+            
+            numeroAleatorio = random.nextInt(101);
+            calculo=4*monstruo.getHabilidad()-(valiente.getDefensa()+valiente.getDefensaEscudo());
+            if(numeroAleatorio<calculo){
+                monstruo.atacar(valiente);
+            }else{
+                System.out.println("El ataque ha fallado");
+            }
+        }else if(this.orden==1){
+            
+            numeroAleatorio = random.nextInt(101);
+            calculo=4*valiente.getHabilidad()-(monstruo.getDefensa());
+            if(numeroAleatorio<calculo){
+                valiente.atacar(monstruo);
+            }else{
+                System.out.println("El ataque ha fallado");
+            }
+        }
         
     }
 
@@ -57,10 +78,12 @@ public class Combate implements CombateInterface {
                 iniciativa_Monstruo=monstruo.getVelocidad()*numeroAleatorio;
             }while(iniciativa_Valiente!=iniciativa_Monstruo);
             if(iniciativa_Monstruo>iniciativa_Valiente){
+                this.orden=0;
                 System.out.println("Turno del rival");
                 turno(valiente, monstruo);
                 //poner if si ha tenido exito el ataque y mostrar el daño
             }else{
+                this.orden=1;
                 System.out.println("Es tu turno");
                 turno(valiente, monstruo);
                 //poner si ha tenido exito el ataque y mostrar el daño
