@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+/*
 package Personajes;
 
 
@@ -11,20 +12,14 @@ import java.util.Random;
 /**
  *
  * @author dam125
- */
+ 
 
 public class Combate implements CombateInterface {
     Random random=new Random();
     public boolean tieneExito;
-    public static int turno;
-    
     @Override
-    public  boolean turno(Valiente valiente, Monstruo monstruo) {
-        if(turno == 0){
-            
-        }else if(turno == 1){
-            
-        }
+    public <T> boolean turno(T Defensor, T Atacante) {
+        
     }
 
     
@@ -38,14 +33,13 @@ public class Combate implements CombateInterface {
         System.out.println("╚════════════════════════════════════════════════╝");
     }
 
-    /**
+    
      *
      * @param valiente
      * @param monstruo
-    */
-    
+     
     @Override
-    public void iniciarCombate(Valiente valiente, Monstruo monstruo) {
+    public void iniciarCombate(Object valiente, Object monstruo) {
         
         
         System.out.println("╔════════════════════════════════════════════════╗");
@@ -61,23 +55,21 @@ public class Combate implements CombateInterface {
             }while(iniciativa_Valiente!=iniciativa_Monstruo);
             if(iniciativa_Monstruo>iniciativa_Valiente){
                 System.out.println("Turno del rival");
-                turno=0;
-                Combate.turno(valiente, monstruo);
-                //poner if si ha tenido exito el ataque y mostrar el daño
+                Combate.turno(monstruo);
+                
             }else{
                 System.out.println("Es tu turno");
-                turno =1;
-                Combate.turno(valiente, monstruo);
-                //poner si ha tenido exito el ataque y mostrar el daño
+                Combate.turno(valiente);
+                
             }
             
             
             
-        } while (valiente.getVida() > 0 && monstruo.getVida() > 0);
+        } while (defensor.getVida() > 0 && monstruo.getVida() > 0);
     }
-
-    
     
     
 }
 
+
+*/
