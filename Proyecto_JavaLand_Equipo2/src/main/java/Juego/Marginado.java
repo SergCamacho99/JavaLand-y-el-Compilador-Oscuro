@@ -4,34 +4,29 @@
  */
 package Juego;
 
+import Enumerados.TipoClase;
+import Personajes.Valiente;
 import java.util.Scanner;
 
 /**
  *
  * @author david
  */
-public class Marginado {
+public class Marginado extends Valiente{
 
     Scanner teclado = new Scanner(System.in);
 
     private int puntosRestantes;
-    private int fuerza;
-    private int defensa;
-    private int velocidad;
-    private int habilidad;
 
-    public Marginado() {
-
+    public Marginado(String nombre, TipoClase tipo, int fuerza, int defensa, int habilidad, int velocidad) throws IllegalArgumentException {
+        super(nombre, tipo, fuerza, defensa, habilidad, velocidad);
         puntosRestantes = 40;
 
         System.out.println("Asi que te gustan los retos eh?");
         System.out.println("Por muy valiente que seas, necesitaras hacer uso de esto, repartelo con sabiduria");
         System.out.println("Que la habilidad guie tu camino y la suerte este de tu lado, valiente.");
 
-        this.fuerza = 0;
-        this.defensa = 0;
-        this.velocidad = 0;
-        this.habilidad = 0;
+        
 
         while (puntosRestantes > 0) {
 //anadir que pasa si eleccion es menor que 1 o mayor que 4
@@ -76,6 +71,9 @@ public class Marginado {
         }
         System.out.println("Puntos agregados correctamente. Buena suerte en tu camino Valiente.");
     }
+    
+
+    
 
     private void aumentarFuerza() {
 
@@ -94,7 +92,7 @@ public class Marginado {
 
             if (puntos <= puntosRestantes && puntos > 0) {
 
-                fuerza += puntos;
+                super.fuerza += puntos;
                 puntosRestantes -= puntos;
                 valido = true;
 
@@ -132,7 +130,7 @@ public class Marginado {
 
             if (puntos <= puntosRestantes && puntos > 0) {
 
-                defensa += puntos;
+                super.defensa += puntos;
                 puntosRestantes -= puntos;
                 valido = true;
 
@@ -169,7 +167,7 @@ public class Marginado {
 
             if (puntos <= puntosRestantes && puntos > 0) {
 
-                velocidad += puntos;
+                super.velocidad += puntos;
                 puntosRestantes -= puntos;
                 valido = true;
 
@@ -206,7 +204,7 @@ public class Marginado {
 
             if (puntos <= puntosRestantes && puntos > 0) {
 
-                habilidad += puntos;
+                super.habilidad += puntos;
                 puntosRestantes -= puntos;
                 valido = true;
 
@@ -225,37 +223,12 @@ public class Marginado {
 
         } while (!valido);
     }
-
-    public int getFuerza() {
-        return fuerza;
-    }
-
-    public void setFuerza(int fuerza) {
-        this.fuerza = fuerza;
-    }
-
-    public int getDefensa() {
-        return defensa;
-    }
-
-    public void setDefensa(int defensa) {
-        this.defensa = defensa;
-    }
-
-    public int getVelocidad() {
-        return velocidad;
-    }
-
-    public void setVelocidad(int velocidad) {
-        this.velocidad = velocidad;
-    }
-
-    public int getHabilidad() {
-        return habilidad;
-    }
-
-    public void setHabilidad(int habilidad) {
-        this.habilidad = habilidad;
-    }
-
+    
+    @Override
+   public String toString(){
+       
+       return "\nFuerza: "+super.fuerza+"\nDefensa: "+super.defensa+"\nVelocidad: "+super.velocidad+"\nHabilidad: "+super.habilidad;
+       
+   }
+    
 }

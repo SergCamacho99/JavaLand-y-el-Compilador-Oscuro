@@ -4,6 +4,9 @@
  */
 package interfaces;
 
+import Personajes.Monstruo;
+import Personajes.Valiente;
+
 
 
 /**
@@ -13,7 +16,7 @@ package interfaces;
 public interface CombateInterface {
     //Esta interface va a ser usada por Combate
     
-    public <T>  boolean turno(T Defensor, T Atacante);
+    public  boolean turno(Valiente valiente, Monstruo monstruo);
     
     public  void iniciarCombate(Valiente valiente, Monstruo monstruo);
     
