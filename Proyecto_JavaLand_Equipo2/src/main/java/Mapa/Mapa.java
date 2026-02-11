@@ -10,7 +10,7 @@ package Mapa;
  */
 public class Mapa {
 
-    private char[][] mapa = new char[10][10];
+    private char[][] mapa = new char[12][12];
     private int x = 1;
     private int y = 1;
 
@@ -20,14 +20,14 @@ public class Mapa {
     }
 
     private void inicializarMapa() {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 12; j++) {
                 mapa[i][j] = '?';
             }
         }
     }
 
-    private void actualizarMapa() {
+    public void actualizarMapa() {
         inicializarMapa();
 
         mapa[x][y] = 'X';
@@ -70,13 +70,13 @@ public class Mapa {
 
     public void mostrarMapa() {
 
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 12; j++) {
                 System.out.print("---+");
             }
             System.out.println();
 
-            for (int j = 0; j < 10; j++) {
+            for (int j = 0; j < 12; j++) {
                 
                 System.out.print(" " + mapa[i][j] + " |");
             }
