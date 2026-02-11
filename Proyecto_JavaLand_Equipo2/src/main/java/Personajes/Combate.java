@@ -16,8 +16,10 @@ public class Combate implements CombateInterface {
     Random random=new Random();
     public boolean tieneExito;
     
+    
+    
     @Override
-    public <T> boolean turno(T Defensor, T Atacante) {
+    public  boolean turno(Valiente valiente, Monstruo monostruo) {
         
     }
 
@@ -56,11 +58,11 @@ public class Combate implements CombateInterface {
             }while(iniciativa_Valiente!=iniciativa_Monstruo);
             if(iniciativa_Monstruo>iniciativa_Valiente){
                 System.out.println("Turno del rival");
-                Combate.turno(monstruo);
+                turno(valiente, monstruo);
                 //poner if si ha tenido exito el ataque y mostrar el daño
             }else{
                 System.out.println("Es tu turno");
-                Combate.turno(valiente);
+                turno(valiente, monstruo);
                 //poner si ha tenido exito el ataque y mostrar el daño
             }
             
