@@ -114,10 +114,10 @@ public class Juego implements JuegoInterface {
     }
 
     @Override
-    public void explorarMapa() {
-        char direccion = teclado.next().charAt(0);
-        map.moverX(direccion);
+    public void explorarMapa(char direccion) {
         
+        map.moverX(direccion);
+        map.actualizarMapa();
     }
 
     @Override
@@ -152,7 +152,26 @@ public class Juego implements JuegoInterface {
     public void jugar(Valiente v) {
         map.mostrarMapa();
         mostrarMenuPrincipal();
+        boolean terminar = false;
+        while (!false){
+        int opcion = Integer.parseInt(teclado.nextLine());
         
+        
+        switch (opcion) {
+            
+            case 1 ->{
+                
+                System.out.println("Introduce el movimiento wasd");
+                teclado.nextLine();
+                char direccion = teclado.next().charAt(0);
+                explorarMapa(direccion);
+                
+            }
+            
+            
+        }
+        
+        }
     } 
 
     
