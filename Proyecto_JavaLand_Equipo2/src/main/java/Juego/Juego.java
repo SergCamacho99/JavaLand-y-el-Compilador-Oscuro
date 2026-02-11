@@ -115,8 +115,8 @@ public class Juego implements JuegoInterface {
 
     @Override
     public void explorarMapa() {
-        
-        
+        char direccion = teclado.next().charAt(0);
+        map.moverX(direccion);
         
     }
 
