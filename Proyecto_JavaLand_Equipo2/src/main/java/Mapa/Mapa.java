@@ -77,12 +77,7 @@ public class Mapa {
             System.out.println();
 
             for (int j = 0; j < 10; j++) {
-                // if(mapa[i][j] == ' '){
-                //     mapa[i][j]='?';
-                // }else if (mapa[i][j] == 'x') {
-                //     mapa[i+1][j+1] = 'n';
-                // }
-
+                
                 System.out.print(" " + mapa[i][j] + " |");
             }
             System.out.println();
