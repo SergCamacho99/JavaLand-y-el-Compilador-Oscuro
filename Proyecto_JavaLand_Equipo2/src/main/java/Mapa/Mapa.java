@@ -35,6 +35,7 @@ public class Mapa {
 
             }
             for (int j = 0; j < 10; j++) {
+
                // if(mapa[i][j] == ' '){
                //     mapa[i][j]='?';
                // }else if (mapa[i][j] == 'x') {
@@ -53,6 +54,9 @@ public class Mapa {
                if(mapa[i][j]=='x'){
                }
                 System.out.print(" "+mapa[i][j]+" |");
+
+                System.out.print(" " + mapa[i][j] + " |");
+
             }
             System.out.println();
         }
