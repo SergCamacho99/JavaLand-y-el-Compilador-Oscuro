@@ -54,11 +54,11 @@ public class Combate implements CombateInterface {
             if(iniciativa_Monstruo>iniciativa_Valiente){
                 System.out.println("Turno del rival");
                 Combate.turno(monstruo);
-                //poner if si ha tenido exito el ataque y mostrar el daño
+                
             }else{
                 System.out.println("Es tu turno");
                 Combate.turno(valiente);
-                //poner si ha tenido exito el ataque y mostrar el daño
+                
             }
             
             
