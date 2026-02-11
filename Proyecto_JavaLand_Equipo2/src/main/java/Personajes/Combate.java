@@ -12,27 +12,24 @@ import java.util.Random;
  *
  * @author dam125
  */
-
 public class Combate implements CombateInterface {
     Random random=new Random();
     public boolean tieneExito;
-    public static int turno;
+    
+    
     
     @Override
-    public  boolean turno(Valiente valiente, Monstruo monstruo) {
-        if(turno == 0){
-            
-        }else if(turno == 1){
-            
-        }
+    public  boolean turno(Valiente valiente, Monstruo monostruo) {
+        
     }
 
     
     
 
     
+    
     @Override
-    public void combateTerminado(Object valiente, Object monstruo) {
+    public void combateTerminado(Valiente valiente, Monstruo monstruo) {
         System.out.println("╔════════════════════════════════════════════════╗");
         System.out.println("║              Fin del combate             ║");
         System.out.println("╚════════════════════════════════════════════════╝");
@@ -42,7 +39,7 @@ public class Combate implements CombateInterface {
      *
      * @param valiente
      * @param monstruo
-    */
+     */
     
     @Override
     public void iniciarCombate(Valiente valiente, Monstruo monstruo) {
@@ -61,13 +58,11 @@ public class Combate implements CombateInterface {
             }while(iniciativa_Valiente!=iniciativa_Monstruo);
             if(iniciativa_Monstruo>iniciativa_Valiente){
                 System.out.println("Turno del rival");
-                turno=0;
-                Combate.turno(valiente, monstruo);
+                turno(valiente, monstruo);
                 //poner if si ha tenido exito el ataque y mostrar el daño
             }else{
                 System.out.println("Es tu turno");
-                turno =1;
-                Combate.turno(valiente, monstruo);
+                turno(valiente, monstruo);
                 //poner si ha tenido exito el ataque y mostrar el daño
             }
             
@@ -75,9 +70,8 @@ public class Combate implements CombateInterface {
             
         } while (valiente.getVida() > 0 && monstruo.getVida() > 0);
     }
-
-    
     
     
 }
+
 
