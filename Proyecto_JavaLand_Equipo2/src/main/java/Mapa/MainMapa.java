@@ -8,14 +8,27 @@ package Mapa;
  *
  * @author DAM119
  */
+import java.util.Scanner;
+
 public class MainMapa {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        Mapa map = new Mapa();
-        map.mostrarMapa();
+
+        Scanner teclado = new Scanner(System.in);
+        Mapa mapa = new Mapa();
+
+        char tecla;
+
+        do {
+            mapa.mostrarMapa();
+            tecla = teclado.next().toLowerCase().charAt(0);
+
+            mapa.moverX(tecla);
+
+            System.out.println("\n\n");
+        } while (tecla != 'q');
+
+        teclado.close();
     }
-    
 }
+
