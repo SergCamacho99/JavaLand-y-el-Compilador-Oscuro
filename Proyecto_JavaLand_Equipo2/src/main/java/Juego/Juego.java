@@ -150,8 +150,7 @@ public class Juego implements JuegoInterface {
     }
 
     public void jugar(Valiente v) {
-        map.
-        mostrarMenuPrincipal();
+        map.mostrarMenuPrincipal();
         
         
     }
