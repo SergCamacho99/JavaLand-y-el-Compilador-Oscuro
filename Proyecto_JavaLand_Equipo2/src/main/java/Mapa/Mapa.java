@@ -82,6 +82,11 @@ public class Mapa {
             }
             System.out.println();
         }
+        System.out.println("╔═════════════════════════════════════════════════════════╗");
+        System.out.println("║                                                  ║");
+        System.out.println("║ e. Mostrar valiente 2. Equipar Objeto 3. Salir   ║");
+        System.out.println("║                                                  ║");
+        System.out.println("╚═════════════════════════════════════════════════════════╝");
     }
 
 }
