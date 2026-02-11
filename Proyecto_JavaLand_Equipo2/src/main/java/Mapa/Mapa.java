@@ -19,7 +19,7 @@ public class Mapa {
         actualizarMapa();
     }
 
-    private void inicializarMapa() {
+    public void inicializarMapa() {
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 12; j++) {
                 mapa[i][j] = '?';
