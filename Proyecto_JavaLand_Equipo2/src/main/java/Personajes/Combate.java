@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-/*
 package Personajes;
 
 
@@ -12,11 +11,11 @@ import java.util.Random;
 /**
  *
  * @author dam125
- 
-
+ */
 public class Combate implements CombateInterface {
     Random random=new Random();
     public boolean tieneExito;
+    
     @Override
     public <T> boolean turno(T Defensor, T Atacante) {
         
@@ -26,20 +25,22 @@ public class Combate implements CombateInterface {
     
 
     
+    
     @Override
-    public void combateTerminado(Object valiente, Object monstruo) {
+    public void combateTerminado(Valiente valiente, Monstruo monstruo) {
         System.out.println("╔════════════════════════════════════════════════╗");
         System.out.println("║              Fin del combate             ║");
         System.out.println("╚════════════════════════════════════════════════╝");
     }
 
-    
+    /**
      *
      * @param valiente
      * @param monstruo
-     
+     */
+    
     @Override
-    public void iniciarCombate(Object valiente, Object monstruo) {
+    public void iniciarCombate(Valiente valiente, Monstruo monstruo) {
         
         
         System.out.println("╔════════════════════════════════════════════════╗");
@@ -56,20 +57,19 @@ public class Combate implements CombateInterface {
             if(iniciativa_Monstruo>iniciativa_Valiente){
                 System.out.println("Turno del rival");
                 Combate.turno(monstruo);
-                
+                //poner if si ha tenido exito el ataque y mostrar el daño
             }else{
                 System.out.println("Es tu turno");
                 Combate.turno(valiente);
-                
+                //poner si ha tenido exito el ataque y mostrar el daño
             }
             
             
             
-        } while (defensor.getVida() > 0 && monstruo.getVida() > 0);
+        } while (valiente.getVida() > 0 && monstruo.getVida() > 0);
     }
     
     
 }
 
 
-*/
