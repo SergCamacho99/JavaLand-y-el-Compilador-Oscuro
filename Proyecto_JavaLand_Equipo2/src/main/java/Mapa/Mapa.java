@@ -57,7 +57,6 @@ public class Mapa {
             }
         }
     }
-
     public void colocarObstaculos(int cantidad) {
         int colocados = 0;
         while (colocados < cantidad) {
@@ -93,10 +92,10 @@ public class Mapa {
         if (y + 1 < 12) {
             mapaVisible[x][y + 1] = mapaReal[x][y + 1];
         }
-
     }
 
     public void moverX(char direccion) {
+        
         int nuevaX = x;
         int nuevaY = y;
 
@@ -113,11 +112,9 @@ public class Mapa {
             case 'd':
                 nuevaY++;
                 break;
-            default:
-                return;
+            default: 
         }
 
-        // Comprobar límites y muros
         if (nuevaX >= 0 && nuevaX < 12 && nuevaY >= 0 && nuevaY < 12 && mapaReal[nuevaX][nuevaY] != '■') {
             x = nuevaX;
             y = nuevaY;
@@ -127,9 +124,6 @@ public class Mapa {
 
     public void mostrarMapa() {
         for (int i = 0; i < 12; i++) {
-            for (int j = 0; j < 12; j++) {
-                
-            }
             System.out.println();
             for (int j = 0; j < 12; j++) {
                 System.out.print("  "+mapaVisible[i][j]+"  ");
