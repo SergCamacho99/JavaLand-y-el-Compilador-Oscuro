@@ -4,6 +4,12 @@
  */
 package Juego;
 
+import Objetos.Objeto;
+import Objetos.Arma;
+import Objetos.Consumible;
+import Objetos.Espada;
+import Objetos.PlantaCurativa;
+import Objetos.Inventario;
 import Mapa.Mapa;
 import Enumerados.TipoClase;
 import Personajes.Valiente;
@@ -18,7 +24,9 @@ import java.util.Scanner;
 public class Juego implements JuegoInterface {
 
     Mapa map;
+    Inventario inventario;
     Scanner teclado = new Scanner(System.in);
+    Objeto obj = new Espada(15);
 
     @Override
     public void IniciarJuego() {
@@ -61,12 +69,12 @@ public class Juego implements JuegoInterface {
                     System.out.println("====[###]");
                     System.out.println("Se ha creado un Marginado con las siguientes estadisticas\n:" + m1.toString());
                     this.map = new Mapa();
+                    this.inventario = new Inventario();
                     jugar(m1);
                     break;
                 }
                 case 2: {
-                    
-                    
+
                     break;
                 }
 
@@ -146,15 +154,14 @@ public class Juego implements JuegoInterface {
     }
 
     public void jugar(Valiente v) {
-        mostrarMenuPrincipal();
 
         map.mostrarMapa();
 
-        mostrarMenuPrincipal();
+        inventario.agregarObjeto(obj);
 
         boolean terminar = false;
 
-        while (!false) {
+        while (!terminar) {
             int opcion = 0;
 
             char direccion = teclado.next().charAt(0);
@@ -165,36 +172,34 @@ public class Juego implements JuegoInterface {
 
             } else if (direccion == 'j') {
 
-                mostrarValiente(v);
+                mostrarValiente(v, inventario);
 
             } else if (direccion == 'k') {
-                
-                
-                
+
             }
 
         }
     }
-    
-    
-    private void mostrarValiente(Valiente v) {
-        
-        
-        System.out.println("╔═══════════════════════════════════╗");
-        System.out.println("║"+" ".repeat(30)+"║");
-        System.out.println("║ Nombre: "+v.getNombre()+" ".repeat(21 - v.getNombre().length())+"║");
-        System.out.println("║"+" ".repeat(30)+"║");
-        System.out.println("║ Nivel: "+v.getNivel()+" ".repeat(21)+"║");
-        System.out.println("║"+" ".repeat(30)+"║");
-        System.out.println("║ Fuerza: "+v.getFuerza()+" ".repeat(19)+"║");
-        System.out.println("║"+" ".repeat(30)+"║");
-        System.out.println("║ Defensa: "+v.getDefensa()+" ".repeat(19)+"║");
-        System.out.println("║"+" ".repeat(30)+"║");
-        System.out.println("║ Velocidad: "+v.getVelocidad()+" ".repeat(17)+"║");
-        System.out.println("║"+" ".repeat(30)+"║");
-        System.out.println("║ Habilidad: "+v.getHabilidad()+" ".repeat(17)+"║");
-        System.out.println("║"+" ".repeat(30)+"║");
-        System.out.println("╚═══════════════════════════════════╝");
-        
+
+    private void mostrarValiente(Valiente v, Inventario inventario) {
+        System.out.println("        +--------------------------------------------+");
+        System.out.println("        |               ESTADISTICAS                 |");
+        System.out.println("        |                                            |");
+        System.out.println("        |  Nombre: "+v.getNombre()+"                 |");
+        System.out.println("        |                                            |");
+        System.out.println("        |  Nivel:  "+v.getNivel()+"                  |");
+        System.out.println("        |                                            |");
+        System.out.println("        |  Fuerza: "+v.getFuerza()+"                 |");
+        System.out.println("        |                                            |");
+        System.out.println("        |  Defensa: "+v.getDefensa()+"               |");
+        System.out.println("        |                                            |");
+        System.out.println("        |  Velocidad: "+v.getVelocidad()+"           |");
+        System.out.println("        |                                            |");
+        System.out.println("        |  Habilidad: "+v.getHabilidad()+"           |");
+        System.out.println("        |                                            |");
+        System.out.println("        |--------------------------------------------|");
+        System.out.println();
+        inventario.mostrarInventario();
+
     }
 }
