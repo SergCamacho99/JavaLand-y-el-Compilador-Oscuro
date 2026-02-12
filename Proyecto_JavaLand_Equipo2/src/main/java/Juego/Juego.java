@@ -3,12 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Juego;
+
 import Mapa.Mapa;
 import Enumerados.TipoClase;
-import Personajes.Personaje;
 import Personajes.Valiente;
-import Personajes.GestorMonstruosImp;
-import Personajes.GestorValientesImp;
 import interfaces.JuegoInterface;
 import java.util.Scanner;
 
@@ -17,13 +15,15 @@ import java.util.Scanner;
  * @author dam125
  */
 public class Juego implements JuegoInterface {
+
     Mapa map;
-    Scanner teclado = new Scanner(System.in); 
+    Scanner teclado = new Scanner(System.in);
+
     @Override
     public void IniciarJuego() {
-        
+
         creacionOEleccionValiente();
-        
+
     }
 
     @Override
@@ -49,82 +49,70 @@ public class Juego implements JuegoInterface {
 
             if (opcion < 1 || opcion > 6) { //validacion para que no se introduzca un numero fuera de rango
 
-            System.out.println("Por favor elige un numero del 1 al 5, aunque intuyo que quizas prefieras el 6.");
-
-        }
-
-        switch (opcion) {
-
-            case 1: {
-                Marginado m1 = new Marginado("Marginado",TipoClase.MARGINADO,0,0,0,0);
-                System.out.println("====[###]");
-                System.out.println("Se ha creado un Marginado con las siguientes estadisticas\n:"+m1.toString());
-                this.map = new Mapa();
-                jugar(m1);
-                break;
-            }
-            case 2: {
-
-                //Llamada al metodo de gestionar valientes (Guerrero)
-                break;
-            }
-
-            case 3: {
-
-                //Llamada al metodo de gestionar valientes (Paladin)
-                break;
-            }
-
-            case 4: {
-
-                //Llamada al metodo de gestionar valientes (Mago)
-                break;
-            }
-
-            case 5: {
-
-                //Llamada al metodo de gestionar valientes (Picaro)
-                break;
-            }
-
-            case 6: {
-
-                System.out.println("Buena decision, ni si quiera creo que tengas la habilidad para salir de esta con vida.");
-                break;
+                System.out.println("Por favor elige un numero del 1 al 5, aunque intuyo que quizas prefieras el 6.");
 
             }
 
-            default:
-        }
-            
-        
-        
-        
+            switch (opcion) {
+
+                case 1: {
+                    Marginado m1 = new Marginado("Marginado", TipoClase.MARGINADO, 0, 0, 0, 0);
+                    System.out.println("====[###]");
+                    System.out.println("Se ha creado un Marginado con las siguientes estadisticas\n:" + m1.toString());
+                    this.map = new Mapa();
+                    jugar(m1);
+                    break;
+                }
+                case 2: {
+                    Valiente v = new Valiente("Guerrero",TipoClase.GUERRERO,20,10,5,5);
+                    
+                    break;
+                }
+
+                case 3: {
+
+                    //Llamada al metodo de gestionar valientes (Paladin)
+                    break;
+                }
+
+                case 4: {
+
+                    //Llamada al metodo de gestionar valientes (Mago)
+                    break;
+                }
+
+                case 5: {
+
+                    //Llamada al metodo de gestionar valientes (Picaro)
+                    break;
+                }
+
+                case 6: {
+
+                    System.out.println("Buena decision, ni si quiera creo que tengas la habilidad para salir de esta con vida.");
+                    break;
+
+                }
+
+                default:
+            }
+
         } while (opcion != 6 && opcion < 1 || opcion > 6);
     }
 
     @Override
     public void mostrarMenuPrincipal() {
-        
-        System.out.println("╔═════════════════════════════════════════════════════════╗");
-        System.out.println("║                                                  ║");
-        System.out.println("║ 1. Mostrar valiente 2. Equipar Objeto 3. Salir   ║");
-        System.out.println("║                                                  ║");
-        System.out.println("╚═════════════════════════════════════════════════════════╝");
+        map.mostrarMapa();
+
     }
 
     @Override
-<<<<<<< HEAD
-    public void explorarMapa() {
-        
-        
-        
-=======
     public void explorarMapa(char direccion) {
-        
+
         map.moverX(direccion);
         map.actualizarMapa();
->>>>>>> parent of 2af548c (avances en el juego)
+        map.mostrarMapa();
+
     }
 
     @Override
@@ -157,38 +145,55 @@ public class Juego implements JuegoInterface {
     }
 
     public void jugar(Valiente v) {
-<<<<<<< HEAD
-        map.mostrarMenuPrincipal();
-        
-        
+        mostrarMenuPrincipal();
+
+        map.mostrarMapa();
+
+        mostrarMenuPrincipal();
+
+        boolean terminar = false;
+
+        while (!false) {
+            int opcion = 0;
+
+            char direccion = teclado.next().charAt(0);
+
+            if (direccion == 'w' || direccion == 'a' || direccion == 's' || direccion == 'd') {
+
+                explorarMapa(direccion);
+
+            } else if (direccion == 'j') {
+
+                mostrarValiente(v);
+
+            } else if (direccion == 'k') {
+                
+                
+                
+            }
+
+        }
     }
     
     
-=======
-        map.mostrarMapa();
-        mostrarMenuPrincipal();
-        boolean terminar = false;
-        while (!false){
-        int opcion = Integer.parseInt(teclado.nextLine());
+    private void mostrarValiente(Valiente v) {
         
         
-        switch (opcion) {
-            
-            case 1 ->{
-                
-                System.out.println("Introduce el movimiento wasd");
-                teclado.nextLine();
-                char direccion = teclado.next().charAt(0);
-                explorarMapa(direccion);
-                
-            }
-            
-            
-        }
+        System.out.println("╔═══════════════════════════════════╗");
+        System.out.println("║"+" ".repeat(30)+"║");
+        System.out.println("║ Nombre: "+v.getNombre()+" ".repeat(21 - v.getNombre().length())+"║");
+        System.out.println("║"+" ".repeat(30)+"║");
+        System.out.println("║ Nivel: "+v.getNivel()+" ".repeat(21)+"║");
+        System.out.println("║"+" ".repeat(30)+"║");
+        System.out.println("║ Fuerza: "+v.getFuerza()+" ".repeat(19)+"║");
+        System.out.println("║"+" ".repeat(30)+"║");
+        System.out.println("║ Defensa: "+v.getDefensa()+" ".repeat(19)+"║");
+        System.out.println("║"+" ".repeat(30)+"║");
+        System.out.println("║ Velocidad: "+v.getVelocidad()+" ".repeat(17)+"║");
+        System.out.println("║"+" ".repeat(30)+"║");
+        System.out.println("║ Habilidad: "+v.getHabilidad()+" ".repeat(17)+"║");
+        System.out.println("║"+" ".repeat(30)+"║");
+        System.out.println("╚═══════════════════════════════════╝");
         
-        }
-    } 
->>>>>>> parent of 2af548c (avances en el juego)
-
-    
+    }
 }

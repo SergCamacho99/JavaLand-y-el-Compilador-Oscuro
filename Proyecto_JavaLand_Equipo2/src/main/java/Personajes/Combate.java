@@ -20,7 +20,7 @@ public class Combate implements CombateInterface {
     
     @Override
     public  boolean turno(Valiente valiente, Monstruo monostruo) {
-        
+        return true;
     }
 
     

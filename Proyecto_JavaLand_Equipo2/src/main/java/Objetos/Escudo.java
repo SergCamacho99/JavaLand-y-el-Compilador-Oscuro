@@ -8,7 +8,7 @@ import Personajes.Valiente;
  *
  * @author DAM118
  */
-
+/**
 public class Escudo extends Arma {
     //Escudo aumenta la defena del valiente
     public Escudo (int defensa ){
@@ -22,3 +22,4 @@ public class Escudo extends Arma {
     }
   
 }
+**/

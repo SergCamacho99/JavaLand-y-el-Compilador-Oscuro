@@ -1,7 +1,6 @@
 Mapa\Mapa.class
 Mapa\MainMapa.class
 Juego\Juego.class
-Objetos\Escudo.class
 Mapa\NewMain.class
 interfaces\ObjetoInterface.class
 Juego\CompiladorOscuro.class
@@ -10,7 +9,6 @@ interfaces\MapaInterface.class
 interfaces\PersonajesInterface.class
 Juego\MainPruebas.class
 interfaces\CombateInterface.class
-Objetos\Planta.class
 Personajes\Valiente.class
 interfaces\GestoresInterface.class
 interfaces\JuegoInterface.class
@@ -18,8 +16,8 @@ Personajes\Personaje.class
 Enumerados\TipoClase.class
 interfaces\InventarioInterface.class
 Personajes\Monstruo.class
+Personajes\Combate.class
 Juego\Marginado.class
 Personajes\Valiente$1.class
-Objetos\Espada.class
 Objetos\Objeto.class
 Objetos\Consumible.class

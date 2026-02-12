@@ -50,20 +50,29 @@ public class Mapa {
             mapa[x][y + 1] = ' ';
         }
     }
-    
-    public void moverX(char direccion){
-        int nuevaX= x;
-        int nuevaY= y;
+
+    public void moverX(char direccion) {
+        int nuevaX = x;
+        int nuevaY = y;
         switch (direccion) {
-            case 'w': nuevaX--; break;
-            case 's': nuevaX++; break;
-            case 'a': nuevaY--; break;
-            case 'd': nuevaY++; break;
-            default: return;
+            case 'w':
+                nuevaX--;
+                break;
+            case 's':
+                nuevaX++;
+                break;
+            case 'a':
+                nuevaY--;
+                break;
+            case 'd':
+                nuevaY++;
+                break;
+            default:
+                return;
         }
-        if(nuevaX >= 0 && nuevaX < mapa.length && nuevaY >=0 && nuevaY < mapa[0].length){
-            x=nuevaX;
-            y=nuevaY;
+        if (nuevaX >= 0 && nuevaX < mapa.length && nuevaY >= 0 && nuevaY < mapa[0].length) {
+            x = nuevaX;
+            y = nuevaY;
             actualizarMapa();
         }
     }
@@ -77,11 +86,17 @@ public class Mapa {
             System.out.println();
 
             for (int j = 0; j < 12; j++) {
-                
+
                 System.out.print(" " + mapa[i][j] + " |");
             }
             System.out.println();
+            
         }
+            System.out.println("╔═════════════════════════════════════════════════════════╗");
+            System.out.println("║                                                  ║");
+            System.out.println("║ j. Mostrar valiente k. Equipar Objeto 3. Salir   ║");
+            System.out.println("║                                                  ║");
+            System.out.println("╚═════════════════════════════════════════════════════════╝");
     }
 
 }
