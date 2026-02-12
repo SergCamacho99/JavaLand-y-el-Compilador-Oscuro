@@ -44,8 +44,10 @@ public class Combate implements CombateInterface {
                 
                 monstruo.atacar(valiente);
                 
-            }else{
+            }else if(numeroAleatorio>calculo){
                 
+                System.out.println("El ataque ha fallado");
+            }else if(numeroAleatorio==calculo){
                 System.out.println("El ataque ha fallado");
             }
         } else if (this.orden == 1) {
@@ -92,8 +94,10 @@ public class Combate implements CombateInterface {
                     if (numeroAleatorio < calculo) {
                         
                         valiente.atacar(monstruo);
-                    } else {
+                    } else if(numeroAleatorio>calculo){
                         
+                        System.out.println("El ataque ha fallado");
+                    }else if(numeroAleatorio==calculo){
                         System.out.println("El ataque ha fallado");
                     }
                     break;
@@ -104,17 +108,19 @@ public class Combate implements CombateInterface {
                         case GUERRERO:
                             if(numeroAleatorioEspecial>calculo){
                                 System.out.println("La habilidad falló");
-                            }
+                            }else if(numeroAleatorioEspecial<=calculo){
                             valiente.usarHabilidadEspecial(monstruo);
                             stun=1;
                             contadorEspecial=3;
+                            }
                             break;
                         case PALADÍN:
                             if(numeroAleatorioEspecial>calculo){
                                 System.out.println("La habilidad falló");
-                            }
+                            }else if(numeroAleatorioEspecial<=calculo){
                             valiente.usarHabilidadEspecial(monstruo);
                             contadorEspecial=3;
+                            }
                             break;
                         case EXPLORADOR:
                             
@@ -124,16 +130,19 @@ public class Combate implements CombateInterface {
                         case MAGO:
                             if(numeroAleatorioEspecial>calculo){
                                 System.out.println("La habilidad falló");
-                            }
+                            }else if(numeroAleatorioEspecial<=calculo){
                             valiente.usarHabilidadEspecial(monstruo);
                             contadorEspecial=3;
+                            }
+                            
                             break;
                         case PÍCARO:
                             if(numeroAleatorioEspecial>calculo){
                                 System.out.println("La habilidad falló");
-                            }
+                            }else if(numeroAleatorioEspecial<=calculo){
                             valiente.usarHabilidadEspecial(monstruo);
                             contadorEspecial=3;
+                            }
                             break;
                         
                     }
@@ -159,7 +168,11 @@ public class Combate implements CombateInterface {
             valiente.subirNivel();
             System.out.println("Tu nivel es: "+valiente.getNivel());
             System.out.println("Tu fuerza es: "+valiente.getFuerza());
-            System.out.println("Tu vida");
+            System.out.println("Tu vida es: "+valiente.getVida());
+            System.out.println("Tu defensa es: "+valiente.getDefensa());
+            System.out.println("Tu habilidad es: "+valiente.getHabilidad());
+            System.out.println("Tu velocidad es: "+valiente.getVelocidad());
+            
             
         }else{
 
@@ -195,6 +208,7 @@ public class Combate implements CombateInterface {
                 System.out.println("Turno del rival");
                 turno(valiente, monstruo);
                 System.out.println("Es tu turno");
+                this.orden=1;
                 turno(valiente, monstruo);
                 //poner if si ha tenido exito el ataque y mostrar el daño
             } else if(iniciativa_Valiente>iniciativa_Monstruo){
@@ -202,6 +216,7 @@ public class Combate implements CombateInterface {
                 System.out.println("Es tu turno");
                 turno(valiente, monstruo);
                 System.out.println("Turno del rival");
+                this.orden=0;
                 turno(valiente, monstruo);
                 //poner si ha tenido exito el ataque y mostrar el daño
             }
