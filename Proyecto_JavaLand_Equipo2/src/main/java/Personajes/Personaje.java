@@ -103,4 +103,8 @@ public abstract class Personaje {
     public void setNivel(int nivel) {
         this.nivel = nivel;
     }
+
+    
+    
+    
 }

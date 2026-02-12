@@ -20,5 +20,7 @@ public class Escudo extends Arma {
         Valiente.setDefensa(Valiente.getDefensa() + valor);
         System.out.print("Equipado un escudo. Defensa aumentada");
     }
+
+    
   
 }

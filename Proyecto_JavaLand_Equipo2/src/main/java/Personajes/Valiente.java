@@ -35,7 +35,7 @@ public class Valiente extends Personaje implements PersonajesInterface {
     public void usarHabilidadEspecial(Monstruo enemigo) {
         switch (this.tipo) {
             case GUERRERO:
-                System.out.println(nombre + " usa 'Golpe de Acero' (Fuerza x 1.5)");
+                System.out.println(nombre + " usa 'Golpe de Acero' (Fuerza x 1.5, estunea 1 turno al rival)");
                 enemigo.recibirDaño((int) (fuerza * 1.5));
                 break;
             case PALADÍN:
@@ -66,15 +66,15 @@ public class Valiente extends Personaje implements PersonajesInterface {
         this.defensa += 1;
         this.habilidad += 1;
         this.velocidad += 1;
-        System.out.println("¡Nivel subido! Nivel actual: " + nivel);
+        
     }
 
     @Override
-    public <T extends Personaje> double atacar(T Personaje) {
+    public <T extends Personaje> void atacar(T Personaje) {
         double danioTotal = (double) this.fuerza + this.ataqueArma;
         System.out.println(this.nombre + " ataca a " + Personaje.getNombre() + " causando " + danioTotal + " de daño");
         Personaje.recibirDaño((int) danioTotal);
-        return danioTotal;
+        
     }
 
     public TipoClase getTipo() {
