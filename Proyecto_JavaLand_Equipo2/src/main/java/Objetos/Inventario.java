@@ -5,6 +5,8 @@
 package Objetos;
 
 import Objetos.Objeto;
+import Objetos.Objeto;
+import Personajes.Valiente;
 import Personajes.Valiente;
 
 /**

@@ -4,6 +4,7 @@
  */
 package Personajes;
 
+import Objetos.Inventario;
 import interfaces.CombateInterface;
 import java.util.Random;
 import java.util.Scanner;
@@ -148,7 +149,9 @@ public class Combate implements CombateInterface {
                     }
                     break;
                 case 3:
-                    //plantas curativas
+                    //if(valiente.getInventario().hayPlanta("Planta curativa")==true){
+                        
+                    //}
                     break;
             }
 
