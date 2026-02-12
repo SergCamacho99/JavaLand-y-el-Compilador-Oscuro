@@ -9,12 +9,13 @@ import Personajes.Valiente;
  * @author dam118
  */
 public abstract class Arma extends Objeto{ 
-    
-    // Valor del arma ( fuerza o defensaa )
-    protected int valor;
-    
-    public Arma ( String nombre , int valor){
-        super(nombre);
-        this.valor = valor;
-    }    
+// Valor del arma (fuerza o defensa)
+protected int valor;
+
+    public Arma(String nombre, int valor){
+            super(nombre);
+           this.valor = valor;
+}
+// Cada arma aplicará su efecto distinto
+    public abstract void usar(Valiente valiente);
 }

@@ -4,31 +4,25 @@
  */
 package Objetos;
 import Personajes.Valiente;
-
 /**
  *
- * @author dam118
- * Espada aumenta la fuerza del  valiente
+ * @author DAM118
  */
-public class Espada extends Arma {
-    public Espada(int fuerza){
-     super("Espada", fuerza);
-}
-
-@Override
+public class PlantaCurativa extends Consumible{
+    // Planta que recupera vida
+    
+    public PlantaCurativa ( int vida){
+        super("Planta curativa", vida);
+        
+    }
+    @Override
     public void usar(Valiente valiente){
-    valiente.setFuerza(valiente.getFuerza() + valor);
-   System.out.println("Equipaste una espada. Fuerza aumentada");
-}
+        valiente.setVida(valiente.getVida() + efecto);
+        System.out.print("Has usado una planta. vida recuperada");
+    }
 
     @Override
     public void equipar() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
-    
-    
-    
-    
-    
-
