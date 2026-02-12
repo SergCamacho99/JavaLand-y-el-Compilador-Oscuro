@@ -78,7 +78,7 @@ public class Mapa {
             }
         }
 
-        mapaVisible[x][y] = '☺';
+        mapaVisible[x][y] = '☹';
 
         if (x - 1 >= 0) {
             mapaVisible[x - 1][y] = mapaReal[x - 1][y];
