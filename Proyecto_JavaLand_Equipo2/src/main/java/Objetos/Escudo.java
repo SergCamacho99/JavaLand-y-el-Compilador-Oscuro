@@ -20,6 +20,11 @@ public class Escudo extends Arma {
         Valiente.setDefensa(Valiente.getDefensa() + valor);
         System.out.print("Equipado un escudo. Defensa aumentada");
     }
+
+    @Override
+    public void equipar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
   
 }
 **/
