@@ -12,6 +12,7 @@ Enumerados\TipoClase.class
 interfaces\InventarioInterface.class
 Personajes\Monstruo.class
 Objetos\PlantaCurativa.class
+Mapa\CompiladorOscuro.class
 Personajes\Valiente$1.class
 Objetos\Espada.class
 Objetos\Objeto.class

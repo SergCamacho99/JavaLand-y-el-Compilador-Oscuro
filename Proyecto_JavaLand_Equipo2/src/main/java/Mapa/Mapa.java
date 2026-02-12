@@ -46,6 +46,7 @@ public class Mapa {
             }
         }
     }
+
     public void colocarCofres(int cantidad) {
         int colocados = 0;
         while (colocados < cantidad) {
@@ -57,6 +58,7 @@ public class Mapa {
             }
         }
     }
+
     public void colocarObstaculos(int cantidad) {
         int colocados = 0;
         while (colocados < cantidad) {
@@ -88,14 +90,14 @@ public class Mapa {
         if (y - 1 >= 0) {
             mapaVisible[x][y - 1] = mapaReal[x][y - 1];
         }
-        
+
         if (y + 1 < 12) {
             mapaVisible[x][y + 1] = mapaReal[x][y + 1];
         }
     }
 
     public void moverX(char direccion) {
-        
+
         int nuevaX = x;
         int nuevaY = y;
 
@@ -112,7 +114,7 @@ public class Mapa {
             case 'd':
                 nuevaY++;
                 break;
-            default: 
+            default:
         }
 
         if (nuevaX >= 0 && nuevaX < 12 && nuevaY >= 0 && nuevaY < 12 && mapaReal[nuevaX][nuevaY] != '■') {
@@ -126,9 +128,15 @@ public class Mapa {
         for (int i = 0; i < 12; i++) {
             System.out.println();
             for (int j = 0; j < 12; j++) {
-                System.out.print("  "+mapaVisible[i][j]+"  ");
+                System.out.print("  " + mapaVisible[i][j] + "  ");
             }
             System.out.println();
+
+            System.out.println("╔═══════════════════════════════════════════════════════════════╗");
+            System.out.println("║                                                       ║");
+            System.out.println("║ j. Mostrar Valiente   k. Usar Objeto   p. salir       ║");
+            System.out.println("║                                                       ║");
+            System.out.println("╚═══════════════════════════════════════════════════════════════╝");
         }
     }
 }

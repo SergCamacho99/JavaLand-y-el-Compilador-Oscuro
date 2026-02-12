@@ -111,7 +111,11 @@ public class Juego implements JuegoInterface {
 
     @Override
     public void mostrarMenuPrincipal() {
-        map.mostrarMapa();
+        System.out.println("╔═══════════════════════════════════════════════════════════════╗");
+        System.out.println("║                                                       ║");
+        System.out.println("║ j. Mostrar Valiente   k. Usar Objeto   p. salir       ║");
+        System.out.println("║                                                       ║");
+        System.out.println("╚═══════════════════════════════════════════════════════════════╝");
 
     }
 
@@ -119,7 +123,7 @@ public class Juego implements JuegoInterface {
     public void explorarMapa(char direccion) {
 
         map.moverX(direccion);
-        map.actualizarMapa();
+        map.actualizarMapaVisible();
         map.mostrarMapa();
 
     }
@@ -176,6 +180,10 @@ public class Juego implements JuegoInterface {
 
             } else if (direccion == 'k') {
 
+            } else if (direccion == 'p') {
+                System.out.println("Saliendo del juego.........");
+                terminar = true;
+
             }
 
         }
@@ -185,17 +193,17 @@ public class Juego implements JuegoInterface {
         System.out.println("        +--------------------------------------------+");
         System.out.println("        |               ESTADISTICAS                 |");
         System.out.println("        |                                            |");
-        System.out.println("        |  Nombre: "+v.getNombre()+"                 |");
+        System.out.println("        |  Nombre: " + v.getNombre() + "                 |");
         System.out.println("        |                                            |");
-        System.out.println("        |  Nivel:  "+v.getNivel()+"                  |");
+        System.out.println("        |  Nivel:  " + v.getNivel() + "                  |");
         System.out.println("        |                                            |");
-        System.out.println("        |  Fuerza: "+v.getFuerza()+"                 |");
+        System.out.println("        |  Fuerza: " + v.getFuerza() + "                 |");
         System.out.println("        |                                            |");
-        System.out.println("        |  Defensa: "+v.getDefensa()+"               |");
+        System.out.println("        |  Defensa: " + v.getDefensa() + "               |");
         System.out.println("        |                                            |");
-        System.out.println("        |  Velocidad: "+v.getVelocidad()+"           |");
+        System.out.println("        |  Velocidad: " + v.getVelocidad() + "           |");
         System.out.println("        |                                            |");
-        System.out.println("        |  Habilidad: "+v.getHabilidad()+"           |");
+        System.out.println("        |  Habilidad: " + v.getHabilidad() + "           |");
         System.out.println("        |                                            |");
         System.out.println("        |--------------------------------------------|");
         System.out.println();
