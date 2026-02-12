@@ -4,89 +4,137 @@
  */
 package Mapa;
 
+import java.util.Random;
+
 /**
  *
  * @author dam125
  */
 public class Mapa {
 
-    private char[][] mapa = new char[10][10];
+    private char[][] mapaReal = new char[12][12];
+    private char[][] mapaVisible = new char[12][12];
     private int x = 1;
     private int y = 1;
+    private Random random = new Random();
 
     public Mapa() {
         inicializarMapa();
-        actualizarMapa();
+        colocarEnemigos(15);
+        colocarCofres(10);
+        colocarObstaculos(15);
+        actualizarMapaVisible();
     }
 
-    private void inicializarMapa() {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                mapa[i][j] = '?';
+    public void inicializarMapa() {
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 12; j++) {
+                mapaReal[i][j] = ' ';
+                mapaVisible[i][j] = '░';
             }
         }
     }
 
-    private void actualizarMapa() {
-        inicializarMapa();
-
-        mapa[x][y] = 'X';
-
-        despejarAdyacentes(x, y);
+    public void colocarEnemigos(int cantidad) {
+        int colocados = 0;
+        while (colocados < cantidad) {
+            int fila = random.nextInt(12);
+            int columna = random.nextInt(12);
+            if (mapaReal[fila][columna] == ' ' && !(fila == x && columna == y)) {
+                mapaReal[fila][columna] = '☻';
+                colocados++;
+            }
+        }
+    }
+    public void colocarCofres(int cantidad) {
+        int colocados = 0;
+        while (colocados < cantidad) {
+            int fila = random.nextInt(12);
+            int columna = random.nextInt(12);
+            if (mapaReal[fila][columna] == ' ' && !(fila == x && columna == y)) {
+                mapaReal[fila][columna] = '⊟';
+                colocados++;
+            }
+        }
     }
 
-    public void despejarAdyacentes(int x, int y) {
+    public void colocarObstaculos(int cantidad) {
+        int colocados = 0;
+        while (colocados < cantidad) {
+            int fila = random.nextInt(12);
+            int columna = random.nextInt(12);
+            if (mapaReal[fila][columna] == ' ' && !(fila == x && columna == y)) {
+                mapaReal[fila][columna] = '■';
+                colocados++;
+            }
+        }
+    }
+
+    public void actualizarMapaVisible() {
+
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 12; j++) {
+                mapaVisible[i][j] = '░';
+            }
+        }
+
+        mapaVisible[x][y] = '☹';
 
         if (x - 1 >= 0) {
-            mapa[x - 1][y] = ' ';
+            mapaVisible[x - 1][y] = mapaReal[x - 1][y];
         }
-        if (x + 1 < mapa.length) {
-            mapa[x + 1][y] = ' ';
+        if (x + 1 < 12) {
+            mapaVisible[x + 1][y] = mapaReal[x + 1][y];
         }
         if (y - 1 >= 0) {
-            mapa[x][y - 1] = ' ';
+            mapaVisible[x][y - 1] = mapaReal[x][y - 1];
         }
-        if (y + 1 < mapa[x].length) {
-            mapa[x][y + 1] = ' ';
+        
+        if (y + 1 < 12) {
+            mapaVisible[x][y + 1] = mapaReal[x][y + 1];
         }
+
     }
-    
-    public void moverX(char direccion){
-        int nuevaX= x;
-        int nuevaY= y;
+
+    public void moverX(char direccion) {
+        int nuevaX = x;
+        int nuevaY = y;
+
         switch (direccion) {
-            case 'w': nuevaX--; break;
-            case 's': nuevaX++; break;
-            case 'a': nuevaY--; break;
-            case 'd': nuevaY++; break;
-            default: return;
+            case 'w':
+                nuevaX--;
+                break;
+            case 's':
+                nuevaX++;
+                break;
+            case 'a':
+                nuevaY--;
+                break;
+            case 'd':
+                nuevaY++;
+                break;
+            default:
+                return;
         }
-        if(nuevaX >= 0 && nuevaX < mapa.length && nuevaY >=0 && nuevaY < mapa[0].length){
-            x=nuevaX;
-            y=nuevaY;
-            actualizarMapa();
+
+        // Comprobar límites y muros
+        if (nuevaX >= 0 && nuevaX < 12 && nuevaY >= 0 && nuevaY < 12 && mapaReal[nuevaX][nuevaY] != '■') {
+            x = nuevaX;
+            y = nuevaY;
+            actualizarMapaVisible();
         }
     }
 
     public void mostrarMapa() {
-
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                System.out.print("---+");
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 12; j++) {
+                
             }
             System.out.println();
-
-            for (int j = 0; j < 10; j++) {
-                // if(mapa[i][j] == ' '){
-                //     mapa[i][j]='?';
-                // }else if (mapa[i][j] == 'x') {
-                //     mapa[i+1][j+1] = 'n';
-                // }
-
-                System.out.print(" " + mapa[i][j] + " |");
+            for (int j = 0; j < 12; j++) {
+                System.out.print("  "+mapaVisible[i][j]+"  ");
             }
             System.out.println();
         }
     }
-
 }
