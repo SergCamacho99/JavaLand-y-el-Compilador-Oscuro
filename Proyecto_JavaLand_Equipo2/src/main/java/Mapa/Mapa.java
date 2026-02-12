@@ -20,8 +20,9 @@ public class Mapa {
 
     public Mapa() {
         inicializarMapa();
-        colocarEnemigos(10);
-        colocarObstaculos(10);
+        colocarEnemigos(15);
+        colocarCofres(10);
+        colocarObstaculos(15);
         actualizarMapaVisible();
     }
 
@@ -29,7 +30,7 @@ public class Mapa {
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 12; j++) {
                 mapaReal[i][j] = ' ';
-                mapaVisible[i][j] = '?';
+                mapaVisible[i][j] = '░';
             }
         }
     }
@@ -40,7 +41,18 @@ public class Mapa {
             int fila = random.nextInt(12);
             int columna = random.nextInt(12);
             if (mapaReal[fila][columna] == ' ' && !(fila == x && columna == y)) {
-                mapaReal[fila][columna] = 'E';
+                mapaReal[fila][columna] = '☻';
+                colocados++;
+            }
+        }
+    }
+    public void colocarCofres(int cantidad) {
+        int colocados = 0;
+        while (colocados < cantidad) {
+            int fila = random.nextInt(12);
+            int columna = random.nextInt(12);
+            if (mapaReal[fila][columna] == ' ' && !(fila == x && columna == y)) {
+                mapaReal[fila][columna] = '⊟';
                 colocados++;
             }
         }
@@ -52,7 +64,7 @@ public class Mapa {
             int fila = random.nextInt(12);
             int columna = random.nextInt(12);
             if (mapaReal[fila][columna] == ' ' && !(fila == x && columna == y)) {
-                mapaReal[fila][columna] = '#';
+                mapaReal[fila][columna] = '■';
                 colocados++;
             }
         }
@@ -62,11 +74,11 @@ public class Mapa {
 
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 12; j++) {
-                mapaVisible[i][j] = '?';
+                mapaVisible[i][j] = '░';
             }
         }
 
-        mapaVisible[x][y] = 'X';
+        mapaVisible[x][y] = '☺';
 
         if (x - 1 >= 0) {
             mapaVisible[x - 1][y] = mapaReal[x - 1][y];
@@ -106,7 +118,7 @@ public class Mapa {
         }
 
         // Comprobar límites y muros
-        if (nuevaX >= 0 && nuevaX < 12 && nuevaY >= 0 && nuevaY < 12 && mapaReal[nuevaX][nuevaY] != '#') {
+        if (nuevaX >= 0 && nuevaX < 12 && nuevaY >= 0 && nuevaY < 12 && mapaReal[nuevaX][nuevaY] != '■') {
             x = nuevaX;
             y = nuevaY;
             actualizarMapaVisible();
