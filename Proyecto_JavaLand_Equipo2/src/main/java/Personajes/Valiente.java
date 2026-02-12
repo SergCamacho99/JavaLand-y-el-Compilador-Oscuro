@@ -69,6 +69,7 @@ public class Valiente extends Personaje implements PersonajesInterface {
         System.out.println("¡Nivel subido! Nivel actual: " + nivel);
     }
 
+    @Override
     public <T extends Personaje> double atacar(T Personaje) {
         double danioTotal = (double) this.fuerza + this.ataqueArma;
         System.out.println(this.nombre + " ataca a " + Personaje.getNombre() + " causando " + danioTotal + " de daño");
@@ -98,6 +99,76 @@ public class Valiente extends Personaje implements PersonajesInterface {
 
     public void setDefensaEscudo(int defensaEscudo) {
         this.defensaEscudo = defensaEscudo;
+    }
+
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public int getVida() {
+        return vida;
+    }
+
+    @Override
+    public int getFuerza() {
+        return fuerza;
+    }
+
+    @Override
+    public int getDefensa() {
+        return defensa;
+    }
+
+    @Override
+    public int getHabilidad() {
+        return habilidad;
+    }
+
+    @Override
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    @Override
+    public int getNivel() {
+        return nivel;
+    }
+
+    @Override
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    @Override
+    public void setFuerza(int fuerza) {
+        this.fuerza = fuerza;
+    }
+
+    @Override
+    public void setDefensa(int defensa) {
+        this.defensa = defensa;
+    }
+
+    @Override
+    public void setHabilidad(int habilidad) {
+        this.habilidad = habilidad;
+    }
+
+    @Override
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
+    }
+
+    @Override
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
     }
     
 }
