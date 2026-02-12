@@ -12,12 +12,11 @@ import java.util.Random;
  */
 public class Mapa {
 
-    private char[][] mapaVisible = new char[12][12];
-    private char[][] mapaNiebla = new char[12][12];
+    private char[][] mapa = new char[12][12];
     private int x = 1;
     private int y = 1;
     private Random random = new Random();
-    
+
     public Mapa() {
         inicializarMapa();
         actualizarMapa();
@@ -26,33 +25,76 @@ public class Mapa {
     public void inicializarMapa() {
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 12; j++) {
-                mapaVisible[i][j] = ' ';
-                mapaNiebla[i][j] = '?';
+                mapa[i][j] = '?';
+                mapa[i][j] = ' ';
+
+            }
+        }
+    }
+
+    public void colocarEnemigos(int cantidad) {
+        int colocados = 0;
+        while (colocados > cantidad) {
+
+            int fila = random.nextInt(12);
+            int columna = random.nextInt(12);
+
+            if (mapa[fila][columna] == ' ' && !(fila == x && columna == y)) {
+                mapa[fila][columna] = 'E';
+                colocados++;
+
+            }
+        }
+
+    }
+
+    public void colocarObstaculos(int cantidad) {
+        int colocados = 0;
+        while (colocados > cantidad) {
+
+            int fila = random.nextInt(12);
+            int columna = random.nextInt(12);
+
+            if (mapa[fila][columna] == ' ' && !(fila == x && columna == y)) {
+                mapa[fila][columna] = '#';
+                colocados++;
             }
         }
     }
 
     public void actualizarMapa() {
 
-        mapaVisible[x][y] = 'X';
+        mapa[x][y] = 'X';
 
         despejarAdyacentes(x, y);
     }
 
     public void despejarAdyacentes(int x, int y) {
 
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 12; j++) {
+                if (mapa[i][j] == ' ') {
+                    mapa[i][j] = '?';
+                }else if (mapa[i][j] == 'E'){
+                    mapa[i][j] = '?';
+                }
+
+            }
+        }
+
         if (x - 1 >= 0) {
-            mapaNiebla[x - 1][y] = mapaVisible[x - 1][y] = ' ';
+            mapa[x - 1][y] = ' ';
         }
         if (x + 1 < 12) {
-            mapaNiebla[x + 1][y] = mapaVisible[x + 1][y] = ' ';
+            mapa[x + 1][y] = ' ';
         }
         if (y - 1 >= 0) {
-            mapaNiebla[x][y - 1] = mapaVisible[x][y - 1] = ' ';
+            mapa[x][y - 1] = ' ';
         }
         if (y + 1 < 12) {
-            mapaNiebla[x][y + 1] = mapaVisible[x][y + 1] = ' ';
+            mapa[x][y + 1] = ' ';
         }
+        mapa[x][y] = 'X';
     }
 
     public void moverX(char direccion) {
@@ -74,12 +116,12 @@ public class Mapa {
             default:
                 return;
         }
-        if (nuevaX >= 0 && nuevaX < 12 && nuevaY >= 0 && nuevaY < mapaVisible[0].length) {
+        if (nuevaX >= 0 && nuevaX < 12 && nuevaY >= 0 && nuevaY < mapa[0].length) {
             x = nuevaX;
             y = nuevaY;
             actualizarMapa();
         }
-        if (mapaVisible[nuevaX][nuevaY] != '#') {
+        if (mapa[nuevaX][nuevaY] != '#') {
             x = nuevaX;
             y = nuevaY;
             actualizarMapa();
@@ -96,35 +138,9 @@ public class Mapa {
 
             for (int j = 0; j < 12; j++) {
 
-                System.out.print(" " + mapaVisible[i][j] + " |");
+                System.out.print(" " + (mapa[i][j] == ' ' ? mapa[i][j] : mapa[i][j]) + " |");
             }
             System.out.println();
-        }
-    }
-
-    public void colocarEnemigos(int cantidad) {
-        int colocados = 10;
-
-            int fila = random.nextInt(12);
-            int columna = random.nextInt(12);
-
-            if (mapaVisible[fila][columna] == '?' && !(fila == x && columna == y)) {
-                mapaVisible[fila][columna] = 'E';
-                colocados++;
-            
-        }
-    }
-
-    public void colocarObstaculos(int cantidad) {
-        int colocados = 15;
-
-            int fila = random.nextInt(12);
-            int columna = random.nextInt(12);
-
-            if (mapaVisible[fila][columna] == '?' && !(fila == x && columna == y)) {
-                mapaVisible[fila][columna] = '#';
-                colocados++;
-            
         }
     }
 
