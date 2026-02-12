@@ -12,94 +12,82 @@ import java.util.Random;
  */
 public class Mapa {
 
-    private char[][] mapa = new char[12][12];
+    private char[][] mapaReal = new char[12][12];
+    private char[][] mapaVisible = new char[12][12];
     private int x = 1;
     private int y = 1;
     private Random random = new Random();
 
     public Mapa() {
         inicializarMapa();
-        actualizarMapa();
+        colocarEnemigos(10);
+        colocarObstaculos(10);
+        actualizarMapaVisible();
     }
 
     public void inicializarMapa() {
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 12; j++) {
-                mapa[i][j] = '?';
-                mapa[i][j] = ' ';
-
+                mapaReal[i][j] = ' ';
+                mapaVisible[i][j] = '?';
             }
         }
     }
 
     public void colocarEnemigos(int cantidad) {
         int colocados = 0;
-        while (colocados > cantidad) {
-
+        while (colocados < cantidad) {
             int fila = random.nextInt(12);
             int columna = random.nextInt(12);
-
-            if (mapa[fila][columna] == ' ' && !(fila == x && columna == y)) {
-                mapa[fila][columna] = 'E';
+            if (mapaReal[fila][columna] == ' ' && !(fila == x && columna == y)) {
+                mapaReal[fila][columna] = 'E';
                 colocados++;
-
             }
         }
-
     }
 
     public void colocarObstaculos(int cantidad) {
         int colocados = 0;
-        while (colocados > cantidad) {
-
+        while (colocados < cantidad) {
             int fila = random.nextInt(12);
             int columna = random.nextInt(12);
-
-            if (mapa[fila][columna] == ' ' && !(fila == x && columna == y)) {
-                mapa[fila][columna] = '#';
+            if (mapaReal[fila][columna] == ' ' && !(fila == x && columna == y)) {
+                mapaReal[fila][columna] = '#';
                 colocados++;
             }
         }
     }
 
-    public void actualizarMapa() {
-
-        mapa[x][y] = 'X';
-
-        despejarAdyacentes(x, y);
-    }
-
-    public void despejarAdyacentes(int x, int y) {
+    public void actualizarMapaVisible() {
 
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 12; j++) {
-                if (mapa[i][j] == ' ') {
-                    mapa[i][j] = '?';
-                }else if (mapa[i][j] == 'E'){
-                    mapa[i][j] = '?';
-                }
-
+                mapaVisible[i][j] = '?';
             }
         }
 
+        mapaVisible[x][y] = 'X';
+
         if (x - 1 >= 0) {
-            mapa[x - 1][y] = ' ';
+            mapaVisible[x - 1][y] = mapaReal[x - 1][y];
         }
         if (x + 1 < 12) {
-            mapa[x + 1][y] = ' ';
+            mapaVisible[x + 1][y] = mapaReal[x + 1][y];
         }
         if (y - 1 >= 0) {
-            mapa[x][y - 1] = ' ';
+            mapaVisible[x][y - 1] = mapaReal[x][y - 1];
         }
+        
         if (y + 1 < 12) {
-            mapa[x][y + 1] = ' ';
+            mapaVisible[x][y + 1] = mapaReal[x][y + 1];
         }
-        mapa[x][y] = 'X';
+
     }
 
     public void moverX(char direccion) {
         int nuevaX = x;
         int nuevaY = y;
+
         switch (direccion) {
             case 'w':
                 nuevaX--;
@@ -116,32 +104,25 @@ public class Mapa {
             default:
                 return;
         }
-        if (nuevaX >= 0 && nuevaX < 12 && nuevaY >= 0 && nuevaY < mapa[0].length) {
+
+        // Comprobar límites y muros
+        if (nuevaX >= 0 && nuevaX < 12 && nuevaY >= 0 && nuevaY < 12 && mapaReal[nuevaX][nuevaY] != '#') {
             x = nuevaX;
             y = nuevaY;
-            actualizarMapa();
-        }
-        if (mapa[nuevaX][nuevaY] != '#') {
-            x = nuevaX;
-            y = nuevaY;
-            actualizarMapa();
+            actualizarMapaVisible();
         }
     }
 
     public void mostrarMapa() {
-
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 12; j++) {
-                System.out.print("---+");
+                
             }
             System.out.println();
-
             for (int j = 0; j < 12; j++) {
-
-                System.out.print(" " + (mapa[i][j] == ' ' ? mapa[i][j] : mapa[i][j]) + " |");
+                System.out.print("  "+mapaVisible[i][j]+"  ");
             }
             System.out.println();
         }
     }
-
 }
