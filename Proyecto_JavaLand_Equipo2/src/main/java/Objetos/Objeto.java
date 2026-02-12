@@ -4,13 +4,14 @@
  */
 package Objetos;
 import Personajes.Valiente;
+import interfaces.ObjetoInterface;
 /**
  *
  * @author kateh barreto
  *
  * clase padre, representando cualquier objeto 
  */
-public abstract class Objeto {
+public abstract class Objeto implements ObjetoInterface{
     protected String nombre;
     
     // Constructor del objeto
