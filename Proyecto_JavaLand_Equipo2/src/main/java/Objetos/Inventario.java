@@ -57,4 +57,19 @@ public class Inventario {
         }
         System.out.println("No tienes ese objeto");
     }
+    
+    public boolean hayPlanta(String nombre){
+        boolean hayPlanta=false;
+        if (cantidad == 0) {
+            hayPlanta=false;
+        } else {
+            for (int i = 0; i < cantidad; i++) {
+                if(Objetos[i].getnombre().equalsIgnoreCase(nombre)){
+                  hayPlanta=true;  
+                }
+                
+            }
+        }
+        return hayPlanta;
+    }
 }
