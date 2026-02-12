@@ -7,6 +7,7 @@ package Juego;
 import Mapa.Mapa;
 import Enumerados.TipoClase;
 import Personajes.Valiente;
+import Personajes.GestorValientesImp;
 import interfaces.JuegoInterface;
 import java.util.Scanner;
 
@@ -64,7 +65,7 @@ public class Juego implements JuegoInterface {
                     break;
                 }
                 case 2: {
-                    Valiente v = new Valiente("Guerrero",TipoClase.GUERRERO,20,10,5,5);
+                    
                     
                     break;
                 }

@@ -10,7 +10,6 @@ import Personajes.Valiente;
  * @author dam118
  * Espada aumenta la fuerza del  valiente
  */
-/**
 public class Espada extends Arma {
 
     public Espada(String nombre, int valor) {
@@ -28,4 +27,3 @@ public class Espada extends Arma {
     
     
 }
-**/
