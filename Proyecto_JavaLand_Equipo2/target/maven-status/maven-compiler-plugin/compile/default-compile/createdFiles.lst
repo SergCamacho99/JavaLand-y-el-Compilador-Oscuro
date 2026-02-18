@@ -11,6 +11,7 @@ Personajes\Personaje.class
 Enumerados\TipoClase.class
 interfaces\InventarioInterface.class
 Personajes\Monstruo.class
+Personajes\Combate.class
 Objetos\PlantaCurativa.class
 Mapa\CompiladorOscuro.class
 Personajes\Valiente$1.class
