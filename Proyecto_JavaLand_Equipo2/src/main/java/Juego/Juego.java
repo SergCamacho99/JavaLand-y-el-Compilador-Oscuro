@@ -74,7 +74,7 @@ public class Juego implements JuegoInterface {
                     break;
                 }
                 case 2: {
-
+                    
                     break;
                 }
 
@@ -170,20 +170,17 @@ public class Juego implements JuegoInterface {
 
             char direccion = teclado.next().charAt(0);
 
-            if (direccion == 'w' || direccion == 'a' || direccion == 's' || direccion == 'd') {
-
-                explorarMapa(direccion);
-
-            } else if (direccion == 'j') {
-
-                mostrarValiente(v, inventario);
-
-            } else if (direccion == 'k') {
-
-            } else if (direccion == 'p') {
-                System.out.println("Saliendo del juego.........");
-                terminar = true;
-
+            switch (direccion) {
+                case 'w', 'a', 's', 'd' -> explorarMapa(direccion);
+                case 'j' -> mostrarValiente(v, inventario);
+                case 'k' -> {
+                }
+                case 'p' -> {
+                    System.out.println("Saliendo del juego.........");
+                    terminar = true;
+                }
+                default -> {
+                }
             }
 
         }
