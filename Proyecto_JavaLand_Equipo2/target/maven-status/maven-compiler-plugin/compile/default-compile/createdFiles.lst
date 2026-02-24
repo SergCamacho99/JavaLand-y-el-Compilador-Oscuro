@@ -3,6 +3,10 @@ Mapa\MainMapa.class
 Juego\Juego.class
 Objetos\Escudo.class
 Mapa\NewMain.class
+<<<<<<< HEAD
+=======
+Personajes\GestorMonstruosImp.class
+>>>>>>> 03d1fcaf0321d9d93c6a3d75ee9f8afb9311b420
 interfaces\ObjetoInterface.class
 Juego\CompiladorOscuro.class
 Objetos\Arma.class
@@ -12,6 +16,7 @@ interfaces\PersonajesInterface.class
 Juego\MainPruebas.class
 interfaces\CombateInterface.class
 Personajes\Valiente.class
+Personajes\GestorValientesImp.class
 interfaces\GestoresInterface.class
 interfaces\JuegoInterface.class
 Personajes\Personaje.class
