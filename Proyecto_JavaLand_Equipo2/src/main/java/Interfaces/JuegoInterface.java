@@ -16,7 +16,7 @@ public interface JuegoInterface {
     
     public void mostrarMenuPrincipal();
     
-    public void explorarMapa();
+    public void explorarMapa(char direccion);
     
     public void mostrarEstadoJuego();
     

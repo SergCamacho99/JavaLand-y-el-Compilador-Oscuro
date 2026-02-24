@@ -5,6 +5,7 @@
 package Personajes;
 
 import Enumerados.TipoClase;
+import Objetos.Inventario;
 import interfaces.PersonajesInterface;
 
 /**

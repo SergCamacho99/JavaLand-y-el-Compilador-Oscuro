@@ -5,6 +5,8 @@
 package Objetos;
 
 import Objetos.Objeto;
+import Objetos.Objeto;
+import Personajes.Valiente;
 import Personajes.Valiente;
 
 /**
@@ -36,14 +38,21 @@ public class Inventario {
 //metodo mostrar inventario
 //muestra los objetos guardados 
     public void mostrarInventario() {
-        if (cantidad == 0) {
-            System.out.print("Inventario vacio");
-        } else {
-            for (int i = 0; i < cantidad; i++) {
-                System.out.println(Objetos[i].getnombre());
-            }
+
+    System.out.println("        +----------------------+");
+    System.out.println("        |      INVENTARIO      |");
+    System.out.println("        |----------------------|");
+
+    if (cantidad == 0) {
+        System.out.println("        | Vacio                |");
+    } else {
+        for (int i = 0; i < cantidad; i++) {
+            System.out.printf("        | %-20s |\n", Objetos[i].getnombre());
         }
     }
+
+    System.out.println("        +----------------------+");
+}
 //metodo usar objeto
 //permite usar un objeto buscandolo por su nombre
     public void usarObjeto(String nombre, Valiente valiente) {
@@ -56,5 +65,20 @@ public class Inventario {
             }
         }
         System.out.println("No tienes ese objeto");
+    }
+    
+    public boolean hayPlanta(String nombre){
+        boolean hayPlanta=false;
+        if (cantidad == 0) {
+            hayPlanta=false;
+        } else {
+            for (int i = 0; i < cantidad; i++) {
+                if(Objetos[i].getnombre().equalsIgnoreCase(nombre)){
+                  hayPlanta=true;  
+                }
+                
+            }
+        }
+        return hayPlanta;
     }
 }
