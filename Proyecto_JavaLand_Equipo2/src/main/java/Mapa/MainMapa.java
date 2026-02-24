@@ -23,7 +23,7 @@ public class MainMapa {
             mapa.mostrarMapa();
             tecla = teclado.next().toLowerCase().charAt(0);
 
-            mapa.moverX(tecla);
+            mapa.moverPersonaje(tecla);
 
             System.out.println("\n\n");
         } while (tecla != 'q');

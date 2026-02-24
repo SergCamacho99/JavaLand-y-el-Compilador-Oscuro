@@ -46,6 +46,7 @@ public class Mapa {
             }
         }
     }
+
     public void colocarCofres(int cantidad) {
         int colocados = 0;
         while (colocados < cantidad) {
@@ -78,7 +79,7 @@ public class Mapa {
             }
         }
 
-        mapaVisible[x][y] = '☹';
+        mapaVisible[x][y] = '웃';
 
         if (x - 1 >= 0) {
             mapaVisible[x - 1][y] = mapaReal[x - 1][y];
@@ -89,14 +90,15 @@ public class Mapa {
         if (y - 1 >= 0) {
             mapaVisible[x][y - 1] = mapaReal[x][y - 1];
         }
-        
+
         if (y + 1 < 12) {
             mapaVisible[x][y + 1] = mapaReal[x][y + 1];
         }
 
     }
 
-    public void moverX(char direccion) {
+    public void moverPersonaje(char direccion) {
+
         int nuevaX = x;
         int nuevaY = y;
 
@@ -114,25 +116,31 @@ public class Mapa {
                 nuevaY++;
                 break;
             default:
-                return;
         }
 
-        // Comprobar límites y muros
         if (nuevaX >= 0 && nuevaX < 12 && nuevaY >= 0 && nuevaY < 12 && mapaReal[nuevaX][nuevaY] != '■') {
+            
+
+            if (mapaReal[nuevaX][nuevaY] == '⊟') {
+                System.out.println("¡Has abierto un cofre!");
+                mapaReal[nuevaX][nuevaY] = ' ';
+            }
+            if (mapaReal[nuevaX][nuevaY] == '☻') {
+                System.out.println("¡Te encuentras con un enemigo!");
+                mapaReal[nuevaX][nuevaY] = ' ';
+            }
             x = nuevaX;
             y = nuevaY;
+            
             actualizarMapaVisible();
         }
     }
 
     public void mostrarMapa() {
         for (int i = 0; i < 12; i++) {
-            for (int j = 0; j < 12; j++) {
-                
-            }
             System.out.println();
             for (int j = 0; j < 12; j++) {
-                System.out.print("  "+mapaVisible[i][j]+"  ");
+                System.out.print(" " + mapaVisible[i][j] + " ");
             }
             System.out.println();
         }
