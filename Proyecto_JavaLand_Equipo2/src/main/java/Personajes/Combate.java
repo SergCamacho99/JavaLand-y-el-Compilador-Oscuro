@@ -5,6 +5,7 @@
 package Personajes;
 
 import Objetos.Inventario;
+import Objetos.PlantaCurativa;
 import interfaces.CombateInterface;
 import java.util.Random;
 import java.util.Scanner;
