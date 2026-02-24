@@ -5,6 +5,8 @@
 package Personajes;
 
 import Enumerados.TipoClase;
+import Objetos.Arma;
+import Objetos.Escudo;
 import Objetos.Inventario;
 import interfaces.PersonajesInterface;
 
@@ -15,8 +17,8 @@ import interfaces.PersonajesInterface;
 public class Valiente extends Personaje implements PersonajesInterface {
 
     private TipoClase tipo;
-    private int ataqueArma = 0;
-    private int defensaEscudo = 0;
+    private Arma arma;
+    private Escudo escudo;
 
     
     public Valiente(String nombre, TipoClase tipo, int fuerza, int defensa, int habilidad, int velocidad) throws IllegalArgumentException {
@@ -67,15 +69,15 @@ public class Valiente extends Personaje implements PersonajesInterface {
         this.defensa += 1;
         this.habilidad += 1;
         this.velocidad += 1;
-        
+        System.out.println("Se han subido de nivel todas las estadísticas!");
     }
 
     @Override
     public <T extends Personaje> void atacar(T Personaje) {
-        double danioTotal = (double) this.fuerza + this.ataqueArma;
+        Monstruo enemigo=(Monstruo)Personaje;
+        double danioTotal = (double) this.fuerza + arma.getValor()-enemigo.defensa;
         System.out.println(this.nombre + " ataca a " + Personaje.getNombre() + " causando " + danioTotal + " de daño");
-        Personaje.recibirDaño((int) danioTotal);
-        
+        Personaje.recibirDaño((int) danioTotal);    
     }
 
     public TipoClase getTipo() {
@@ -86,21 +88,6 @@ public class Valiente extends Personaje implements PersonajesInterface {
         this.tipo = tipo;
     }
 
-    public int getAtaqueArma() {
-        return ataqueArma;
-    }
-
-    public void setAtaqueArma(int ataqueArma) {
-        this.ataqueArma = ataqueArma;
-    }
-
-    public int getDefensaEscudo() {
-        return defensaEscudo;
-    }
-
-    public void setDefensaEscudo(int defensaEscudo) {
-        this.defensaEscudo = defensaEscudo;
-    }
 
     @Override
     public String getNombre() {
@@ -170,6 +157,22 @@ public class Valiente extends Personaje implements PersonajesInterface {
     @Override
     public void setNivel(int nivel) {
         this.nivel = nivel;
+    }
+
+    public Arma getArma() {
+        return arma;
+    }
+
+    public void setArma(Arma arma) {
+        this.arma = arma;
+    }
+
+    public Escudo getEscudo() {
+        return escudo;
+    }
+
+    public void setEscudo(Escudo escudo) {
+        this.escudo = escudo;
     }
     
 }
