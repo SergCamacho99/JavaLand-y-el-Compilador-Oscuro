@@ -13,6 +13,6 @@ import Personajes.Personaje;
 public interface PersonajesInterface {
     
     //Esta interfaz va a ser usada por Valientes y Monstruos
-    public <T extends Personaje> double atacar(T Personaje); 
+    public <T extends Personaje> void atacar(T Personaje); 
     
 }

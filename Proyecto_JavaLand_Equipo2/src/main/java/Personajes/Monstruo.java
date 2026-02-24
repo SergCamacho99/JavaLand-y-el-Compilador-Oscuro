@@ -102,11 +102,11 @@ public class Monstruo extends Personaje implements PersonajesInterface {
 
 
     @Override
-    public <T extends Personaje> double atacar(T Personaje) {
+    public <T extends Personaje> void atacar(T Personaje) {
         double danioRealizado = (double) this.fuerza; 
         System.out.println("El monstruo " + this.nombre + " ataca a " + Personaje.getNombre() + " causando " + danioRealizado + " de daño");
         Personaje.recibirDaño((int) danioRealizado);
-        return danioRealizado;
+        
     }
 
 

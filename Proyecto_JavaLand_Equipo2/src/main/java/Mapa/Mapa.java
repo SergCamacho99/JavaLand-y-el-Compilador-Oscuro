@@ -79,7 +79,7 @@ public class Mapa {
             }
         }
 
-        mapaVisible[x][y] = '☹';
+        mapaVisible[x][y] = '웃';
 
         if (x - 1 >= 0) {
             mapaVisible[x - 1][y] = mapaReal[x - 1][y];
@@ -132,5 +132,10 @@ public class Mapa {
             }
             System.out.println();
         }
+        System.out.println("╔═══════════════════════════════════════════════════════════════╗");
+        System.out.println("║                                                       ║");
+        System.out.println("║ j. Mostrar Valiente   k. Usar Objeto   p. salir       ║");
+        System.out.println("║                                                       ║");
+        System.out.println("╚═══════════════════════════════════════════════════════════════╝");
     }
 }
