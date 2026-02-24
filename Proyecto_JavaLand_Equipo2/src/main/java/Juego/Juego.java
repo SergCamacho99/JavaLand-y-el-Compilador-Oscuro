@@ -174,6 +174,9 @@ public class Juego implements JuegoInterface {
                 case 'w', 'a', 's', 'd' -> explorarMapa(direccion);
                 case 'j' -> mostrarValiente(v, inventario);
                 case 'k' -> {
+                    
+                    inventario.mostrarInventario();
+                    
                 }
                 case 'p' -> {
                     System.out.println("Saliendo del juego.........");
