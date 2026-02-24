@@ -3,16 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Juego;
-
-import Objetos.Objeto;
-import Objetos.Arma;
-import Objetos.Consumible;
-import Objetos.Espada;
-import Objetos.PlantaCurativa;
-import Objetos.Inventario;
 import Mapa.Mapa;
 import Enumerados.TipoClase;
+import Personajes.Personaje;
 import Personajes.Valiente;
+import Personajes.GestorMonstruosImp;
 import Personajes.GestorValientesImp;
 import interfaces.JuegoInterface;
 import java.util.Scanner;
@@ -22,17 +17,13 @@ import java.util.Scanner;
  * @author dam125
  */
 public class Juego implements JuegoInterface {
-
     Mapa map;
-    Inventario inventario;
-    Scanner teclado = new Scanner(System.in);
-    Objeto obj = new Espada(15);
-
+    Scanner teclado = new Scanner(System.in); 
     @Override
     public void IniciarJuego() {
-
+        
         creacionOEleccionValiente();
-
+        
     }
 
     @Override
@@ -58,74 +49,75 @@ public class Juego implements JuegoInterface {
 
             if (opcion < 1 || opcion > 6) { //validacion para que no se introduzca un numero fuera de rango
 
-                System.out.println("Por favor elige un numero del 1 al 5, aunque intuyo que quizas prefieras el 6.");
+            System.out.println("Por favor elige un numero del 1 al 5, aunque intuyo que quizas prefieras el 6.");
+
+        }
+
+        switch (opcion) {
+
+            case 1: {
+                Marginado m1 = new Marginado("Marginado",TipoClase.MARGINADO,0,0,0,0);
+                System.out.println("====[###]");
+                System.out.println("Se ha creado un Marginado con las siguientes estadisticas\n:"+m1.toString());
+                this.map = new Mapa();
+                jugar(m1);
+                break;
+            }
+            case 2: {
+
+                //Llamada al metodo de gestionar valientes (Guerrero)
+                break;
+            }
+
+            case 3: {
+
+                //Llamada al metodo de gestionar valientes (Paladin)
+                break;
+            }
+
+            case 4: {
+
+                //Llamada al metodo de gestionar valientes (Mago)
+                break;
+            }
+
+            case 5: {
+
+                //Llamada al metodo de gestionar valientes (Picaro)
+                break;
+            }
+
+            case 6: {
+
+                System.out.println("Buena decision, ni si quiera creo que tengas la habilidad para salir de esta con vida.");
+                break;
 
             }
 
-            switch (opcion) {
-
-                case 1: {
-                    Marginado m1 = new Marginado("Marginado", TipoClase.MARGINADO, 0, 0, 0, 0);
-                    System.out.println("====[###]");
-                    System.out.println("Se ha creado un Marginado con las siguientes estadisticas\n:" + m1.toString());
-                    this.map = new Mapa();
-                    this.inventario = new Inventario();
-                    jugar(m1);
-                    break;
-                }
-                case 2: {
-                    
-                    break;
-                }
-
-                case 3: {
-
-                    //Llamada al metodo de gestionar valientes (Paladin)
-                    break;
-                }
-
-                case 4: {
-
-                    //Llamada al metodo de gestionar valientes (Mago)
-                    break;
-                }
-
-                case 5: {
-
-                    //Llamada al metodo de gestionar valientes (Picaro)
-                    break;
-                }
-
-                case 6: {
-
-                    System.out.println("Buena decision, ni si quiera creo que tengas la habilidad para salir de esta con vida.");
-                    break;
-
-                }
-
-                default:
-            }
-
+            default:
+        }
+            
+        
+        
+        
         } while (opcion != 6 && opcion < 1 || opcion > 6);
     }
 
     @Override
     public void mostrarMenuPrincipal() {
-        System.out.println("╔═══════════════════════════════════════════════════════════════╗");
-        System.out.println("║                                                       ║");
-        System.out.println("║ j. Mostrar Valiente   k. Usar Objeto   p. salir       ║");
-        System.out.println("║                                                       ║");
-        System.out.println("╚═══════════════════════════════════════════════════════════════╝");
-
+        
+        System.out.println("╔═════════════════════════════════════════════════════════╗");
+        System.out.println("║                                                  ║");
+        System.out.println("║ 1. Mostrar valiente 2. Equipar Objeto 3. Salir   ║");
+        System.out.println("║                                                  ║");
+        System.out.println("╚═════════════════════════════════════════════════════════╝");
     }
 
     @Override
-    public void explorarMapa(char direccion) {
-
-        map.moverX(direccion);
-        map.actualizarMapaVisible();
-        map.mostrarMapa();
-
+    public void explorarMapa() {
+        
+        
+        
     }
 
     @Override
@@ -158,56 +150,12 @@ public class Juego implements JuegoInterface {
     }
 
     public void jugar(Valiente v) {
-
-        map.mostrarMapa();
-
-        inventario.agregarObjeto(obj);
-
-        boolean terminar = false;
-
-        while (!terminar) {
-            int opcion = 0;
-
-            char direccion = teclado.next().charAt(0);
-
-            switch (direccion) {
-                case 'w', 'a', 's', 'd' -> explorarMapa(direccion);
-                case 'j' -> mostrarValiente(v, inventario);
-                case 'k' -> {
-                    
-                    inventario.mostrarInventario();
-                    
-                }
-                case 'p' -> {
-                    System.out.println("Saliendo del juego.........");
-                    terminar = true;
-                }
-                default -> {
-                }
-            }
-
-        }
+        map.mostrarMenuPrincipal();
+        
+        
     }
+    
+    
 
-    private void mostrarValiente(Valiente v, Inventario inventario) {
-        System.out.println("        +--------------------------------------------+");
-        System.out.println("        |               ESTADISTICAS                 |");
-        System.out.println("        |                                            |");
-        System.out.println("        |  Nombre: " + v.getNombre() + "                 |");
-        System.out.println("        |                                            |");
-        System.out.println("        |  Nivel:  " + v.getNivel() + "                  |");
-        System.out.println("        |                                            |");
-        System.out.println("        |  Fuerza: " + v.getFuerza() + "                 |");
-        System.out.println("        |                                            |");
-        System.out.println("        |  Defensa: " + v.getDefensa() + "               |");
-        System.out.println("        |                                            |");
-        System.out.println("        |  Velocidad: " + v.getVelocidad() + "           |");
-        System.out.println("        |                                            |");
-        System.out.println("        |  Habilidad: " + v.getHabilidad() + "           |");
-        System.out.println("        |                                            |");
-        System.out.println("        |--------------------------------------------|");
-        System.out.println();
-        inventario.mostrarInventario();
-
-    }
+    
 }

@@ -4,7 +4,6 @@
  */
 package interfaces;
 
-import Personajes.CooldownException;
 import Personajes.Monstruo;
 import Personajes.Valiente;
 
@@ -17,7 +16,7 @@ import Personajes.Valiente;
 public interface CombateInterface {
     //Esta interface va a ser usada por Combate
     
-    public  void turno(Valiente valiente, Monstruo monstruo)throws CooldownException;
+    public  boolean turno(Valiente valiente, Monstruo monstruo);
     
     public void iniciarCombate(Valiente valiente, Monstruo monstruo);
     
