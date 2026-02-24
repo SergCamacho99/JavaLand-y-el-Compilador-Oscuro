@@ -156,8 +156,11 @@ public class Combate implements CombateInterface {
                         }
                         break;
                     case 3:
-                        if (inventario.hayPlanta("Planta curativa") == true) {
-                            
+                        if (valiente.getVida() == valiente.getVidaMaxima()) {
+                            System.out.println("Tu vida esta al maximo, no puedes usar el objeto");
+
+                        } else if (inventario.hayPlanta("Planta curativa") == true) {
+
                         } else {
                             System.out.println("No hay planta curativa, escoge otra opcion");
                         }
@@ -219,17 +222,27 @@ public class Combate implements CombateInterface {
                 this.orden = 0;
                 System.out.println("Turno del rival");
                 turno(valiente, monstruo);
-                System.out.println("Es tu turno");
-                this.orden = 1;
-                turno(valiente, monstruo);
+                if (monstruo.getVida() == 0) {
+
+                } else {
+                    System.out.println("Es tu turno");
+                    this.orden = 1;
+                    turno(valiente, monstruo);
+                }
+
                 //poner if si ha tenido exito el ataque y mostrar el daño
             } else if (iniciativa_Valiente > iniciativa_Monstruo) {
                 this.orden = 1;
                 System.out.println("Es tu turno");
                 turno(valiente, monstruo);
-                System.out.println("Turno del rival");
-                this.orden = 0;
-                turno(valiente, monstruo);
+                if (valiente.getVida() == 0) {
+
+                } else {
+                    System.out.println("Turno del rival");
+                    this.orden = 0;
+                    turno(valiente, monstruo);
+                }
+
                 //poner si ha tenido exito el ataque y mostrar el daño
             }
 
