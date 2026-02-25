@@ -8,13 +8,10 @@ import Personajes.Valiente;
  *
  * @author DAM118
  */
-<<<<<<< HEAD
-=======
 /**
  * 
  * @author DAM118
  **/
->>>>>>> 03d1fcaf0321d9d93c6a3d75ee9f8afb9311b420
 
 public class Escudo extends Arma {
     //Escudo aumenta la defena del valiente

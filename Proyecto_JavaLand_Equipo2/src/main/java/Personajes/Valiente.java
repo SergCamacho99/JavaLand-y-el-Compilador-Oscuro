@@ -9,23 +9,44 @@ import Objetos.Arma;
 import Objetos.Escudo;
 import Objetos.Inventario;
 import interfaces.PersonajesInterface;
+import java.util.Scanner;
 
 /**
+ * Clase que representa a un Valiente Extiende de Personaje e implementa
+ * PersonajesInterface Cada valiente tiene una clase (GUERRERO, MAGO, etc.) y
+ * puede usar armas, escudos y habilidades especiales.
  *
  * @author dam125
  */
 public class Valiente extends Personaje implements PersonajesInterface {
+    //atributos de la clase valiente
 
     private TipoClase tipo;
     private Arma arma;
     private Escudo escudo;
+    private int vidaMaxima = 100;
 
-    
+    /**
+     * Constructor del valiente. Todos los valientes empiezan con 100 de vida y
+     * nivel 1
+     *
+     * @param nombre nombre del personaje
+     * @param tipo clase del personaje (GUERRERO, MAGO, etc.)
+     * @param fuerza fuerza base
+     * @param defensa defensa base
+     * @param habilidad habilidad base
+     * @param velocidad velocidad base
+     */
     public Valiente(String nombre, TipoClase tipo, int fuerza, int defensa, int habilidad, int velocidad) throws IllegalArgumentException {
         super(nombre, 100, fuerza, defensa, habilidad, velocidad, 1);
         this.tipo = tipo;
+        this.vidaMaxima = 100; //vida máxima inicial
     }
 
+    /**
+     * Aplica daño al valiente
+     * La vida nunca baja de 0
+     */
     @Override
     public void recibirDaño(int cantidad) {
         this.vida -= cantidad;
@@ -35,6 +56,10 @@ public class Valiente extends Personaje implements PersonajesInterface {
         System.out.println(this.nombre + " pierde " + cantidad + " de vida. Vida restante: " + this.vida);
     }
 
+    /**
+     * Habilidad especial según la clase del valiente
+     * Cada clase tiene un efecto distinto
+     */
     public void usarHabilidadEspecial(Monstruo enemigo) {
         switch (this.tipo) {
             case GUERRERO:
@@ -54,13 +79,16 @@ public class Valiente extends Personaje implements PersonajesInterface {
                 enemigo.recibirDaño(fuerza * 2);
                 break;
             case EXPLORADOR:
-            System.out.println(nombre + " usa 'Ojo del Halcón'");
-            System.out.println("Revelando casillas adyacentes y permitiendo movimiento diagonal");
-            enemigo.recibirDaño(fuerza + velocidad); 
-            break;
+                System.out.println(nombre + " usa 'Ojo del Halcón'");
+                System.out.println("Revelando casillas adyacentes y permitiendo movimiento diagonal");
+                enemigo.recibirDaño(fuerza + velocidad);
+                break;
         }
     }
-
+/** 
+ * Subida de nivel del valient
+ * Aumenta todas las estadísticas y permite mejorar una adicional
+ */
     @Override
     public void subirNivel() {
         this.nivel++;
@@ -69,17 +97,61 @@ public class Valiente extends Personaje implements PersonajesInterface {
         this.defensa += 1;
         this.habilidad += 1;
         this.velocidad += 1;
-        System.out.println("Se han subido de nivel todas las estadísticas!");
+        System.out.println("Se ha subido el nivel de todas las estadísticas!");
+        boolean mejorado = false;
+        do {
+            System.out.println("¿Qué estadística quieres mejorar?");
+            System.out.println("1.- Vida");
+            System.out.println("2.- Fuerza");
+            System.out.println("3.- Defensa");
+            System.out.println("4.- Habilidad");
+            System.out.println("5.- Velocidad");
+            System.out.print("Elige una opción: ");
+            int opcion = new Scanner(System.in).nextInt();
+            switch (opcion) {
+                case 1:
+                    setVida(getVida() + 10);
+                    mejorado = true;
+                    System.out.println("Se ha mejorado la vida en +10");
+                    break;
+                case 2:
+                    setFuerza(getFuerza() + 1);
+                    mejorado = true;
+                    System.out.println("Se ha mejorado la fuerza en +1");
+                    break;
+                case 3:
+                    setDefensa(getDefensa() + 1);
+                    mejorado = true;
+                    System.out.println("Se ha mejorado la defensa en +1");
+                    break;
+                case 4:
+                    setHabilidad(getHabilidad() + 1);
+                    mejorado = true;
+                    System.out.println("Se ha mejorado la habilidad en +1");
+                    break;
+                case 5:
+                    setVelocidad(getVelocidad() + 1);
+                    mejorado = true;
+                    System.out.println("Se ha mejorado la velocidad en +1");
+                    break;
+                default:
+                    System.out.println("Error: Opción inválida.Introduce una opción válida");
+            }
+        } while (!mejorado);
     }
-
+/** 
+ * Ataque básico del valiente
+ * El daño depende de su fuerza, el arma equipada y la defensa del enemigo
+ */
     @Override
     public <T extends Personaje> void atacar(T Personaje) {
-        Monstruo enemigo=(Monstruo)Personaje;
-        double danioTotal = (double) this.fuerza + arma.getValor()-enemigo.defensa;
+        Monstruo enemigo = (Monstruo) Personaje;
+        double danioTotal = (double) this.fuerza + arma.getValor() - enemigo.defensa;
         System.out.println(this.nombre + " ataca a " + Personaje.getNombre() + " causando " + danioTotal + " de daño");
-        Personaje.recibirDaño((int) danioTotal);    
+        Personaje.recibirDaño((int) danioTotal);
     }
-
+    
+//getters y setters
     public TipoClase getTipo() {
         return tipo;
     }
@@ -87,7 +159,6 @@ public class Valiente extends Personaje implements PersonajesInterface {
     public void setTipo(TipoClase tipo) {
         this.tipo = tipo;
     }
-
 
     @Override
     public String getNombre() {
@@ -174,5 +245,15 @@ public class Valiente extends Personaje implements PersonajesInterface {
     public void setEscudo(Escudo escudo) {
         this.escudo = escudo;
     }
-    
+
+    public int getVidaMaxima() {
+        return vidaMaxima;
+    }
+
+    public void setVidaMaxima(int vidaMaxima) {
+        this.vidaMaxima = vidaMaxima;
+        if (this.vida > vidaMaxima) {
+            this.vida = vidaMaxima;
+        }
+    }
 }

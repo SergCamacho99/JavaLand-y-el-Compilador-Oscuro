@@ -42,7 +42,7 @@ public class Combate implements CombateInterface {
         if (this.orden == 0) {
 
             numeroAleatorio = random.nextInt(101);
-            calculo = 4 * monstruo.getHabilidad() - (valiente.getDefensa() + valiente.getDefensaEscudo());
+            calculo = 4 * monstruo.getHabilidad() - (valiente.getDefensa() + valiente.getDefensa());
             if (numeroAleatorio < calculo && stun == 1) {
                 System.out.println("El monstruo no puede atacar, está estuneado");
                 stun = 0;
@@ -156,7 +156,7 @@ public class Combate implements CombateInterface {
                         }
                         break;
                     case 3:
-                        if (valiente.getVida() == valiente.getVidaMaxima()) {
+                        if (valiente.getVida() == valiente.getVida()) {
                             System.out.println("Tu vida esta al maximo, no puedes usar el objeto");
 
                         } else if (inventario.hayPlanta("Planta curativa") == true) {
