@@ -42,6 +42,7 @@ public class GestorValientesImp implements GestoresInterface {
      * @return un objeto Valiente con estadísticas predefinidas
      */
     public Valiente crearExploradorEspecial(String nombre) {
+        System.out.println("Se ha creado un explorador especial llamado " + nombre);
         return new Valiente(nombre, TipoClase.EXPLORADOR, 9, 9, 11, 11);
     }
 

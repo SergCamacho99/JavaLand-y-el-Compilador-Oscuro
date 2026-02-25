@@ -44,8 +44,7 @@ public class Valiente extends Personaje implements PersonajesInterface {
     }
 
     /**
-     * Aplica daño al valiente
-     * La vida nunca baja de 0
+     * Aplica daño al valiente La vida nunca baja de 0
      */
     @Override
     public void recibirDaño(int cantidad) {
@@ -57,8 +56,8 @@ public class Valiente extends Personaje implements PersonajesInterface {
     }
 
     /**
-     * Habilidad especial según la clase del valiente
-     * Cada clase tiene un efecto distinto
+     * Habilidad especial según la clase del valiente Cada clase tiene un efecto
+     * distinto
      */
     public void usarHabilidadEspecial(Monstruo enemigo) {
         switch (this.tipo) {
@@ -85,18 +84,19 @@ public class Valiente extends Personaje implements PersonajesInterface {
                 break;
         }
     }
-/** 
- * Subida de nivel del valient
- * Aumenta todas las estadísticas y permite mejorar una adicional
- */
+
+    /**
+     * Subida de nivel del valient Aumenta todas las estadísticas y permite
+     * mejorar una adicional
+     */
     @Override
     public void subirNivel() {
         this.nivel++;
         this.vida += 10;
-        this.fuerza += 1;
-        this.defensa += 1;
-        this.habilidad += 1;
-        this.velocidad += 1;
+        this.fuerza++;
+        this.defensa++;
+        this.habilidad++;
+        this.velocidad++;
         System.out.println("Se ha subido el nivel de todas las estadísticas!");
         boolean mejorado = false;
         do {
@@ -139,10 +139,11 @@ public class Valiente extends Personaje implements PersonajesInterface {
             }
         } while (!mejorado);
     }
-/** 
- * Ataque básico del valiente
- * El daño depende de su fuerza, el arma equipada y la defensa del enemigo
- */
+
+    /**
+     * Ataque básico del valiente El daño depende de su fuerza, el arma equipada
+     * y la defensa del enemigo
+     */
     @Override
     public <T extends Personaje> void atacar(T Personaje) {
         Monstruo enemigo = (Monstruo) Personaje;
@@ -150,8 +151,8 @@ public class Valiente extends Personaje implements PersonajesInterface {
         System.out.println(this.nombre + " ataca a " + Personaje.getNombre() + " causando " + danioTotal + " de daño");
         Personaje.recibirDaño((int) danioTotal);
     }
-    
 //getters y setters
+
     public TipoClase getTipo() {
         return tipo;
     }
