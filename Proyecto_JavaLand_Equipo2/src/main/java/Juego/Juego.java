@@ -64,46 +64,40 @@ public class Juego implements JuegoInterface {
 
             switch (opcion) {
 
-                case 1: {
+                case 1 ->  {
                     Marginado m1 = new Marginado("Marginado", TipoClase.MARGINADO, 0, 0, 0, 0);
                     System.out.println("====[###]");
                     System.out.println("Se ha creado un Marginado con las siguientes estadisticas\n:" + m1.toString());
                     //this.map = new Mapa();
                     this.inventario = new Inventario();
                     jugar(m1);
-                    break;
                 }
-                case 2: {
-                    
-                    break;
+                case 2 ->  {
                 }
 
-                case 3: {
-
+                case 3 ->  {
                     //Llamada al metodo de gestionar valientes (Paladin)
-                    break;
+
                 }
 
-                case 4: {
-
+                case 4 ->  {
                     //Llamada al metodo de gestionar valientes (Mago)
-                    break;
+
                 }
 
-                case 5: {
-
+                case 5 ->  {
                     //Llamada al metodo de gestionar valientes (Picaro)
-                    break;
+
                 }
 
-                case 6: {
+                case 6 ->  {
 
                     System.out.println("Buena decision, ni si quiera creo que tengas la habilidad para salir de esta con vida.");
-                    break;
 
                 }
 
-                default:
+                default -> {
+                }
             }
 
         } while (opcion != 6 && opcion < 1 || opcion > 6);

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Mapa;
+import Objetos.Inventario;
 import Personajes.Combate;
 import Personajes.GestorMonstruosImp;
 import Personajes.Monstruo;
@@ -19,6 +20,7 @@ import java.util.Random;
 public class Mapa {
     GestorMonstruosImp monstruos = new GestorMonstruosImp();
     Valiente valiente;
+    Inventario inventario= new Inventario();
 
 
     private char[][] mapaReal = new char[12][12];
@@ -140,7 +142,7 @@ public class Mapa {
             }
             if (mapaReal[nuevaX][nuevaY] == '☻') {
                 System.out.println("¡Te encuentras con un enemigo!");
-                Combate combate = new Combate(valiente, monstruos.generarMonstruos(nuevaY));
+                Combate combate = new Combate(inventario);
                 combate.iniciarCombate(valiente, monstruos.generarMonstruos(nuevaY));
                 mapaReal[nuevaX][nuevaY] = ' ';
             }

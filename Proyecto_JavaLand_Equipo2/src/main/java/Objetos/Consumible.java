@@ -15,7 +15,7 @@ public abstract class Consumible extends Objeto {
         
         public Consumible( String nombre , int efecto){
             super(nombre);
-            this.efecto = efecto;
+       this.efecto = efecto;
             
             
         }

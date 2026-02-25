@@ -12,7 +12,7 @@ public class PlantaCurativa extends Consumible{
     // Planta que recupera vida
     
     public PlantaCurativa ( int vida){
-        super("Planta curativa", vida);
+        super("Planta Curativa", vida);
         
     }
     @Override

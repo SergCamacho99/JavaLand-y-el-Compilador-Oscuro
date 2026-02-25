@@ -1,4 +1,5 @@
 Juego\Juego.class
+Objetos\Escudo.class
 Personajes\GestorMonstruosImp.class
 interfaces\ObjetoInterface.class
 Juego\CompiladorOscuro.class
