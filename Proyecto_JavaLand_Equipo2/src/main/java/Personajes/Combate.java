@@ -9,6 +9,7 @@ import Objetos.PlantaCurativa;
 import interfaces.CombateInterface;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  *
@@ -46,7 +47,7 @@ public class Combate implements CombateInterface {
             //aqui dependiendo del orden es el turno de uno o de otro asi que calculamos lo que hace el monstruo, si esta stun no puede atacar 
             //y dependiendo del numero aleatorio ataca o falla
             numeroAleatorio = random.nextInt(101);
-            calculo = 4 * monstruo.getHabilidad() - (valiente.getDefensa() + valiente.getDefensa());
+            calculo = 4 * monstruo.getHabilidad() - (valiente.getDefensa() + valiente.getDefensa()); //
             if (numeroAleatorio < calculo && stun == 1) {
                 System.out.println("El monstruo no puede atacar, está estuneado");
                 stun = 0;
@@ -100,7 +101,7 @@ public class Combate implements CombateInterface {
                 } catch (IllegalArgumentException e) {
                     System.out.println("Has introducido un valor no válido");
                 } catch (CooldownException e) {
-                    System.out.println("La habilidad está en cooldown, escoge otra opción");
+                    System.out.println("La habilidad está en cooldown, podras usarla en "+contadorEspecial+" turnos. Escoge otra opción");
                 }
                 //menu con 3 opciones
                 switch (num) {
@@ -172,11 +173,17 @@ public class Combate implements CombateInterface {
                     case 3:
                         //el case 3 es para usar la planta curativa, si la vida del valiente esta al maximo o si no hay planta, te dice que no se puede usar
                         //si tienes planta y te falta vida, te pone en maximo de vida si la planta cura mas de lo que falta y si te falta mas que lo qu cura, te cura todo lo que puede curar
-                        if (valiente.getVida() == valiente.getVida()) {
+                        if (valiente.getVida() == valiente.getVidaMaxima()) {
                             System.out.println("Tu vida esta al maximo, no puedes usar el objeto");
                             noHayPlanta=true;
                         } else if (inventario.hayPlanta("Planta curativa") == true) {
                             noHayPlanta=false;
+                            if(valiente.getVida()<=(valiente.getVidaMaxima()-25)){
+                                valiente.setVida(valiente.getVida()+25);
+                                
+                            }else{
+                                valiente.setVida(valiente.getVidaMaxima());
+                            }
                         } else {
                             System.out.println("No hay planta curativa, escoge otra opcion");
                             noHayPlanta=true;
