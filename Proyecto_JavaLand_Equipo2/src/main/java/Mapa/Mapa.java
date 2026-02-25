@@ -155,7 +155,7 @@ public class Mapa {
         for (int i = 0; i < 12; i++) {
             System.out.println();
             for (int j = 0; j < 12; j++) {
-                System.out.print(" " + mapaVisible[i][j] + " ");
+                System.out.print("  " + mapaVisible[i][j] + "  ");
             }
             System.out.println();
         }
