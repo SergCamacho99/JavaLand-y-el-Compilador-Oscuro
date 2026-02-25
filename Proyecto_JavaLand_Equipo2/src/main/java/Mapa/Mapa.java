@@ -3,7 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Mapa;
-
+import Personajes.Combate;
+import Personajes.GestorMonstruosImp;
+import Personajes.Monstruo;
+import Personajes.Valiente;
+import interfaces.CombateInterface;
+import interfaces.JuegoInterface;
+import interfaces.ObjetoInterface;
 import java.util.Random;
 
 /**
@@ -11,14 +17,20 @@ import java.util.Random;
  * @author dam125
  */
 public class Mapa {
+    GestorMonstruosImp monstruos = new GestorMonstruosImp();
+    Valiente valiente;
+
 
     private char[][] mapaReal = new char[12][12];
     private char[][] mapaVisible = new char[12][12];
     private int x = 1;
     private int y = 1;
     private Random random = new Random();
+    
+    
 
-    public Mapa() {
+    public Mapa(Valiente v) {
+        this.valiente = v;
         inicializarMapa();
         colocarEnemigos(15);
         colocarCofres(10);
@@ -122,11 +134,14 @@ public class Mapa {
             
 
             if (mapaReal[nuevaX][nuevaY] == '⊟') {
+                
                 System.out.println("¡Has abierto un cofre!");
                 mapaReal[nuevaX][nuevaY] = ' ';
             }
             if (mapaReal[nuevaX][nuevaY] == '☻') {
                 System.out.println("¡Te encuentras con un enemigo!");
+                Combate combate = new Combate(valiente, monstruos.generarMonstruos(nuevaY));
+                combate.iniciarCombate(valiente, monstruos.generarMonstruos(nuevaY));
                 mapaReal[nuevaX][nuevaY] = ' ';
             }
             x = nuevaX;

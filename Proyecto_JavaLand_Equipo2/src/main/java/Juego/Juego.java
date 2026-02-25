@@ -68,7 +68,7 @@ public class Juego implements JuegoInterface {
                     Marginado m1 = new Marginado("Marginado", TipoClase.MARGINADO, 0, 0, 0, 0);
                     System.out.println("====[###]");
                     System.out.println("Se ha creado un Marginado con las siguientes estadisticas\n:" + m1.toString());
-                    this.map = new Mapa();
+                    //this.map = new Mapa();
                     this.inventario = new Inventario();
                     jugar(m1);
                     break;
@@ -122,7 +122,7 @@ public class Juego implements JuegoInterface {
     @Override
     public void explorarMapa(char direccion) {
 
-        map.moverX(direccion);
+        map.moverPersonaje(direccion);
         map.actualizarMapaVisible();
         map.mostrarMapa();
 

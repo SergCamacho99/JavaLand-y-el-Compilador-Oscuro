@@ -8,15 +8,19 @@ package Mapa;
  *
  * @author DAM119
  */
+import Personajes.Valiente;
+import Personajes.GestorValientesImp;
 import java.util.Scanner;
 
 public class MainMapa {
 
     public static void main(String[] args) {
-
+        GestorValientesImp gvi = new GestorValientesImp();
         Scanner teclado = new Scanner(System.in);
-        Mapa mapa = new Mapa();
-
+        gvi.crearValientesIniciales();
+        
+        Valiente inicial = gvi.getListaValientes()[0];
+        Mapa mapa = new Mapa(inicial);
         char tecla;
 
         do {
