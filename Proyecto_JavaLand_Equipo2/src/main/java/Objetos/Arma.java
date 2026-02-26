@@ -18,4 +18,9 @@ protected int valor;
 }
 // Cada arma aplicará su efecto distinto
     public abstract void usar(Valiente valiente);
+
+    public int getValor() {
+        return valor;
+    }
+    
 }

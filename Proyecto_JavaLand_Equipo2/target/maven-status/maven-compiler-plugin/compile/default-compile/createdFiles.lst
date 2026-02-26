@@ -1,10 +1,16 @@
+Juego\Juego.class
+Objetos\Escudo.class
+Personajes\GestorMonstruosImp.class
 interfaces\ObjetoInterface.class
 Juego\CompiladorOscuro.class
+Objetos\Arma.class
 Objetos\Inventario.class
 interfaces\MapaInterface.class
 interfaces\PersonajesInterface.class
+Juego\MainPruebas.class
 interfaces\CombateInterface.class
 Personajes\Valiente.class
+Personajes\GestorValientesImp.class
 interfaces\GestoresInterface.class
 interfaces\JuegoInterface.class
 Personajes\Personaje.class
@@ -15,7 +21,9 @@ Personajes\Monstruo.class
 Personajes\Combate.class
 Objetos\PlantaCurativa.class
 Mapa\CompiladorOscuro.class
+Juego\Marginado.class
 Personajes\Valiente$1.class
 Objetos\Espada.class
 Objetos\Objeto.class
 Personajes\CooldownException.class
+Objetos\Consumible.class

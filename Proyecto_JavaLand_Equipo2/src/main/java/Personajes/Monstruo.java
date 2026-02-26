@@ -7,11 +7,22 @@ package Personajes;
 import interfaces.PersonajesInterface;
 
 /**
+ * Clase que representa a un Monstruo dentro del juego Extiende de Personaje e
+ * implementa PersonajesInterface Los monstruos tienen estadísticas que escalan
+ * automáticamente según su nivel
  *
  * @author Leila
  */
 public class Monstruo extends Personaje implements PersonajesInterface {
 
+    /**
+     * Constructor del monstruo. Genera estadísticas base en función del nivel:
+     * - Vida: 50 + (nivel * 10) - Fuerza, Defensa, Habilidad, Velocidad: 5 +
+     * nivel
+     * @param nombre nombre del monstruo
+     * @param nivel nivel del monstruo
+     * @throws IllegalArgumentException si los parámetros no son válidos
+     */
     public Monstruo(String nombre, int nivel) throws IllegalArgumentException {
         super(nombre, 50 + (nivel * 10), 5 + nivel, 5 + nivel, 5 + nivel, 5 + nivel, nivel);
     }
@@ -21,6 +32,11 @@ public class Monstruo extends Personaje implements PersonajesInterface {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    /**
+     * Aplica daño al monstruo. Si la vida baja de 0, se ajusta a 0 (para que no
+     * haya números negativos)
+     * @param cantidad cantidad de daño recibido
+     */
     @Override
     public void recibirDaño(int cantidad) {
         this.vida -= cantidad;
@@ -30,6 +46,7 @@ public class Monstruo extends Personaje implements PersonajesInterface {
         System.out.println(this.nombre + " ha recibido daño. Vida restante: " + this.vida);
     }
 
+    //getters y setters
     @Override
     public String getNombre() {
         return nombre;
@@ -100,16 +117,17 @@ public class Monstruo extends Personaje implements PersonajesInterface {
         this.nivel = nivel;
     }
 
-
+    /**
+     * Método de ataque del monstruo
+     * El daño realizado es igual a su fuerza 
+     * @param Personaje objetivo del ataque
+     */
     @Override
     public <T extends Personaje> void atacar(T Personaje) {
-        double danioRealizado = (double) this.fuerza; 
+        double danioRealizado = (double) this.fuerza;
         System.out.println("El monstruo " + this.nombre + " ataca a " + Personaje.getNombre() + " causando " + danioRealizado + " de daño");
         Personaje.recibirDaño((int) danioRealizado);
-        
+
     }
 
-
 }
-
-      

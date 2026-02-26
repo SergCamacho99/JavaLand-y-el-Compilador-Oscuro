@@ -53,8 +53,8 @@ public class Inventario {
 
     System.out.println("        +----------------------+");
 }
-//metodo usar objeto
-//permite usar un objeto buscandolo por su nombre
+    //metodo usar objeto
+    //permite usar un objeto buscandolo por su nombre
     public void usarObjeto(String nombre, Valiente valiente) {
         for (int i = 0; i< cantidad ; i++){
                 
@@ -67,6 +67,7 @@ public class Inventario {
         System.out.println("No tienes ese objeto");
     }
     
+    //verifica que si existe una planta en el iventario
     public boolean hayPlanta(String nombre){
         boolean hayPlanta=false;
         if (cantidad == 0) {
@@ -74,7 +75,7 @@ public class Inventario {
         } else {
             for (int i = 0; i < cantidad; i++) {
                 if(Objetos[i].getnombre().equalsIgnoreCase(nombre)){
-                  hayPlanta=true;  
+                  hayPlanta=true; //planta encontrada   
                 }
                 
             }
