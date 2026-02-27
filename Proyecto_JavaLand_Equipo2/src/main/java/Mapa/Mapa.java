@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Mapa;
+
+import Juego.Juego;
 import Objetos.Inventario;
 import Personajes.Combate;
 import Personajes.GestorMonstruosImp;
@@ -18,18 +20,16 @@ import java.util.Random;
  * @author dam125
  */
 public class Mapa {
+
     GestorMonstruosImp monstruos = new GestorMonstruosImp();
     Valiente valiente;
-    Inventario inventario= new Inventario();
-
+    Inventario inventario = new Inventario();
 
     private char[][] mapaReal = new char[12][12];
     private char[][] mapaVisible = new char[12][12];
     private int x = 1;
     private int y = 1;
     private Random random = new Random();
-    
-    
 
     public Mapa(Valiente v) {
         this.valiente = v;
@@ -133,10 +133,9 @@ public class Mapa {
         }
 
         if (nuevaX >= 0 && nuevaX < 12 && nuevaY >= 0 && nuevaY < 12 && mapaReal[nuevaX][nuevaY] != '■') {
-            
 
             if (mapaReal[nuevaX][nuevaY] == '⊟') {
-                
+
                 System.out.println("¡Has abierto un cofre!");
                 mapaReal[nuevaX][nuevaY] = ' ';
             }
@@ -144,11 +143,12 @@ public class Mapa {
                 System.out.println("¡Te encuentras con un enemigo!");
                 Combate combate = new Combate(inventario);
                 combate.iniciarCombate(valiente, monstruos.generarMonstruos(nuevaY));
+                
                 mapaReal[nuevaX][nuevaY] = ' ';
             }
             x = nuevaX;
             y = nuevaY;
-            
+
             actualizarMapaVisible();
         }
     }
@@ -159,7 +159,13 @@ public class Mapa {
             for (int j = 0; j < 12; j++) {
                 System.out.print("  " + mapaVisible[i][j] + "  ");
             }
-            System.out.println();
+            
         }
+        System.out.println();
+            System.out.println("╔═══════════════════════════════════════════════════════════════╗");
+            System.out.println("║                                                       ║");
+            System.out.println("║ j. Mostrar Valiente   k. Usar Objeto   p. salir       ║");
+            System.out.println("║                                                       ║");
+            System.out.println("╚═══════════════════════════════════════════════════════════════╝");
     }
 }

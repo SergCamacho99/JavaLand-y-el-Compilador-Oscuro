@@ -143,11 +143,12 @@ public class Valiente extends Personaje implements PersonajesInterface {
     /**
      * Ataque básico del valiente El daño depende de su fuerza, el arma equipada
      * y la defensa del enemigo
+     * @param <T>
      */
     @Override
     public <T extends Personaje> void atacar(T Personaje) {
         Monstruo enemigo = (Monstruo) Personaje;
-        double danioTotal = (double) this.fuerza + arma.getValor() - enemigo.defensa;
+        double danioTotal = (double) this.fuerza - enemigo.defensa;
         System.out.println(this.nombre + " ataca a " + Personaje.getNombre() + " causando " + danioTotal + " de daño");
         Personaje.recibirDaño((int) danioTotal);
     }
