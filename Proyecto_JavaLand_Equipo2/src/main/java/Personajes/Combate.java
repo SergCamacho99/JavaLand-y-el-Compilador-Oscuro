@@ -198,7 +198,7 @@ public class Combate implements CombateInterface {
 
     @Override
     public void combateTerminado(Valiente valiente, Monstruo monstruo) {
-        if (tieneExito == true) {
+        if (tieneExito == false) {
             //si el valiente ha ganado te sale victoria y la mejora de estadisticas
             System.out.println("╔════════════════════════════════════════════════╗");
             System.out.println("║              Fin del combate             ║");
@@ -213,7 +213,7 @@ public class Combate implements CombateInterface {
             System.out.println("Tu habilidad es: " + valiente.getHabilidad());
             System.out.println("Tu velocidad es: " + valiente.getVelocidad());
 
-        } else {
+        } else if(tieneExito==true){
             //si el valiente pierde te pone has perdido
             System.out.println("╔════════════════════════════════════════════════╗");
             System.out.println("║              Fin del combate             ║");
@@ -234,21 +234,24 @@ public class Combate implements CombateInterface {
         System.out.println("╔════════════════════════════════════════════════╗");
         System.out.println("║            Comienza el combate           ║");
         System.out.println("╚════════════════════════════════════════════════╝");
+        System.out.println(monstruo.getNivel());
         do {
             double iniciativa_Monstruo;
             double iniciativa_Valiente;
-
+            
             double numeroAleatorio = 0.75 + random.nextDouble() * (1 - 0.75);
             iniciativa_Valiente = valiente.getVelocidad() * numeroAleatorio;
             iniciativa_Monstruo = monstruo.getVelocidad() * numeroAleatorio;
+            
             //dependiendo de la iniciativa ataca uno u otro y dentro estan los turnos de los dos poniendo el orden a 1 o a 0 para que cuando se llame al turno, ataqueel que 
             //queramos que ataque
             if (iniciativa_Monstruo > iniciativa_Valiente) {
                 this.orden = 0;
                 System.out.println("Turno del rival");
                 turno(valiente, monstruo);
-                if (monstruo.getVida() == 0) {
+                if (valiente.getVida() <= 0) {
                     //aqui pongo otro if para que si en el turno primero alguien muere, que no empiece el turno del segundo y pueda hacer daño o llegar a matar estando muerto
+                    combateTerminado(valiente, monstruo);
                 } else {
                     System.out.println("Es tu turno");
                     this.orden = 1;
@@ -256,12 +259,14 @@ public class Combate implements CombateInterface {
                 }
 
                 
-            } else if (iniciativa_Valiente > iniciativa_Monstruo) {
+            } else if (iniciativa_Valiente >= iniciativa_Monstruo) {
                 this.orden = 1;
                 System.out.println("Es tu turno");
                 turno(valiente, monstruo);
-                if (valiente.getVida() == 0) {
-
+                if (monstruo.getVida() <= 0) {
+                    
+                    combateTerminado(valiente, monstruo);
+                    
                 } else {
                     System.out.println("Turno del rival");
                     this.orden = 0;
@@ -269,6 +274,7 @@ public class Combate implements CombateInterface {
                 }
 
                 
+            
             }
             //todo dentro de un do while mientras la vida de los 2 sea mayor que 0 y dependiendo quien haya ganado ponemos tieneexito en true o false para que el metodo de terminar combate lo gestione
         } while (valiente.getVida() > 0 && monstruo.getVida() > 0);
