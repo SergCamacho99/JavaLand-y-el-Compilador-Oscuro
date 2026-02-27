@@ -9,5 +9,11 @@ package interfaces;
  * @author dam125
  */
 public interface MapaInterface {
-    
+    public void inicializarMapa();
+    public void colocarEnemigos();
+    public void colocarCofres();
+    public void colocarObstaculos();
+    public void actualizarMapaVisible();
+    public void moverPersonaje();
+    public void mostrarMapa();
 }

@@ -1,12 +1,6 @@
-Mapa\Mapa.class
-Mapa\MainMapa.class
 Juego\Juego.class
 Objetos\Escudo.class
-Mapa\NewMain.class
-<<<<<<< HEAD
-=======
 Personajes\GestorMonstruosImp.class
->>>>>>> 03d1fcaf0321d9d93c6a3d75ee9f8afb9311b420
 interfaces\ObjetoInterface.class
 Juego\CompiladorOscuro.class
 Objetos\Arma.class
@@ -22,7 +16,9 @@ interfaces\JuegoInterface.class
 Personajes\Personaje.class
 Enumerados\TipoClase.class
 interfaces\InventarioInterface.class
+Personajes\Combate$1.class
 Personajes\Monstruo.class
+Personajes\Combate.class
 Objetos\PlantaCurativa.class
 Mapa\CompiladorOscuro.class
 Juego\Marginado.class

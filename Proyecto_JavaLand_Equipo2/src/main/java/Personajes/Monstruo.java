@@ -19,7 +19,6 @@ public class Monstruo extends Personaje implements PersonajesInterface {
      * Constructor del monstruo. Genera estadísticas base en función del nivel:
      * - Vida: 50 + (nivel * 10) - Fuerza, Defensa, Habilidad, Velocidad: 5 +
      * nivel
-     *
      * @param nombre nombre del monstruo
      * @param nivel nivel del monstruo
      * @throws IllegalArgumentException si los parámetros no son válidos
@@ -35,8 +34,7 @@ public class Monstruo extends Personaje implements PersonajesInterface {
 
     /**
      * Aplica daño al monstruo. Si la vida baja de 0, se ajusta a 0 (para que no
-     * haya números negativos)s
-     *
+     * haya números negativos)
      * @param cantidad cantidad de daño recibido
      */
     @Override

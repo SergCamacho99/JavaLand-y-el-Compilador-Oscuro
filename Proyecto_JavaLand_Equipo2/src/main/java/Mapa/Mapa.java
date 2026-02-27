@@ -3,7 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Mapa;
-
+import Objetos.Inventario;
+import Personajes.Combate;
+import Personajes.GestorMonstruosImp;
+import Personajes.Monstruo;
+import Personajes.Valiente;
+import interfaces.CombateInterface;
+import interfaces.JuegoInterface;
+import interfaces.ObjetoInterface;
 import java.util.Random;
 
 /**
@@ -11,14 +18,21 @@ import java.util.Random;
  * @author dam125
  */
 public class Mapa {
+    GestorMonstruosImp monstruos = new GestorMonstruosImp();
+    Valiente valiente;
+    Inventario inventario= new Inventario();
+
 
     private char[][] mapaReal = new char[12][12];
     private char[][] mapaVisible = new char[12][12];
     private int x = 1;
     private int y = 1;
     private Random random = new Random();
+    
+    
 
-    public Mapa() {
+    public Mapa(Valiente v) {
+        this.valiente = v;
         inicializarMapa();
         colocarEnemigos(15);
         colocarCofres(10);
@@ -94,9 +108,10 @@ public class Mapa {
         if (y + 1 < 12) {
             mapaVisible[x][y + 1] = mapaReal[x][y + 1];
         }
+
     }
 
-    public void moverX(char direccion) {
+    public void moverPersonaje(char direccion) {
 
         int nuevaX = x;
         int nuevaY = y;
@@ -118,8 +133,22 @@ public class Mapa {
         }
 
         if (nuevaX >= 0 && nuevaX < 12 && nuevaY >= 0 && nuevaY < 12 && mapaReal[nuevaX][nuevaY] != '■') {
+            
+
+            if (mapaReal[nuevaX][nuevaY] == '⊟') {
+                
+                System.out.println("¡Has abierto un cofre!");
+                mapaReal[nuevaX][nuevaY] = ' ';
+            }
+            if (mapaReal[nuevaX][nuevaY] == '☻') {
+                System.out.println("¡Te encuentras con un enemigo!");
+                Combate combate = new Combate(inventario);
+                combate.iniciarCombate(valiente, monstruos.generarMonstruos(nuevaY));
+                mapaReal[nuevaX][nuevaY] = ' ';
+            }
             x = nuevaX;
             y = nuevaY;
+            
             actualizarMapaVisible();
         }
     }
@@ -132,10 +161,5 @@ public class Mapa {
             }
             System.out.println();
         }
-        System.out.println("╔═══════════════════════════════════════════════════════════════╗");
-        System.out.println("║                                                       ║");
-        System.out.println("║ j. Mostrar Valiente   k. Usar Objeto   p. salir       ║");
-        System.out.println("║                                                       ║");
-        System.out.println("╚═══════════════════════════════════════════════════════════════╝");
     }
 }
