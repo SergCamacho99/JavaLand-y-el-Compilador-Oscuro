@@ -22,12 +22,14 @@ import java.util.Scanner;
  * @author dam125
  */
 public class Juego implements JuegoInterface {
-
+    GestorValientesImp gvi = new GestorValientesImp();
     Mapa map;
     Inventario inventario;
     Scanner teclado = new Scanner(System.in);
     Objeto obj = new Espada(15);
-
+    
+    
+    
     @Override
     public void IniciarJuego() {
 
@@ -68,11 +70,16 @@ public class Juego implements JuegoInterface {
                     Marginado m1 = new Marginado("Marginado", TipoClase.MARGINADO, 0, 0, 0, 0);
                     System.out.println("====[###]");
                     System.out.println("Se ha creado un Marginado con las siguientes estadisticas\n:" + m1.toString());
-                    //this.map = new Mapa();
+                    this.map = new Mapa(m1);
                     this.inventario = new Inventario();
                     jugar(m1);
                 }
                 case 2 ->  {
+                    gvi.crearValientesIniciales();
+                    Valiente inicial = gvi.getListaValientes()[0];
+                    this.map = new Mapa(inicial);
+                    this.inventario = new Inventario();
+                    jugar(inicial);
                 }
 
                 case 3 ->  {
@@ -105,11 +112,7 @@ public class Juego implements JuegoInterface {
 
     @Override
     public void mostrarMenuPrincipal() {
-        System.out.println("╔═══════════════════════════════════════════════════════════════╗");
-        System.out.println("║                                                       ║");
-        System.out.println("║ j. Mostrar Valiente   k. Usar Objeto   p. salir       ║");
-        System.out.println("║                                                       ║");
-        System.out.println("╚═══════════════════════════════════════════════════════════════╝");
+        
 
     }
 

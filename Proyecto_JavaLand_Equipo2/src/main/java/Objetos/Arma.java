@@ -10,7 +10,7 @@ import Personajes.Valiente;
  */
 public abstract class Arma extends Objeto{ 
 // Valor del arma (fuerza o defensa)
-protected int valor;
+protected int valor = 1;
 
     public Arma(String nombre, int valor){
             super(nombre);
@@ -20,6 +20,7 @@ protected int valor;
     public abstract void usar(Valiente valiente);
 
     public int getValor() {
+        
         return valor;
     }
     
