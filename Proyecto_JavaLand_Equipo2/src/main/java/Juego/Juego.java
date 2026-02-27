@@ -22,7 +22,7 @@ import java.util.Scanner;
  * @author dam125
  */
 public class Juego implements JuegoInterface {
-
+    GestorValientesImp gvi = new GestorValientesImp();
     Mapa map;
     Inventario inventario;
     Scanner teclado = new Scanner(System.in);
@@ -73,6 +73,8 @@ public class Juego implements JuegoInterface {
                     jugar(m1);
                 }
                 case 2 ->  {
+                    gvi.crearValientesIniciales();
+                    Valiente inicial = gvi.getListaValientes()[0];
                 }
 
                 case 3 ->  {
