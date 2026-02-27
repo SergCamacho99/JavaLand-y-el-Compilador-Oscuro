@@ -41,7 +41,7 @@ public class Inventario {
 
     System.out.println("        +----------------------+");
     System.out.println("        |      INVENTARIO      |");
-    System.out.println("        |----------------------|");
+    System.out.println("        +----------------------+");
 
     if (cantidad == 0) {
         System.out.println("        | Vacio                |");

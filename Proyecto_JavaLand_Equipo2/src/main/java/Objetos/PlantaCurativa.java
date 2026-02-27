@@ -18,7 +18,7 @@ public class PlantaCurativa extends Consumible{
     @Override
     public void usar(Valiente valiente){
         valiente.setVida(valiente.getVida() + efecto);
-        System.out.print("Has usado una planta. vida recuperada");
+        System.out.print("Has usado una planta. Vida recuperada");
     }
 
     @Override

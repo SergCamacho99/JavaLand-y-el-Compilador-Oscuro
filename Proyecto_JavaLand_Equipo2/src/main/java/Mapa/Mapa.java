@@ -3,9 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Mapa;
+
+import Objetos.Espada;
 import Objetos.Inventario;
+import Objetos.Objeto;
 import Personajes.Combate;
 import Personajes.GestorMonstruosImp;
+import Personajes.GestorValientesImp;
 import Personajes.Monstruo;
 import Personajes.Valiente;
 import interfaces.CombateInterface;
@@ -18,18 +22,18 @@ import java.util.Random;
  * @author dam125
  */
 public class Mapa {
-    GestorMonstruosImp monstruos = new GestorMonstruosImp();
-    Valiente valiente;
-    Inventario inventario= new Inventario();
 
+    GestorMonstruosImp monstruos = new GestorMonstruosImp();
+    GestorValientesImp valientes = new GestorValientesImp();
+    Valiente valiente;
+    Monstruo monstruo;
+    Inventario inventario = new Inventario();
 
     private char[][] mapaReal = new char[12][12];
     private char[][] mapaVisible = new char[12][12];
     private int x = 1;
     private int y = 1;
     private Random random = new Random();
-    
-    
 
     public Mapa(Valiente v) {
         this.valiente = v;
@@ -50,14 +54,18 @@ public class Mapa {
     }
 
     public void colocarEnemigos(int cantidad) {
+
+        //GestorMonstruosImp monstruo = new GestorMonstruosImp();
+        //monstruo.generarMonstruos(x)
+        //int nivelMonstruo = monstruos.
         int colocados = 0;
         while (colocados < cantidad) {
             int fila = random.nextInt(12);
             int columna = random.nextInt(12);
             if (mapaReal[fila][columna] == ' ' && !(fila == x && columna == y)) {
                 mapaReal[fila][columna] = '☻';
-                colocados++;
             }
+            colocados++;
         }
     }
 
@@ -133,11 +141,10 @@ public class Mapa {
         }
 
         if (nuevaX >= 0 && nuevaX < 12 && nuevaY >= 0 && nuevaY < 12 && mapaReal[nuevaX][nuevaY] != '■') {
-            
 
             if (mapaReal[nuevaX][nuevaY] == '⊟') {
-                
                 System.out.println("¡Has abierto un cofre!");
+                //inventario.agregarObjeto(obj);
                 mapaReal[nuevaX][nuevaY] = ' ';
             }
             if (mapaReal[nuevaX][nuevaY] == '☻') {
@@ -148,7 +155,7 @@ public class Mapa {
             }
             x = nuevaX;
             y = nuevaY;
-            
+
             actualizarMapaVisible();
         }
     }
