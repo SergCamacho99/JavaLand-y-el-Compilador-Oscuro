@@ -111,12 +111,13 @@ public class Combate implements CombateInterface {
                         numeroAleatorio = random.nextInt(101);
                         calculo = 4 * valiente.getHabilidad() - (monstruo.getDefensa());
                         if (numeroAleatorio < calculo) {
-
+                            noHayPlanta=false;
                             valiente.atacar(monstruo);
                         } else if (numeroAleatorio > calculo) {
-
+                            noHayPlanta=false;
                             System.out.println("El ataque ha fallado");
                         } else if (numeroAleatorio == calculo) {
+                            noHayPlanta=false;
                             System.out.println("El ataque ha fallado");
                         }
                         break;
@@ -129,33 +130,40 @@ public class Combate implements CombateInterface {
                                 if (numeroAleatorioEspecial > calculo) {
                                     System.out.println("La habilidad falló");
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 } else if (numeroAleatorioEspecial <= calculo) {
                                     valiente.usarHabilidadEspecial(monstruo);
                                     stun = 1;
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 }
                                 break;
                             case PALADÍN:
                                 if (numeroAleatorioEspecial > calculo) {
                                     System.out.println("La habilidad falló");
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 } else if (numeroAleatorioEspecial <= calculo) {
                                     valiente.usarHabilidadEspecial(monstruo);
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 }
                                 break;
                             case EXPLORADOR:
 
                                 valiente.usarHabilidadEspecial(monstruo);
                                 contadorEspecial = 3;
+                                noHayPlanta=false;
                                 break;
                             case MAGO:
                                 if (numeroAleatorioEspecial > calculo) {
                                     System.out.println("La habilidad falló");
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 } else if (numeroAleatorioEspecial <= calculo) {
                                     valiente.usarHabilidadEspecial(monstruo);
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 }
 
                                 break;
@@ -163,9 +171,11 @@ public class Combate implements CombateInterface {
                                 if (numeroAleatorioEspecial > calculo) {
                                     System.out.println("La habilidad falló");
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 } else if (numeroAleatorioEspecial <= calculo) {
                                     valiente.usarHabilidadEspecial(monstruo);
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 }
                                 break;
 
