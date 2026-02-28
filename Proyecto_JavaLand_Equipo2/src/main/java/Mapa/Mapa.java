@@ -27,11 +27,12 @@ import java.util.Scanner;
  * @author dam125
  */
 public class Mapa {
-    
+
     Scanner teclado = new Scanner(System.in);
-    
+
     GestorMonstruosImp monstruos = new GestorMonstruosImp();
     GestorValientesImp valientes = new GestorValientesImp();
+    CompiladorOscuro compiladorOscuro;
     Valiente valiente;
     Monstruo monstruo;
     Inventario inventario;
@@ -49,6 +50,8 @@ public class Mapa {
         colocarEnemigos(15);
         colocarCofres(10);
         colocarObstaculos(15);
+        compiladorOscuro = new CompiladorOscuro(12, 12);
+        mapaReal[compiladorOscuro.getX() - 1][compiladorOscuro.getY() - 1] = '☠';
         actualizarMapaVisible();
     }
 
@@ -161,6 +164,12 @@ public class Mapa {
                 combate.iniciarCombate(valiente, monstruos.generarMonstruos(nuevaY));
                 mapaReal[nuevaX][nuevaY] = ' ';
             }
+            if (mapaReal[nuevaX][nuevaY] == '☠') {
+                System.out.println("¡Te enfrentas al Compilador Oscuro!");
+                Combate combate = new Combate(inventario);
+                combate.iniciarCombate(valiente, monstruo);
+                mapaReal[nuevaX][nuevaY] = ' '; 
+            }
             x = nuevaX;
             y = nuevaY;
 
@@ -182,28 +191,28 @@ public class Mapa {
         System.out.println("║                                                       ║");
         System.out.println("╚═══════════════════════════════════════════════════════════════╝");
     }
-    
-    private void crearObjetoAleatorio(Inventario inventario){
-        
+
+    private void crearObjetoAleatorio(Inventario inventario) {
+
         int objetoAleatorio = (int) random.nextInt(3);
-        
+
         if (objetoAleatorio == 0) {
-            
+
             int valor = valiente.getNivel() + 5;
             Arma obj = new Espada(valor);
             int decision = 0;
             System.out.println("Has encontrado una espada!");
-            while (decision != 1 && decision != 2){
-            System.out.println("Quieres equipar el objeto ahora?");
-            System.out.println("1. Si | 2. No");
-            decision = teclado.nextInt();
+            while (decision != 1 && decision != 2) {
+                System.out.println("Quieres equipar el objeto ahora?");
+                System.out.println("1. Si | 2. No");
+                decision = teclado.nextInt();
             }
-            if ( decision == 1) {
-            valiente.setArma(obj);
-            } else if(decision == 2) {
-            inventario.agregarObjeto(obj);
+            if (decision == 1) {
+                valiente.setArma(obj);
+            } else if (decision == 2) {
+                inventario.agregarObjeto(obj);
             }
-            
+
         } else if (objetoAleatorio == 1) {
             int valor = valiente.getNivel() + 5;
             Escudo obj = new Escudo(valor);
@@ -211,20 +220,19 @@ public class Mapa {
             System.out.println("Quieres equipar el objeto ahora?");
             System.out.println("1. Si | 2. No");
             int decision = teclado.nextInt();
-            if ( decision == 1) {
-            valiente.setEscudo(obj);
+            if (decision == 1) {
+                valiente.setEscudo(obj);
             } else if (decision == 2) {
-            inventario.agregarObjeto(obj);
+                inventario.agregarObjeto(obj);
             }
-            
-            
+
         } else {
-            
+
             Objeto obj = new PlantaCurativa(10);
             System.out.println("Has encontrado una planta curativa!");
             inventario.agregarObjeto(obj);
-        } 
-        
+        }
+
     }
-    
+
 }
