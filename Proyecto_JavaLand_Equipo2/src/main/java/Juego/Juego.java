@@ -154,13 +154,10 @@ public class Juego implements JuegoInterface {
 
     public void jugar(Valiente v) {
 
-        map.mostrarMapa();
-
-        inventario.agregarObjeto(obj);
-
         boolean terminar = false;
-
+        map.mostrarMapa();
         while (!terminar) {
+            
 
             char direccion = teclado.next().charAt(0);
 
@@ -170,9 +167,10 @@ public class Juego implements JuegoInterface {
                 }
                 case 'j' -> {
                     mostrarValiente(v, inventario);
+                    map.mostrarMapa();
                 }
                 case 'k' -> {
-                    
+
                 }
                 case 'p' -> {
                     System.out.println("Saliendo del juego.........");

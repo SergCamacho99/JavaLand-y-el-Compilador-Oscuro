@@ -168,5 +168,10 @@ public class Mapa {
             }
             System.out.println();
         }
+        System.out.println("╔═══════════════════════════════════════════════════════════════╗");
+        System.out.println("║                                                       ║");
+        System.out.println("║ j. Mostrar Valiente   k. Usar Objeto   p. salir       ║");
+        System.out.println("║                                                       ║");
+        System.out.println("╚═══════════════════════════════════════════════════════════════╝");
     }
 }

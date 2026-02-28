@@ -24,7 +24,7 @@ public class Monstruo extends Personaje implements PersonajesInterface {
      * @throws IllegalArgumentException si los parámetros no son válidos
      */
     public Monstruo(String nombre, int nivel) throws IllegalArgumentException {
-        super(nombre, 50 + (nivel * 10), 5 + nivel, 5 + nivel, 5 + nivel, 5 + nivel, nivel);
+        super(nombre, 50 + (nivel * 10), 10 + nivel, 8 + nivel, 5 + nivel, 5 + nivel, nivel);
     }
 
     @Override
@@ -39,11 +39,16 @@ public class Monstruo extends Personaje implements PersonajesInterface {
      */
     @Override
     public void recibirDaño(int cantidad) {
+        
+        cantidad -= getDefensa();
+        if (cantidad <= 0) {         
+            cantidad = 0;            
+        }
         this.vida -= cantidad;
         if (this.vida < 0) {
             this.vida = 0;
         }
-        System.out.println(this.nombre + " ha recibido daño. Vida restante: " + this.vida);
+        System.out.println(this.nombre + " ha recibido "+cantidad+ " de daño. Vida restante: " + this.vida);
     }
 
     //getters y setters

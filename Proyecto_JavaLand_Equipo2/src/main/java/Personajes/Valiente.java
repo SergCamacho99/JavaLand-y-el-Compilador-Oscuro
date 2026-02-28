@@ -45,43 +45,54 @@ public class Valiente extends Personaje implements PersonajesInterface {
 
     /**
      * Aplica daño al valiente La vida nunca baja de 0
+     * @param cantidad
      */
     @Override
     public void recibirDaño(int cantidad) {
-        this.vida -= cantidad;
-        if (this.vida < 0) {
-            this.vida = 0;
+
+        int danioTotal = (int) cantidad - getDefensaTotal();
+        if (danioTotal <= 0) {
+
+            danioTotal = 0;
+
+        } else {
+            this.vida -= danioTotal;
+            if (this.vida < 0) {
+                this.vida = 0;
+            }
+
         }
-        System.out.println(this.nombre + " pierde " + cantidad + " de vida. Vida restante: " + this.vida);
+        System.out.println(this.nombre + " pierde " + danioTotal + " de vida. Vida restante: " + this.vida);
     }
 
     /**
      * Habilidad especial según la clase del valiente Cada clase tiene un efecto
      * distinto
+     * @param enemigo
      */
     public void usarHabilidadEspecial(Monstruo enemigo) {
         switch (this.tipo) {
-            case GUERRERO:
+            case GUERRERO -> {
                 System.out.println(nombre + " usa 'Golpe de Acero' (Fuerza x 1.5, estunea 1 turno al rival)");
                 enemigo.recibirDaño((int) (fuerza * 1.5));
-                break;
-            case PALADÍN:
+            }
+            case PALADÍN -> {
                 System.out.println(nombre + " usa 'Escudo Divino' (Recupera 20 de vida)");
                 this.vida = Math.min(100, this.vida + 20);
-                break;
-            case MAGO:
+            }
+            case MAGO -> {
                 System.out.println(nombre + " usa 'Explosión de Código' (Daño ignorando defensa)");
                 enemigo.recibirDaño(fuerza + 10);
-                break;
-            case PÍCARO:
+            }
+            case PÍCARO -> {
                 System.out.println(nombre + " usa 'Ataque Crítico' (Doble de fuerza)");
                 enemigo.recibirDaño(fuerza * 2);
-                break;
-            case EXPLORADOR:
+            }
+            case EXPLORADOR -> {
                 System.out.println(nombre + " usa 'Ojo del Halcón'");
                 System.out.println("Revelando casillas adyacentes y permitiendo movimiento diagonal");
                 enemigo.recibirDaño(fuerza + velocidad);
-                break;
+            }
         }
     }
 
@@ -109,33 +120,32 @@ public class Valiente extends Personaje implements PersonajesInterface {
             System.out.print("Elige una opción: ");
             int opcion = new Scanner(System.in).nextInt();
             switch (opcion) {
-                case 1:
+                case 1 -> {
                     setVida(getVida() + 10);
                     mejorado = true;
                     System.out.println("Se ha mejorado la vida en +10");
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     setFuerza(getFuerza() + 1);
                     mejorado = true;
                     System.out.println("Se ha mejorado la fuerza en +1");
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     setDefensa(getDefensa() + 1);
                     mejorado = true;
                     System.out.println("Se ha mejorado la defensa en +1");
-                    break;
-                case 4:
+                }
+                case 4 -> {
                     setHabilidad(getHabilidad() + 1);
                     mejorado = true;
                     System.out.println("Se ha mejorado la habilidad en +1");
-                    break;
-                case 5:
+                }
+                case 5 -> {
                     setVelocidad(getVelocidad() + 1);
                     mejorado = true;
                     System.out.println("Se ha mejorado la velocidad en +1");
-                    break;
-                default:
-                    System.out.println("Error: Opción inválida.Introduce una opción válida");
+                }
+                default -> System.out.println("Error: Opción inválida.Introduce una opción válida");
             }
         } while (!mejorado);
     }
@@ -143,14 +153,29 @@ public class Valiente extends Personaje implements PersonajesInterface {
     /**
      * Ataque básico del valiente El daño depende de su fuerza, el arma equipada
      * y la defensa del enemigo
+     *
      * @param <T>
+     * @param Personaje
      */
     @Override
     public <T extends Personaje> void atacar(T Personaje) {
-        Monstruo enemigo = (Monstruo) Personaje;
-        double danioTotal = (double) this.fuerza - enemigo.defensa;
+        double danioTotal = 0;
+        if (arma == null) {
+            danioTotal = (double) this.fuerza;
+        } else {
+
+            danioTotal = (double) this.fuerza + arma.getValor();
+
+        }
         System.out.println(this.nombre + " ataca a " + Personaje.getNombre() + " causando " + danioTotal + " de daño");
         Personaje.recibirDaño((int) danioTotal);
+    }
+
+    public int getDefensaTotal() {
+        if (escudo != null) {
+            return defensa + escudo.getValor();
+        }
+        return defensa;
     }
 //getters y setters
 
