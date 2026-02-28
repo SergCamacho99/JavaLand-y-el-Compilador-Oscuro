@@ -4,9 +4,13 @@
  */
 package Mapa;
 
+import Objetos.Arma;
+import Objetos.Consumible;
+import Objetos.Escudo;
 import Objetos.Espada;
 import Objetos.Inventario;
 import Objetos.Objeto;
+import Objetos.PlantaCurativa;
 import Personajes.Combate;
 import Personajes.GestorMonstruosImp;
 import Personajes.GestorValientesImp;
@@ -16,13 +20,16 @@ import interfaces.CombateInterface;
 import interfaces.JuegoInterface;
 import interfaces.ObjetoInterface;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
  * @author dam125
  */
 public class Mapa {
-
+    
+    Scanner teclado = new Scanner(System.in);
+    
     GestorMonstruosImp monstruos = new GestorMonstruosImp();
     GestorValientesImp valientes = new GestorValientesImp();
     Valiente valiente;
@@ -144,7 +151,7 @@ public class Mapa {
 
             if (mapaReal[nuevaX][nuevaY] == '⊟') {
                 System.out.println("¡Has abierto un cofre!");
-                //inventario.agregarObjeto(obj);
+                crearObjetoAleatorio();
                 mapaReal[nuevaX][nuevaY] = ' ';
             }
             if (mapaReal[nuevaX][nuevaY] == '☻') {
@@ -174,4 +181,49 @@ public class Mapa {
         System.out.println("║                                                       ║");
         System.out.println("╚═══════════════════════════════════════════════════════════════╝");
     }
+    
+    private void crearObjetoAleatorio(){
+        
+        int objetoAleatorio = random.nextInt(2);
+        
+        if (objetoAleatorio == 0) {
+            
+            int valor = valiente.getNivel() + 5;
+            Arma obj = new Espada(valor);
+            int decision = 0;
+            System.out.println("Has encontrado una espada!");
+            while (decision != 1 && decision != 2){
+            System.out.println("Quieres equipar el objeto ahora?");
+            System.out.println("1. Si | 2. No");
+            decision = teclado.nextInt();
+            }
+            if ( decision == 1) {
+            valiente.setArma(obj);
+            } else if(decision == 2) {
+            inventario.agregarObjeto(obj);
+            }
+            
+        } else if (objetoAleatorio == 1) {
+            int valor = valiente.getNivel() + 5;
+            Escudo obj = new Escudo(valor);
+            System.out.println("Has encontrado un escudo!");
+            System.out.println("Quieres equipar el objeto ahora?");
+            System.out.println("1. Si | 2. No");
+            int decision = teclado.nextInt();
+            if ( decision == 1) {
+            valiente.setEscudo(obj);
+            } else if (decision == 2) {
+            inventario.agregarObjeto(obj);
+            }
+            
+            
+        } else {
+            
+            Objeto obj = new PlantaCurativa(10);
+            System.out.println("Has encontrado una planta curativa!");
+            
+        } 
+        
+    }
+    
 }

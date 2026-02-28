@@ -23,7 +23,7 @@ public class Espada extends Arma {
 
     @Override
     public void equipar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
     }
 }
     
