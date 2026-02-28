@@ -48,7 +48,7 @@ public class Combate implements CombateInterface {
             //aqui dependiendo del orden es el turno de uno o de otro asi que calculamos lo que hace el monstruo, si esta stun no puede atacar 
             //y dependiendo del numero aleatorio ataca o falla
             numeroAleatorio = random.nextInt(101);
-            calculo = 4 * monstruo.getHabilidad() - (valiente.getDefensa() + valiente.getDefensa()); //
+            calculo = 4 * monstruo.getHabilidad() - (valiente.getDefensaTotal()); //
             if (numeroAleatorio < calculo && stun == 1) {
                 System.out.println("El monstruo no puede atacar, está estuneado");
                 stun = 0;

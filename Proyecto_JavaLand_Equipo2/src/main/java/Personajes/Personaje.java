@@ -42,7 +42,7 @@ public abstract class Personaje {
             throw new IllegalArgumentException("Error, la vida es 0");
         }
         this.vida = vida;
-        if (fuerza < 1 || fuerza > 20) {
+        if (fuerza < 1) {
             throw new IllegalArgumentException("Error, la fuerza está fuera del rango (1-20)");
         }
         this.fuerza = fuerza;

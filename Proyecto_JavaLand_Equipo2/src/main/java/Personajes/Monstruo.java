@@ -24,7 +24,7 @@ public class Monstruo extends Personaje implements PersonajesInterface {
      * @throws IllegalArgumentException si los parámetros no son válidos
      */
     public Monstruo(String nombre, int nivel) throws IllegalArgumentException {
-        super(nombre, 50 + (nivel * 10), 10 + nivel, 8 + nivel, 5 + nivel, 5 + nivel, nivel);
+        super(nombre, 50 + (nivel * 10), 20 + nivel, 8 + nivel, 5 + nivel, 5 + nivel, nivel);
     }
 
     @Override

@@ -20,14 +20,14 @@ public class MainMapa {
         gvi.crearValientesIniciales();
         
         Valiente inicial = gvi.getListaValientes()[0];
-        Mapa mapa = new Mapa(inicial);
+        //Mapa mapa = new Mapa(inicial,);
         char tecla;
 
         do {
-            mapa.mostrarMapa();
+            //mapa.mostrarMapa();
             tecla = teclado.next().toLowerCase().charAt(0);
 
-            mapa.moverPersonaje(tecla);
+            //mapa.moverPersonaje(tecla);
 
             System.out.println("\n\n");
         } while (tecla != 'q');

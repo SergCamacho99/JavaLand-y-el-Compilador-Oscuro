@@ -34,7 +34,7 @@ public class Mapa {
     GestorValientesImp valientes = new GestorValientesImp();
     Valiente valiente;
     Monstruo monstruo;
-    Inventario inventario = new Inventario();
+    Inventario inventario;
 
     private char[][] mapaReal = new char[12][12];
     private char[][] mapaVisible = new char[12][12];
@@ -42,7 +42,8 @@ public class Mapa {
     private int y = 1;
     private Random random = new Random();
 
-    public Mapa(Valiente v) {
+    public Mapa(Valiente v, Inventario inventario) {
+        this.inventario = inventario;
         this.valiente = v;
         inicializarMapa();
         colocarEnemigos(15);
@@ -151,7 +152,7 @@ public class Mapa {
 
             if (mapaReal[nuevaX][nuevaY] == '⊟') {
                 System.out.println("¡Has abierto un cofre!");
-                crearObjetoAleatorio();
+                crearObjetoAleatorio(inventario);
                 mapaReal[nuevaX][nuevaY] = ' ';
             }
             if (mapaReal[nuevaX][nuevaY] == '☻') {
@@ -182,7 +183,7 @@ public class Mapa {
         System.out.println("╚═══════════════════════════════════════════════════════════════╝");
     }
     
-    private void crearObjetoAleatorio(){
+    private void crearObjetoAleatorio(Inventario inventario){
         
         int objetoAleatorio = (int) random.nextInt(3);
         
@@ -221,7 +222,7 @@ public class Mapa {
             
             Objeto obj = new PlantaCurativa(10);
             System.out.println("Has encontrado una planta curativa!");
-            
+            inventario.agregarObjeto(obj);
         } 
         
     }

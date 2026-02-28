@@ -69,16 +69,16 @@ public class Juego implements JuegoInterface {
                     Marginado m1 = new Marginado("Marginado", TipoClase.MARGINADO, 0, 0, 0, 0);
                     System.out.println("====[###]");
                     System.out.println("Se ha creado un Marginado con las siguientes estadisticas\n:" + m1.toString());
-                    this.map = new Mapa(m1);
+                    this.map = new Mapa(m1, inventario);
                     this.inventario = new Inventario();
-                    jugar(m1);
+                    jugar(m1, inventario);
                 }
                 case 2 -> {
                     gvi.crearValientesIniciales();
                     Valiente inicial = gvi.getListaValientes()[0];
-                    this.map = new Mapa(inicial);
                     this.inventario = new Inventario();
-                    jugar(inicial);
+                    this.map = new Mapa(inicial, this.inventario);
+                    jugar(inicial, this.inventario);
                 }
 
                 case 3 -> {
@@ -152,7 +152,7 @@ public class Juego implements JuegoInterface {
 
     }
 
-    public void jugar(Valiente v) {
+    public void jugar(Valiente v, Inventario inventario) {
 
         boolean terminar = false;
         map.mostrarMapa();

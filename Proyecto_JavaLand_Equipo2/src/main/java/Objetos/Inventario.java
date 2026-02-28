@@ -91,4 +91,22 @@ public class Inventario {
         
         return hayPlanta;
     }
+    
+    public void eliminarObjetoInventario(Objeto[] objeto){
+        
+        boolean encontrar = false;
+        
+        for (int i = 0; i < objeto.length; i++) {
+            
+            if (objeto[i].getnombre().equals("Planta Curativa")){
+                
+                encontrar = true;
+                objeto[i] = null;
+                
+            }
+            
+        }
+        
+    }
+    
 }
