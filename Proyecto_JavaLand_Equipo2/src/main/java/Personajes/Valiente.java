@@ -83,7 +83,7 @@ public class Valiente extends Personaje implements PersonajesInterface {
                 this.vida = Math.min(100, this.vida + 20);
             }
             case MAGO -> {
-                System.out.println(nombre + " aumenta en 10 su probabilidad de acertar el ataque");
+                System.out.println(nombre + " usa 'Compilación Perfecta' aumenta en 10 su probabilidad de acertar el ataque");
                 enemigo.recibirDaño(habilidad + 10);
             }
             case PÍCARO -> {
