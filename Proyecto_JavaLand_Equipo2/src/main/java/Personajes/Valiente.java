@@ -257,8 +257,8 @@ public class Valiente extends Personaje implements PersonajesInterface {
         this.nivel = nivel;
     }
 
-    public Arma getArma() {
-        return arma;
+    public int getArma() {
+        return arma.getValor();
     }
 
     public void setArma(Arma arma) {

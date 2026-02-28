@@ -38,8 +38,8 @@ public abstract class Personaje {
      */
     public Personaje(String nombre, int vida, int fuerza, int defensa, int habilidad, int velocidad, int nivel) throws IllegalArgumentException {
         this.nombre = nombre;
-        if (vida < 0 || vida > 100) {
-            vida = 100;
+        if (vida < 0) {
+            throw new IllegalArgumentException("Error, la vida es 0");
         }
         this.vida = vida;
         if (fuerza < 1 || fuerza > 20) {

@@ -167,7 +167,7 @@ public class Juego implements JuegoInterface {
                 }
                 case 'j' -> {
                     mostrarValiente(v, inventario);
-                    map.mostrarMapa();
+                    
                 }
                 case 'k' -> {
 
@@ -184,6 +184,9 @@ public class Juego implements JuegoInterface {
     }
 
     private void mostrarValiente(Valiente v, Inventario inventario) {
+        
+
+
         System.out.println("        +--------------------------------------------+");
         System.out.println("        |               ESTADISTICAS                 |");
         System.out.println("        |                                            |");
