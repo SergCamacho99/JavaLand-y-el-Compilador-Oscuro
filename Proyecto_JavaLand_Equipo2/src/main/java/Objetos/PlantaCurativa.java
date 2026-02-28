@@ -17,8 +17,12 @@ public class PlantaCurativa extends Consumible{
     }
     @Override
     public void usar(Valiente valiente){
+        /*if(valiente.getVida()>(valiente.getVidaMaxima()-10){
+        }else{
+        */
         valiente.setVida(valiente.getVida() + efecto);
         System.out.print("Has usado una planta. Vida recuperada");
+        //}
     }
 
     @Override
