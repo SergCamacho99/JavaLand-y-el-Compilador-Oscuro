@@ -4,6 +4,7 @@
  */
 package interfaces;
 
+import Personajes.CooldownException;
 import Personajes.Monstruo;
 import Personajes.Valiente;
 

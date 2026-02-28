@@ -22,14 +22,13 @@ import java.util.Scanner;
  * @author dam125
  */
 public class Juego implements JuegoInterface {
+
     GestorValientesImp gvi = new GestorValientesImp();
     Mapa map;
     Inventario inventario;
     Scanner teclado = new Scanner(System.in);
     Objeto obj = new Espada(15);
-    
-    
-    
+
     @Override
     public void IniciarJuego() {
 
@@ -66,7 +65,7 @@ public class Juego implements JuegoInterface {
 
             switch (opcion) {
 
-                case 1 ->  {
+                case 1 -> {
                     Marginado m1 = new Marginado("Marginado", TipoClase.MARGINADO, 0, 0, 0, 0);
                     System.out.println("====[###]");
                     System.out.println("Se ha creado un Marginado con las siguientes estadisticas\n:" + m1.toString());
@@ -74,7 +73,7 @@ public class Juego implements JuegoInterface {
                     this.inventario = new Inventario();
                     jugar(m1);
                 }
-                case 2 ->  {
+                case 2 -> {
                     gvi.crearValientesIniciales();
                     Valiente inicial = gvi.getListaValientes()[0];
                     this.map = new Mapa(inicial);
@@ -82,22 +81,22 @@ public class Juego implements JuegoInterface {
                     jugar(inicial);
                 }
 
-                case 3 ->  {
+                case 3 -> {
                     //Llamada al metodo de gestionar valientes (Paladin)
 
                 }
 
-                case 4 ->  {
+                case 4 -> {
                     //Llamada al metodo de gestionar valientes (Mago)
 
                 }
 
-                case 5 ->  {
+                case 5 -> {
                     //Llamada al metodo de gestionar valientes (Picaro)
 
                 }
 
-                case 6 ->  {
+                case 6 -> {
 
                     System.out.println("Buena decision, ni si quiera creo que tengas la habilidad para salir de esta con vida.");
 
@@ -112,7 +111,6 @@ public class Juego implements JuegoInterface {
 
     @Override
     public void mostrarMenuPrincipal() {
-        
 
     }
 
@@ -163,14 +161,18 @@ public class Juego implements JuegoInterface {
         boolean terminar = false;
 
         while (!terminar) {
-            int opcion = 0;
 
             char direccion = teclado.next().charAt(0);
 
             switch (direccion) {
-                case 'w', 'a', 's', 'd' -> explorarMapa(direccion);
-                case 'j' -> mostrarValiente(v, inventario);
+                case 'w', 'a', 's', 'd' -> {
+                    explorarMapa(direccion);
+                }
+                case 'j' -> {
+                    mostrarValiente(v, inventario);
+                }
                 case 'k' -> {
+                    
                 }
                 case 'p' -> {
                     System.out.println("Saliendo del juego.........");
