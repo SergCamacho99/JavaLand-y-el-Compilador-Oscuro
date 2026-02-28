@@ -76,7 +76,13 @@ public class Valiente extends Personaje implements PersonajesInterface {
         switch (this.tipo) {
             case GUERRERO -> {
                 System.out.println(nombre + " usa 'Golpe de Acero' (Fuerza x 1.5, estunea 1 turno al rival)");
+                if (arma != null){
                 enemigo.recibirDaño((int) (fuerza * 2) + arma.getValor());
+            } else {
+                    
+                    enemigo.recibirDaño((int) (fuerza * 2));
+                    
+                }
             }
             case PALADÍN -> {
                 System.out.println(nombre + " usa 'Escudo Divino' (Recupera 20 de vida)");
@@ -88,7 +94,11 @@ public class Valiente extends Personaje implements PersonajesInterface {
             }
             case PÍCARO -> {
                 System.out.println(nombre + " usa 'Ataque Crítico' (Doble de fuerza)");
+                if (arma != null){
                 enemigo.recibirDaño((int) (fuerza * 3) + arma.getValor());
+            }else {
+                    enemigo.recibirDaño((int) (fuerza * 3));
+                }
             }
             case EXPLORADOR -> {
                 System.out.println(nombre + " usa 'Ojo del Halcón'");

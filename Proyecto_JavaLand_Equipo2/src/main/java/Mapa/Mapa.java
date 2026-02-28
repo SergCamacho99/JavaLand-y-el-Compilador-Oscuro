@@ -184,7 +184,7 @@ public class Mapa {
     
     private void crearObjetoAleatorio(){
         
-        int objetoAleatorio = random.nextInt(2);
+        int objetoAleatorio = (int) random.nextInt(3);
         
         if (objetoAleatorio == 0) {
             
