@@ -5,6 +5,7 @@
 package Personajes;
 
 import Objetos.Inventario;
+import Objetos.Objeto;
 import Objetos.PlantaCurativa;
 import interfaces.CombateInterface;
 import java.util.Random;
@@ -177,13 +178,16 @@ public class Combate implements CombateInterface {
                             System.out.println("Tu vida esta al maximo, no puedes usar el objeto");
                             noHayPlanta=true;
                         } else if (inventario.hayPlanta("Planta curativa") == true) {
+                            
+                            Objeto objeto = new PlantaCurativa(10);
+                            objeto.usar(valiente);
                             noHayPlanta=false;
-                            if(valiente.getVida()<=(valiente.getVidaMaxima()-25)){
+                            /*if(valiente.getVida()<=(valiente.getVidaMaxima()-25)){
                                 valiente.setVida(valiente.getVida()+25);
                                 
                             }else{
                                 valiente.setVida(valiente.getVidaMaxima());
-                            }
+                            }*/
                         } else {
                             System.out.println("No hay planta curativa, escoge otra opcion");
                             noHayPlanta=true;

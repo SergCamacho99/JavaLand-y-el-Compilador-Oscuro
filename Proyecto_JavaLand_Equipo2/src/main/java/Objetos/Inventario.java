@@ -75,11 +75,20 @@ public class Inventario {
         } else {
             for (int i = 0; i < cantidad; i++) {
                 if(Objetos[i].getnombre().equalsIgnoreCase(nombre)){
-                  hayPlanta=true; //planta encontrada   
+                    hayPlanta=true; //planta encontrada   
+                  
+                  
                 }
                 
             }
         }
+        
+        if (hayPlanta) {
+            
+            
+            
+        }
+        
         return hayPlanta;
     }
 }
