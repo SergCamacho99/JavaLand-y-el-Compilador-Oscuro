@@ -21,10 +21,10 @@ public class CompiladorOscuro {
 
     public CompiladorOscuro(int n, int m) {
         this.vida = 150;
-        this.fuerza = 3;
-        this.defensa = 3;
-        this.habilidad = 3;
-        this.velocidad = 3;
+        //this.fuerza = 3*;
+        //this.defensa = 3*;
+        //this.habilidad = 3*;
+        //this.velocidad = 3*;
 
         this.x = n;
         this.y = m;
