@@ -50,7 +50,7 @@ public class Mapa {
         colocarEnemigos(15);
         colocarCofres(10);
         colocarObstaculos(15);
-        compiladorOscuro = new CompiladorOscuro(12, 12);
+        this.compiladorOscuro = new CompiladorOscuro(12, 12);
         mapaReal[compiladorOscuro.getX() - 1][compiladorOscuro.getY() - 1] = '☠';
         actualizarMapaVisible();
     }

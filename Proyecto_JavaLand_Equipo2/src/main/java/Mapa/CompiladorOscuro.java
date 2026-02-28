@@ -4,11 +4,14 @@
  */
 package Mapa;
 
+import Personajes.Monstruo;
+
 /**
  *
  * @author DAM119
  */
-public class CompiladorOscuro {
+public class CompiladorOscuro //extends Monstruo
+{
 
     private int vida;
     private int fuerza;

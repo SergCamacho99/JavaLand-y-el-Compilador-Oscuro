@@ -204,6 +204,8 @@ public class Juego implements JuegoInterface {
         System.out.println("        |                                            |");
         System.out.println("        |  Habilidad: " + v.getHabilidad() + "           |");
         System.out.println("        |                                            |");
+        System.out.println("        |  Vida: " +     v.getVida()        +"             |");
+        System.out.println("        |                                            |");
         System.out.println("        |--------------------------------------------|");
         System.out.println();
         inventario.mostrarInventario();
