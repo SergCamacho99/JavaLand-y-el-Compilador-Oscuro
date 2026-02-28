@@ -92,21 +92,31 @@ public class Inventario {
         return hayPlanta;
     }
     
-    public void eliminarObjetoInventario(Objeto[] objeto){
+    public Objeto[] getArrayObjetos(){
         
-        boolean encontrar = false;
+        return Objetos;
         
-        for (int i = 0; i < objeto.length; i++) {
+    }
+    
+    public void eliminarObjetoInventario(String nombre){
+        
+        for (int i = 0; i < cantidad; i++) {
             
-            if (objeto[i].getnombre().equals("Planta Curativa")){
+            if (Objetos[i].getnombre().equals(nombre)){
                 
-                encontrar = true;
-                objeto[i] = null;
+                for (int j = i; j < cantidad -1; j++) {
+                    
+                    Objetos[j] = Objetos[j + 1];
+                    
+                }
                 
+                Objetos[cantidad -1] = null;
+                cantidad --;
+                return;
             }
             
         }
-        
+    
     }
     
 }

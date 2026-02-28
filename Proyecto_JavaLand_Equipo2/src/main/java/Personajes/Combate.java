@@ -190,7 +190,8 @@ public class Combate implements CombateInterface {
                         } else if (inventario.hayPlanta("Planta curativa") == true) {
                             
                             Objeto objeto = new PlantaCurativa(10);
-                            objeto.usar(valiente);
+                            objeto.usar(valiente);  
+                            inventario.eliminarObjetoInventario(objeto.getnombre());
                             noHayPlanta=false;
                             /*if(valiente.getVida()<=(valiente.getVidaMaxima()-25)){
                                 valiente.setVida(valiente.getVida()+25);

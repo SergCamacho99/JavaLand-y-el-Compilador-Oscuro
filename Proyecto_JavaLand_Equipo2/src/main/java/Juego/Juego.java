@@ -77,6 +77,8 @@ public class Juego implements JuegoInterface {
                     gvi.crearValientesIniciales();
                     Valiente inicial = gvi.getListaValientes()[0];
                     this.inventario = new Inventario();
+                    Objeto obj = new PlantaCurativa(10);
+                    inventario.agregarObjeto(obj);
                     this.map = new Mapa(inicial, this.inventario);
                     jugar(inicial, this.inventario);
                 }
