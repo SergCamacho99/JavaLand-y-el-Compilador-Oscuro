@@ -4,16 +4,31 @@
  */
 package interfaces;
 
+import Personajes.Valiente;
+import Objetos.Objeto;
+
 /**
  *
  * @author dam125
  */
+
 public interface MapaInterface {
-    public void inicializarMapa();
-    public void colocarEnemigos();
-    public void colocarCofres();
-    public void colocarObstaculos();
-    public void actualizarMapaVisible();
-    public void moverPersonaje();
-    public void mostrarMapa();
+
+    // Mueve al valiente, 'w', 'a', 's', 'd';
+    void moverPersonaje(char direccion);
+
+    // Muestra el mapa
+    void mostrarMapa();
+
+    // Coloca un objeto en el mapa
+    void colocarObjeto(Objeto obj, int cantidad);
+
+    // Coloca enemigos en el mapa
+    void colocarEnemigos(int cantidad);
+
+    // Coloca obstáculos en el mapa
+    void colocarObstaculos(int cantidad);
+
+    // Devuelve el valiente.
+    Valiente getValiente();
 }
