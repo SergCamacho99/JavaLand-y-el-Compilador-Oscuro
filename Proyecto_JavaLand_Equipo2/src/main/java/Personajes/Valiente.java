@@ -45,6 +45,7 @@ public class Valiente extends Personaje implements PersonajesInterface {
 
     /**
      * Aplica daño al valiente La vida nunca baja de 0
+     *
      * @param cantidad
      */
     @Override
@@ -68,25 +69,26 @@ public class Valiente extends Personaje implements PersonajesInterface {
     /**
      * Habilidad especial según la clase del valiente Cada clase tiene un efecto
      * distinto
+     *
      * @param enemigo
      */
     public void usarHabilidadEspecial(Monstruo enemigo) {
         switch (this.tipo) {
             case GUERRERO -> {
                 System.out.println(nombre + " usa 'Golpe de Acero' (Fuerza x 1.5, estunea 1 turno al rival)");
-                enemigo.recibirDaño((int) (fuerza * 1.5));
+                enemigo.recibirDaño((int) (fuerza * 1.5) + arma.getValor());
             }
             case PALADÍN -> {
                 System.out.println(nombre + " usa 'Escudo Divino' (Recupera 20 de vida)");
                 this.vida = Math.min(100, this.vida + 20);
             }
             case MAGO -> {
-                System.out.println(nombre + " usa 'Explosión de Código' (Daño ignorando defensa)");
-                enemigo.recibirDaño(fuerza + 10);
+                System.out.println(nombre + " aumenta en 10 su probabilidad de acertar el ataque");
+                enemigo.recibirDaño(habilidad + 10);
             }
             case PÍCARO -> {
                 System.out.println(nombre + " usa 'Ataque Crítico' (Doble de fuerza)");
-                enemigo.recibirDaño(fuerza * 2);
+                enemigo.recibirDaño((int) (fuerza * 2) + arma.getValor());
             }
             case EXPLORADOR -> {
                 System.out.println(nombre + " usa 'Ojo del Halcón'");
@@ -145,7 +147,8 @@ public class Valiente extends Personaje implements PersonajesInterface {
                     mejorado = true;
                     System.out.println("Se ha mejorado la velocidad en +1");
                 }
-                default -> System.out.println("Error: Opción inválida.Introduce una opción válida");
+                default ->
+                    System.out.println("Error: Opción inválida.Introduce una opción válida");
             }
         } while (!mejorado);
     }

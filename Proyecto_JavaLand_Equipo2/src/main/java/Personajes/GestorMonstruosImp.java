@@ -9,11 +9,15 @@ import interfaces.GestoresInterface;
 import java.util.Random;
 
 /**
+<<<<<<< Updated upstream
  *
  * Implementación de la clase para gestionar los monstruos . Esta clase se
  * encarga de generar monstruos según el nivel del jugador y llevar un conteo de
  * cuántos monstruos se han creado
  *
+=======
+ * 
+>>>>>>> Stashed changes
  * @author Leila
  */
 public class GestorMonstruosImp implements GestoresInterface {
