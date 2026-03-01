@@ -105,6 +105,7 @@ public class Juego implements JuegoInterface {
                 }
 
                 default -> {
+
                 }
             }
 
@@ -155,11 +156,10 @@ public class Juego implements JuegoInterface {
     }
 
     public void jugar(Valiente v, Inventario inventario) {
-
+        
         boolean terminar = false;
         map.mostrarMapa();
         while (!terminar) {
-            
 
             char direccion = teclado.next().charAt(0);
 
@@ -169,16 +169,34 @@ public class Juego implements JuegoInterface {
                 }
                 case 'j' -> {
                     mostrarValiente(v, inventario);
-                    
+                    map.mostrarMapa();
                 }
                 case 'k' -> {
-
+                    boolean salir = false;
+                    inventario.mostrarInventario();
+                    while (!salir ) {
+                        
+                        if (salir) {
+                            map.mostrarMapa();
+                        } else if (!salir && inventario.getCantidad() != 0){
+                            System.out.println("Que objeto quieres usar? 9. para salir");
+                            int eleccion = teclado.nextInt();
+                            inventario.seleccionarObjeto(eleccion, v);
+                            map.mostrarMapa();
+                            salir = true;
+                        } else if (inventario.getCantidad() == 0){
+                            System.out.println("El inventario esta vacio, no hay nada que te pueda ayudar.");
+                            salir = true;
+                            map.mostrarMapa();
+                        }
+                    }
                 }
                 case 'p' -> {
                     System.out.println("Saliendo del juego.........");
                     terminar = true;
                 }
                 default -> {
+
                 }
             }
 
@@ -186,8 +204,6 @@ public class Juego implements JuegoInterface {
     }
 
     private void mostrarValiente(Valiente v, Inventario inventario) {
-        
-
 
         System.out.println("        +--------------------------------------------+");
         System.out.println("        |               ESTADISTICAS                 |");
@@ -204,7 +220,11 @@ public class Juego implements JuegoInterface {
         System.out.println("        |                                            |");
         System.out.println("        |  Habilidad: " + v.getHabilidad() + "           |");
         System.out.println("        |                                            |");
-        System.out.println("        |  Vida: " +     v.getVida()        +"             |");
+        System.out.println("        |  Vida: " + v.getVida() + "             |");
+        System.out.println("        |                                            |");
+        System.out.println("        |  Espada: "+ v.getArma()+"                                          |");
+        System.out.println("        |                                            |");
+        System.out.println("        |  Escudo: "+v.getEscudo()+ "                                          |");
         System.out.println("        |                                            |");
         System.out.println("        |--------------------------------------------|");
         System.out.println();
