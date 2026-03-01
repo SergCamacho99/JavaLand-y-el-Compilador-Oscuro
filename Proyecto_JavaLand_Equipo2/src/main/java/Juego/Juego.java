@@ -84,17 +84,34 @@ public class Juego implements JuegoInterface {
                 }
 
                 case 3 -> {
-                    //Llamada al metodo de gestionar valientes (Paladin)
-
+                    gvi.crearValientesIniciales();
+                    Valiente inicial = gvi.getListaValientes()[1];
+                    this.inventario = new Inventario();
+                    Objeto obj = new PlantaCurativa(10);
+                    inventario.agregarObjeto(obj);
+                    this.map = new Mapa(inicial, this.inventario);
+                    jugar(inicial, this.inventario);
                 }
 
                 case 4 -> {
-                    //Llamada al metodo de gestionar valientes (Mago)
+                    gvi.crearValientesIniciales();
+                    Valiente inicial = gvi.getListaValientes()[2];
+                    this.inventario = new Inventario();
+                    Objeto obj = new PlantaCurativa(10);
+                    inventario.agregarObjeto(obj);
+                    this.map = new Mapa(inicial, this.inventario);
+                    jugar(inicial, this.inventario);
 
                 }
 
                 case 5 -> {
-                    //Llamada al metodo de gestionar valientes (Picaro)
+                    gvi.crearValientesIniciales();
+                    Valiente inicial = gvi.getListaValientes()[3];
+                    this.inventario = new Inventario();
+                    Objeto obj = new PlantaCurativa(10);
+                    inventario.agregarObjeto(obj);
+                    this.map = new Mapa(inicial, this.inventario);
+                    jugar(inicial, this.inventario);
 
                 }
 
