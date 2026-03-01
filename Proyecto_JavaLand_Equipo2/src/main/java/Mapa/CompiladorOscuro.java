@@ -4,22 +4,41 @@
  */
 package Mapa;
 
+import Personajes.Monstruo;
+
 /**
  *
  * @author DAM119
  */
-public class CompiladorOscuro {
+public class CompiladorOscuro //extends Monstruo
+{
 
-    private int vida = 150;
-    private int fuerza = 3;
-    private int defensa = 3;
-    private int habilidad = 3;
-    private int velocidad = 3;
-    
-    private int x = 12;
-    private int y = 12;
-    
-    
-    
+    private int vida;
+    private int fuerza;
+    private int defensa;
+    private int habilidad;
+    private int velocidad;
+
+    private int x;
+    private int y;
+
+    public CompiladorOscuro(int n, int m) {
+        this.vida = 150;
+        this.fuerza = 3*15;
+        this.defensa = 3*15;
+        this.habilidad = 3*15;
+        this.velocidad = 3*15;
+
+        this.x = n;
+        this.y = m;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 
 }

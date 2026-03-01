@@ -3,40 +3,55 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Mapa;
+
+import Objetos.Arma;
+import Objetos.Consumible;
+import Objetos.Escudo;
+import Objetos.Espada;
 import Objetos.Inventario;
+import Objetos.Objeto;
+import Objetos.PlantaCurativa;
 import Personajes.Combate;
 import Personajes.GestorMonstruosImp;
+import Personajes.GestorValientesImp;
 import Personajes.Monstruo;
 import Personajes.Valiente;
 import interfaces.CombateInterface;
 import interfaces.JuegoInterface;
 import interfaces.ObjetoInterface;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
  * @author dam125
  */
 public class Mapa {
-    GestorMonstruosImp monstruos = new GestorMonstruosImp();
-    Valiente valiente;
-    Inventario inventario= new Inventario();
 
+    Scanner teclado = new Scanner(System.in);
+
+    GestorMonstruosImp monstruos = new GestorMonstruosImp();
+    GestorValientesImp valientes = new GestorValientesImp();
+    CompiladorOscuro compiladorOscuro;
+    Valiente valiente;
+    Monstruo monstruo;
+    Inventario inventario;
 
     private char[][] mapaReal = new char[12][12];
     private char[][] mapaVisible = new char[12][12];
     private int x = 1;
     private int y = 1;
     private Random random = new Random();
-    
-    
 
-    public Mapa(Valiente v) {
+    public Mapa(Valiente v, Inventario inventario) {
+        this.inventario = inventario;
         this.valiente = v;
         inicializarMapa();
         colocarEnemigos(15);
         colocarCofres(10);
         colocarObstaculos(15);
+        this.compiladorOscuro = new CompiladorOscuro(12, 12);
+        mapaReal[compiladorOscuro.getX() - 1][compiladorOscuro.getY() - 1] = '☠';
         actualizarMapaVisible();
     }
 
@@ -50,14 +65,18 @@ public class Mapa {
     }
 
     public void colocarEnemigos(int cantidad) {
+
+        //GestorMonstruosImp monstruo = new GestorMonstruosImp();
+        //monstruo.generarMonstruos(x)
+        //int nivelMonstruo = monstruos.
         int colocados = 0;
         while (colocados < cantidad) {
             int fila = random.nextInt(12);
             int columna = random.nextInt(12);
             if (mapaReal[fila][columna] == ' ' && !(fila == x && columna == y)) {
                 mapaReal[fila][columna] = '☻';
-                colocados++;
             }
+            colocados++;
         }
     }
 
@@ -133,11 +152,10 @@ public class Mapa {
         }
 
         if (nuevaX >= 0 && nuevaX < 12 && nuevaY >= 0 && nuevaY < 12 && mapaReal[nuevaX][nuevaY] != '■') {
-            
 
             if (mapaReal[nuevaX][nuevaY] == '⊟') {
-                
                 System.out.println("¡Has abierto un cofre!");
+                crearObjetoAleatorio(inventario);
                 mapaReal[nuevaX][nuevaY] = ' ';
             }
             if (mapaReal[nuevaX][nuevaY] == '☻') {
@@ -146,9 +164,15 @@ public class Mapa {
                 combate.iniciarCombate(valiente, monstruos.generarMonstruos(nuevaY));
                 mapaReal[nuevaX][nuevaY] = ' ';
             }
+            if (mapaReal[nuevaX][nuevaY] == '☠') {
+                System.out.println("¡Te enfrentas al Compilador Oscuro!");
+                Combate combate = new Combate(inventario);
+                combate.iniciarCombate(valiente, monstruo);
+                mapaReal[nuevaX][nuevaY] = ' '; 
+            }
             x = nuevaX;
             y = nuevaY;
-            
+
             actualizarMapaVisible();
         }
     }
@@ -161,5 +185,54 @@ public class Mapa {
             }
             System.out.println();
         }
+        System.out.println("╔═══════════════════════════════════════════════════════════════╗");
+        System.out.println("║                                                       ║");
+        System.out.println("║ j. Mostrar Valiente   k. Usar Objeto   p. salir       ║");
+        System.out.println("║                                                       ║");
+        System.out.println("╚═══════════════════════════════════════════════════════════════╝");
     }
+
+    private void crearObjetoAleatorio(Inventario inventario) {
+
+        int objetoAleatorio = (int) random.nextInt(3);
+
+        if (objetoAleatorio == 0) {
+
+            int valor = valiente.getNivel() + 5;
+            Arma obj = new Espada(valor);
+            int decision = 0;
+            System.out.println("Has encontrado una espada!");
+            while (decision != 1 && decision != 2) {
+                System.out.println("Quieres equipar el objeto ahora?");
+                System.out.println("1. Si | 2. No");
+                decision = teclado.nextInt();
+            }
+            if (decision == 1) {
+                valiente.setArma(obj);
+            } else if (decision == 2) {
+                inventario.agregarObjeto(obj);
+            }
+
+        } else if (objetoAleatorio == 1) {
+            int valor = valiente.getNivel() + 5;
+            Escudo obj = new Escudo(valor);
+            System.out.println("Has encontrado un escudo!");
+            System.out.println("Quieres equipar el objeto ahora?");
+            System.out.println("1. Si | 2. No");
+            int decision = teclado.nextInt();
+            if (decision == 1) {
+                valiente.setEscudo(obj);
+            } else if (decision == 2) {
+                inventario.agregarObjeto(obj);
+            }
+
+        } else {
+
+            Objeto obj = new PlantaCurativa(10);
+            System.out.println("Has encontrado una planta curativa!");
+            inventario.agregarObjeto(obj);
+        }
+
+    }
+
 }

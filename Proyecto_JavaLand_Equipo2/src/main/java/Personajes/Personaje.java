@@ -38,11 +38,11 @@ public abstract class Personaje {
      */
     public Personaje(String nombre, int vida, int fuerza, int defensa, int habilidad, int velocidad, int nivel) throws IllegalArgumentException {
         this.nombre = nombre;
-        if (vida < 0 || vida > 100) {
-            throw new IllegalArgumentException("Error, la vida está fuera del rango (0-100)");
+        if (vida < 0) {
+            throw new IllegalArgumentException("Error, la vida es 0");
         }
         this.vida = vida;
-        if (fuerza < 1 || fuerza > 20) {
+        if (fuerza < 1) {
             throw new IllegalArgumentException("Error, la fuerza está fuera del rango (1-20)");
         }
         this.fuerza = fuerza;

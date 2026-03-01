@@ -38,20 +38,21 @@ public class Inventario {
 //metodo mostrar inventario
 //muestra los objetos guardados 
     public void mostrarInventario() {
-
     System.out.println("        +----------------------+");
     System.out.println("        |      INVENTARIO      |");
-    System.out.println("        |----------------------|");
+    System.out.println("        +----------------------+");
 
     if (cantidad == 0) {
         System.out.println("        | Vacio                |");
     } else {
         for (int i = 0; i < cantidad; i++) {
-            System.out.printf("        | %-20s |\n", Objetos[i].getnombre());
+            // Asegúrate de que el nombre del objeto esté alineado
+            System.out.printf("        | %2d. %s\n", (i + 1), Objetos[i].getnombre());
         }
     }
 
     System.out.println("        +----------------------+");
+        System.out.println("cantidad: "+cantidad);
 }
     //metodo usar objeto
     //permite usar un objeto buscandolo por su nombre
@@ -75,11 +76,74 @@ public class Inventario {
         } else {
             for (int i = 0; i < cantidad; i++) {
                 if(Objetos[i].getnombre().equalsIgnoreCase(nombre)){
-                  hayPlanta=true; //planta encontrada   
+                    hayPlanta=true; //planta encontrada   
+                  
+                  
                 }
                 
             }
         }
+        
+        if (hayPlanta) {
+            
+            
+            
+        }
+        
         return hayPlanta;
     }
+    
+    public void seleccionarObjeto(int objetoElegido, Valiente valiente){
+        
+        objetoElegido -= 1;
+        
+        
+         if (objetoElegido > cantidad){
+            
+            System.out.println("Por favor eleige un objeto existente.");
+            
+        } else if(this.cantidad > 0) {
+        
+        for (int i = 0; i < cantidad; i++) {
+           
+            if (i == objetoElegido){
+                
+                usarObjeto(Objetos[i].getnombre(), valiente);
+                eliminarObjetoInventario(Objetos[i].getnombre());
+                
+            }
+            
+        }
+        }
+    }
+    
+    public void eliminarObjetoInventario(String nombre){
+        
+        for (int i = 0; i < cantidad; i++) {
+            
+            if (Objetos[i].getnombre().equals(nombre)){
+                
+                for (int j = i; j < cantidad -1; j++) {
+                    
+                    Objetos[j] = Objetos[j + 1];
+                    
+                }
+                
+                Objetos[cantidad -1] = null;
+                cantidad --;
+                
+                return;
+            }
+            
+        }
+    
+    }
+    
+    
+    public int getCantidad(){
+        
+        return this.cantidad;
+        
+    }
+    
 }

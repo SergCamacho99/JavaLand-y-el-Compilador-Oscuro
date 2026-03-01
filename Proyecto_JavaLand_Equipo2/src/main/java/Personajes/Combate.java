@@ -5,6 +5,7 @@
 package Personajes;
 
 import Objetos.Inventario;
+import Objetos.Objeto;
 import Objetos.PlantaCurativa;
 import interfaces.CombateInterface;
 import java.util.Random;
@@ -47,7 +48,7 @@ public class Combate implements CombateInterface {
             //aqui dependiendo del orden es el turno de uno o de otro asi que calculamos lo que hace el monstruo, si esta stun no puede atacar 
             //y dependiendo del numero aleatorio ataca o falla
             numeroAleatorio = random.nextInt(101);
-            calculo = 4 * monstruo.getHabilidad() - (valiente.getDefensa() + valiente.getDefensa()); //
+            calculo = 4 * monstruo.getHabilidad() - (valiente.getDefensaTotal()); //
             if (numeroAleatorio < calculo && stun == 1) {
                 System.out.println("El monstruo no puede atacar, está estuneado");
                 stun = 0;
@@ -110,12 +111,13 @@ public class Combate implements CombateInterface {
                         numeroAleatorio = random.nextInt(101);
                         calculo = 4 * valiente.getHabilidad() - (monstruo.getDefensa());
                         if (numeroAleatorio < calculo) {
-
+                            noHayPlanta=false;
                             valiente.atacar(monstruo);
                         } else if (numeroAleatorio > calculo) {
-
+                            noHayPlanta=false;
                             System.out.println("El ataque ha fallado");
                         } else if (numeroAleatorio == calculo) {
+                            noHayPlanta=false;
                             System.out.println("El ataque ha fallado");
                         }
                         break;
@@ -128,33 +130,40 @@ public class Combate implements CombateInterface {
                                 if (numeroAleatorioEspecial > calculo) {
                                     System.out.println("La habilidad falló");
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 } else if (numeroAleatorioEspecial <= calculo) {
                                     valiente.usarHabilidadEspecial(monstruo);
                                     stun = 1;
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 }
                                 break;
                             case PALADÍN:
                                 if (numeroAleatorioEspecial > calculo) {
                                     System.out.println("La habilidad falló");
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 } else if (numeroAleatorioEspecial <= calculo) {
                                     valiente.usarHabilidadEspecial(monstruo);
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 }
                                 break;
                             case EXPLORADOR:
 
                                 valiente.usarHabilidadEspecial(monstruo);
                                 contadorEspecial = 3;
+                                noHayPlanta=false;
                                 break;
                             case MAGO:
                                 if (numeroAleatorioEspecial > calculo) {
                                     System.out.println("La habilidad falló");
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 } else if (numeroAleatorioEspecial <= calculo) {
                                     valiente.usarHabilidadEspecial(monstruo);
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 }
 
                                 break;
@@ -162,9 +171,11 @@ public class Combate implements CombateInterface {
                                 if (numeroAleatorioEspecial > calculo) {
                                     System.out.println("La habilidad falló");
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 } else if (numeroAleatorioEspecial <= calculo) {
                                     valiente.usarHabilidadEspecial(monstruo);
                                     contadorEspecial = 3;
+                                    noHayPlanta=false;
                                 }
                                 break;
 
@@ -177,13 +188,17 @@ public class Combate implements CombateInterface {
                             System.out.println("Tu vida esta al maximo, no puedes usar el objeto");
                             noHayPlanta=true;
                         } else if (inventario.hayPlanta("Planta curativa") == true) {
+                            
+                            Objeto objeto = new PlantaCurativa(10);
+                            objeto.usar(valiente);  
+                            inventario.eliminarObjetoInventario(objeto.getnombre());
                             noHayPlanta=false;
-                            if(valiente.getVida()<=(valiente.getVidaMaxima()-25)){
+                            /*if(valiente.getVida()<=(valiente.getVidaMaxima()-25)){
                                 valiente.setVida(valiente.getVida()+25);
                                 
                             }else{
                                 valiente.setVida(valiente.getVidaMaxima());
-                            }
+                            }*/
                         } else {
                             System.out.println("No hay planta curativa, escoge otra opcion");
                             noHayPlanta=true;
@@ -198,7 +213,7 @@ public class Combate implements CombateInterface {
 
     @Override
     public void combateTerminado(Valiente valiente, Monstruo monstruo) {
-        if (tieneExito == true) {
+        if (tieneExito == false) {
             //si el valiente ha ganado te sale victoria y la mejora de estadisticas
             System.out.println("╔════════════════════════════════════════════════╗");
             System.out.println("║              Fin del combate             ║");
@@ -213,7 +228,7 @@ public class Combate implements CombateInterface {
             System.out.println("Tu habilidad es: " + valiente.getHabilidad());
             System.out.println("Tu velocidad es: " + valiente.getVelocidad());
 
-        } else {
+        } else if(tieneExito==true){
             //si el valiente pierde te pone has perdido
             System.out.println("╔════════════════════════════════════════════════╗");
             System.out.println("║              Fin del combate             ║");
@@ -234,21 +249,24 @@ public class Combate implements CombateInterface {
         System.out.println("╔════════════════════════════════════════════════╗");
         System.out.println("║            Comienza el combate           ║");
         System.out.println("╚════════════════════════════════════════════════╝");
+        System.out.println(monstruo.getNivel());
         do {
             double iniciativa_Monstruo;
             double iniciativa_Valiente;
-
+            
             double numeroAleatorio = 0.75 + random.nextDouble() * (1 - 0.75);
             iniciativa_Valiente = valiente.getVelocidad() * numeroAleatorio;
             iniciativa_Monstruo = monstruo.getVelocidad() * numeroAleatorio;
+            
             //dependiendo de la iniciativa ataca uno u otro y dentro estan los turnos de los dos poniendo el orden a 1 o a 0 para que cuando se llame al turno, ataqueel que 
             //queramos que ataque
             if (iniciativa_Monstruo > iniciativa_Valiente) {
                 this.orden = 0;
                 System.out.println("Turno del rival");
                 turno(valiente, monstruo);
-                if (monstruo.getVida() == 0) {
+                if (valiente.getVida() <= 0) {
                     //aqui pongo otro if para que si en el turno primero alguien muere, que no empiece el turno del segundo y pueda hacer daño o llegar a matar estando muerto
+                    combateTerminado(valiente, monstruo);
                 } else {
                     System.out.println("Es tu turno");
                     this.orden = 1;
@@ -256,12 +274,14 @@ public class Combate implements CombateInterface {
                 }
 
                 
-            } else if (iniciativa_Valiente > iniciativa_Monstruo) {
+            } else if (iniciativa_Valiente >= iniciativa_Monstruo) {
                 this.orden = 1;
                 System.out.println("Es tu turno");
                 turno(valiente, monstruo);
-                if (valiente.getVida() == 0) {
-
+                if (monstruo.getVida() <= 0) {
+                    
+                    combateTerminado(valiente, monstruo);
+                    
                 } else {
                     System.out.println("Turno del rival");
                     this.orden = 0;
@@ -269,6 +289,7 @@ public class Combate implements CombateInterface {
                 }
 
                 
+            
             }
             //todo dentro de un do while mientras la vida de los 2 sea mayor que 0 y dependiendo quien haya ganado ponemos tieneexito en true o false para que el metodo de terminar combate lo gestione
         } while (valiente.getVida() > 0 && monstruo.getVida() > 0);

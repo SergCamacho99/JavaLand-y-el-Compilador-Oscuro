@@ -17,12 +17,17 @@ public class PlantaCurativa extends Consumible{
     }
     @Override
     public void usar(Valiente valiente){
+        /*if(valiente.getVida()>(valiente.getVidaMaxima()-10){
+        }else{
+        */
         valiente.setVida(valiente.getVida() + efecto);
-        System.out.print("Has usado una planta. vida recuperada");
+        System.out.print("Has usado una planta. Vida recuperada");
+        //}
     }
 
     @Override
     public void equipar() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
 }
