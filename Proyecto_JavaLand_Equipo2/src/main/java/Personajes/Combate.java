@@ -30,7 +30,7 @@ public class Combate implements CombateInterface {
     //en el constructor introducimos el inventario para poder usar la planta curativa e inicializo los atributos a lo que se necesita para empezar un combate
     public Combate(Inventario inventario) {
         this.inventario = inventario;
-        tieneExito = false;
+        this.tieneExito = false;
         orden = 0;
         contadorEspecial = 0;
         stun = 0;
@@ -213,7 +213,7 @@ public class Combate implements CombateInterface {
 
     @Override
     public void combateTerminado(Valiente valiente, Monstruo monstruo) {
-        if (tieneExito == false) {
+        if (tieneExito == true) {
             //si el valiente ha ganado te sale victoria y la mejora de estadisticas
             System.out.println("╔════════════════════════════════════════════════╗");
             System.out.println("║              Fin del combate             ║");
@@ -228,7 +228,7 @@ public class Combate implements CombateInterface {
             System.out.println("Tu habilidad es: " + valiente.getHabilidad());
             System.out.println("Tu velocidad es: " + valiente.getVelocidad());
 
-        } else if(tieneExito==true){
+        } else if(tieneExito==false){
             //si el valiente pierde te pone has perdido
             System.out.println("╔════════════════════════════════════════════════╗");
             System.out.println("║              Fin del combate             ║");
@@ -294,9 +294,9 @@ public class Combate implements CombateInterface {
             //todo dentro de un do while mientras la vida de los 2 sea mayor que 0 y dependiendo quien haya ganado ponemos tieneexito en true o false para que el metodo de terminar combate lo gestione
         } while (valiente.getVida() > 0 && monstruo.getVida() > 0);
         if (valiente.getVida() <= 0 && monstruo.getVida() > 0) {
-            tieneExito = false;
+            this.tieneExito = false;
         } else if (valiente.getVida() > 0 && monstruo.getVida() <= 0) {
-            tieneExito = true;
+            this.tieneExito = true;
         }
 
     }

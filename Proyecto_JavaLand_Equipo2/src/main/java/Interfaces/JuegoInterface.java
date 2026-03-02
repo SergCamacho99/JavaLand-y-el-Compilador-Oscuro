@@ -4,19 +4,21 @@
  */
 package interfaces;
 
+import Personajes.Valiente;
+
 /**
  *
  * @author dam125
  */
 public interface JuegoInterface {
     
-    public void IniciarJuego();
+    public void iniciarJuego();
     
     public void creacionOEleccionValiente();
     
     public void mostrarMenuPrincipal();
     
-    public void explorarMapa(char direccion);
+    public void explorarMapa(char direccion, Valiente v);
     
     public void mostrarEstadoJuego();
     
