@@ -57,6 +57,7 @@ public class Combate implements CombateInterface {
             } else if (numeroAleatorio < calculo) {
 
                 monstruo.atacar(valiente);
+                System.out.println(" "+monstruo.getNombre()+" nivel: "+monstruo.getNivel()+", fuerza: "+monstruo.getFuerza()+", defensa: "+monstruo.getDefensa()+", habilidad: "+monstruo.getHabilidad()+", velocidad: "+monstruo.getVelocidad());
 
             } else if (numeroAleatorio > calculo) {
 
