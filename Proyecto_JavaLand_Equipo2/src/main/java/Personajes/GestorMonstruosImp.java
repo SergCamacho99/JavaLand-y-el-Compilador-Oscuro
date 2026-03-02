@@ -7,6 +7,7 @@ package Personajes;
 import Personajes.Monstruo;
 import interfaces.GestoresInterface;
 import java.util.Random;
+import Mapa.Mapa;
 
 /**
 <<<<<<< Updated upstream
@@ -85,5 +86,6 @@ public class GestorMonstruosImp implements GestoresInterface {
     public int getContadorMonstruos() {
         return this.contadorMonstruos;
     }
+    
 
 }

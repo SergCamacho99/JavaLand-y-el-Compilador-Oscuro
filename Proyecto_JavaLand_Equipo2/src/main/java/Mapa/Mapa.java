@@ -43,21 +43,24 @@ public class Mapa {
     private int y = 1;
     private Random random = new Random();
 
+//Constructor de mapa con los parámetros para poder inicializarlo.
     public Mapa(Valiente v, Inventario inventario) {
         this.inventario = inventario;
         this.valiente = v;
+
         inicializarMapa();
         colocarEnemigos(15);
         colocarCofres(10);
         colocarObstaculos(15);
-        this.compiladorOscuro = new CompiladorOscuro(12, 12);
-        mapaReal[compiladorOscuro.getX() - 1][compiladorOscuro.getY() - 1] = '☠';
+        mapaReal[11][11] = '☠';
+
         actualizarMapaVisible();
     }
 
     public void inicializarMapa() {
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 12; j++) {
+                //Ambos mapas, uno te muestra lo que hay dentro de las casillas y el otro es la niebla de guerra.
                 mapaReal[i][j] = ' ';
                 mapaVisible[i][j] = '░';
             }
@@ -66,17 +69,14 @@ public class Mapa {
 
     public void colocarEnemigos(int cantidad) {
 
-        //GestorMonstruosImp monstruo = new GestorMonstruosImp();
-        //monstruo.generarMonstruos(x)
-        //int nivelMonstruo = monstruos.
         int colocados = 0;
         while (colocados < cantidad) {
             int fila = random.nextInt(12);
             int columna = random.nextInt(12);
             if (mapaReal[fila][columna] == ' ' && !(fila == x && columna == y)) {
                 mapaReal[fila][columna] = '☻';
+                colocados++;
             }
-            colocados++;
         }
     }
 
@@ -166,9 +166,12 @@ public class Mapa {
             }
             if (mapaReal[nuevaX][nuevaY] == '☠') {
                 System.out.println("¡Te enfrentas al Compilador Oscuro!");
+                //El compilador está colocador en la última casilla con -1, -1.
+                CompiladorOscuro BossFinal = new CompiladorOscuro(12, 12, monstruos.getContadorMonstruos());
                 Combate combate = new Combate(inventario);
-                combate.iniciarCombate(valiente, monstruo);
-                mapaReal[nuevaX][nuevaY] = ' '; 
+                combate.iniciarCombate(valiente, BossFinal);
+                
+                mapaReal[nuevaX][nuevaY] = ' ';
             }
             x = nuevaX;
             y = nuevaY;

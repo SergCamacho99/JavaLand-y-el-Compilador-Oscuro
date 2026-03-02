@@ -10,27 +10,23 @@ import Personajes.Monstruo;
  *
  * @author DAM119
  */
-public class CompiladorOscuro //extends Monstruo
-{
-
-    private int vida;
-    private int fuerza;
-    private int defensa;
-    private int habilidad;
-    private int velocidad;
+public class CompiladorOscuro extends Monstruo {
 
     private int x;
     private int y;
 
-    public CompiladorOscuro(int n, int m) {
-        this.vida = 150;
-        this.fuerza = 3*15;
-        this.defensa = 3*15;
-        this.habilidad = 3*15;
-        this.velocidad = 3*15;
+    public CompiladorOscuro(int n, int m, int cantidadMonstruos) {
+        super("Compilador Oscuro", 1);
 
         this.x = n;
         this.y = m;
+        int estadistica = 3 * cantidadMonstruos;
+        
+        setVida(150);
+        setFuerza(estadistica);
+        setDefensa(estadistica);
+        setHabilidad(estadistica);
+        setVelocidad(estadistica);
     }
 
     public int getX() {
