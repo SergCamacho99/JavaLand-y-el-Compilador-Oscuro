@@ -4,13 +4,13 @@
  */
 package interfaces;
 
-import Personajes.Valiente;
-import Objetos.Objeto;
-
 /**
  *
  * @author dam125
  */
+
+import Personajes.Valiente;
+import Objetos.Objeto;
 
 public interface MapaInterface {
 

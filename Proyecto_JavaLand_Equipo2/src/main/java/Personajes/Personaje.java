@@ -42,21 +42,21 @@ public abstract class Personaje {
             throw new IllegalArgumentException("Error, la vida es 0");
         }
         this.vida = vida;
-        if (fuerza < 1) {
+        if (fuerza < 0) {
             throw new IllegalArgumentException("Error, la fuerza está fuera del rango (1-20)");
         }
         this.fuerza = fuerza;
-        if (defensa < 1 || defensa > 20) {
+        if (defensa < 0 || defensa > 20) {
             throw new IllegalArgumentException("Error, la defensa está fuera del rango (1-20)");
 
         }
         this.defensa = defensa;
-        if (habilidad < 1 || habilidad > 20) {
+        if (habilidad < 0) {
             throw new IllegalArgumentException("Error, la habilidad está fuera del rango (1-20)");
 
         }
         this.habilidad = habilidad;
-        if (velocidad < 1 || velocidad > 20) {
+        if (velocidad < 0) {
             throw new IllegalArgumentException("Error, la velocidad está fuera del rango (1-20)");
         }
         this.velocidad = velocidad;

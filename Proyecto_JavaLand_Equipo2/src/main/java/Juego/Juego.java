@@ -5,8 +5,6 @@
 package Juego;
 
 import Objetos.Objeto;
-import Objetos.Arma;
-import Objetos.Consumible;
 import Objetos.Espada;
 import Objetos.PlantaCurativa;
 import Objetos.Inventario;
@@ -27,10 +25,9 @@ public class Juego implements JuegoInterface {
     Mapa map;
     Inventario inventario;
     Scanner teclado = new Scanner(System.in);
-    Objeto obj = new Espada(15);
 
     @Override
-    public void IniciarJuego() {
+    public void iniciarJuego() {
 
         creacionOEleccionValiente();
 
@@ -77,8 +74,6 @@ public class Juego implements JuegoInterface {
                     gvi.crearValientesIniciales();
                     Valiente inicial = gvi.getListaValientes()[0];
                     this.inventario = new Inventario();
-                    Objeto obj = new PlantaCurativa(10);
-                    inventario.agregarObjeto(obj);
                     this.map = new Mapa(inicial, this.inventario);
                     jugar(inicial, this.inventario);
                 }
@@ -135,12 +130,13 @@ public class Juego implements JuegoInterface {
     }
 
     @Override
-    public void explorarMapa(char direccion) {
+    public void explorarMapa(char direccion, Valiente v) {
 
         map.moverPersonaje(direccion);
         map.actualizarMapaVisible();
-        map.mostrarMapa();
-
+        if (v.getVida() > 0) {
+            map.mostrarMapa();
+        }
     }
 
     @Override
@@ -173,7 +169,7 @@ public class Juego implements JuegoInterface {
     }
 
     public void jugar(Valiente v, Inventario inventario) {
-        
+
         boolean terminar = false;
         map.mostrarMapa();
         while (!terminar) {
@@ -182,7 +178,7 @@ public class Juego implements JuegoInterface {
 
             switch (direccion) {
                 case 'w', 'a', 's', 'd' -> {
-                    explorarMapa(direccion);
+                    explorarMapa(direccion, v);
                 }
                 case 'j' -> {
                     mostrarValiente(v, inventario);
@@ -191,17 +187,19 @@ public class Juego implements JuegoInterface {
                 case 'k' -> {
                     boolean salir = false;
                     inventario.mostrarInventario();
-                    while (!salir ) {
-                        
+                    while (!salir) {
+
                         if (salir) {
                             map.mostrarMapa();
-                        } else if (!salir && inventario.getCantidad() != 0){
+                        } else if (!salir && inventario.getCantidad() != 0) {
                             System.out.println("Que objeto quieres usar? 9. para salir");
                             int eleccion = teclado.nextInt();
                             inventario.seleccionarObjeto(eleccion, v);
-                            map.mostrarMapa();
+                            if (v.getVida() > 0) {
+                                map.mostrarMapa();
+                            }
                             salir = true;
-                        } else if (inventario.getCantidad() == 0){
+                        } else if (inventario.getCantidad() == 0) {
                             System.out.println("El inventario esta vacio, no hay nada que te pueda ayudar.");
                             salir = true;
                             map.mostrarMapa();
@@ -228,7 +226,14 @@ public class Juego implements JuegoInterface {
             if (terminar){
                 creacionOEleccionValiente();
             }
+
+            if (v.getVida() <= 0) {
+                terminar = true;
+
+            }
+
         }
+
     }
 
     private void mostrarValiente(Valiente v, Inventario inventario) {
@@ -236,26 +241,38 @@ public class Juego implements JuegoInterface {
         System.out.println("        +--------------------------------------------+");
         System.out.println("        |               ESTADISTICAS                 |");
         System.out.println("        |                                            |");
-        System.out.println("        |  Nombre: " + v.getNombre() + "                 |");
+
+        System.out.printf("        |  Nombre: %-33s |\n", v.getNombre());
         System.out.println("        |                                            |");
-        System.out.println("        |  Nivel:  " + v.getNivel() + "                  |");
+        System.out.printf("        |  Tipo: %-33s |\n", v.getTipo());
         System.out.println("        |                                            |");
-        System.out.println("        |  Fuerza: " + v.getFuerza() + "                 |");
+        System.out.printf("        |  Nivel: %-34d |\n", v.getNivel());
         System.out.println("        |                                            |");
-        System.out.println("        |  Defensa: " + v.getDefensa() + "               |");
+
+        System.out.printf("        |  Fuerza: %-33d |\n", v.getFuerza());
         System.out.println("        |                                            |");
-        System.out.println("        |  Velocidad: " + v.getVelocidad() + "           |");
+
+        System.out.printf("        |  Defensa: %-32d |\n", v.getDefensa());
         System.out.println("        |                                            |");
-        System.out.println("        |  Habilidad: " + v.getHabilidad() + "           |");
+
+        System.out.printf("        |  Velocidad: %-30d |\n", v.getVelocidad());
         System.out.println("        |                                            |");
-        System.out.println("        |  Vida: " + v.getVida() + "             |");
+
+        System.out.printf("        |  Habilidad: %-30d |\n", v.getHabilidad());
         System.out.println("        |                                            |");
-        System.out.println("        |  Espada: "+ v.getArma()+"                                          |");
+
+        System.out.printf("        |  Vida: %-35d |\n", v.getVida());
         System.out.println("        |                                            |");
-        System.out.println("        |  Escudo: "+v.getEscudo()+ "                                          |");
+
+        System.out.printf("        |  Espada: %-33s |\n", v.getArma());
         System.out.println("        |                                            |");
-        System.out.println("        |--------------------------------------------|");
+
+        System.out.printf("        |  Escudo: %-33s |\n", v.getEscudo());
+        System.out.println("        |                                            |");
+
+        System.out.println("        +--------------------------------------------+");
         System.out.println();
+
         inventario.mostrarInventario();
 
     }

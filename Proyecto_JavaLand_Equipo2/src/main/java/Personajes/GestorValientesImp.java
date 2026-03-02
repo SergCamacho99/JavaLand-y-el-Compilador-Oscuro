@@ -28,10 +28,10 @@ public class GestorValientesImp implements GestoresInterface {
     @Override
     public void crearValientesIniciales() {
         listaValientes = new Valiente[4];
-        listaValientes[0] = new Valiente("Ragnar", TipoClase.GUERRERO, 15, 10, 8, 7);
-        listaValientes[1] = new Valiente("Elena", TipoClase.PALADÍN, 8, 15, 7, 10);
-        listaValientes[2] = new Valiente("Aris", TipoClase.MAGO, 7, 8, 15, 10);
-        listaValientes[3] = new Valiente("Loki", TipoClase.PÍCARO, 8, 7, 10, 15);
+        listaValientes[0] = new Valiente("THORFINN", TipoClase.GUERRERO, 15, 15, 10, 10);
+        listaValientes[1] = new Valiente("SOLAIRE", TipoClase.PALADÍN, 8, 15, 7, 10);
+        listaValientes[2] = new Valiente("DYNAMO", TipoClase.MAGO, 7, 8, 15, 10);
+        listaValientes[3] = new Valiente("YUFFIE", TipoClase.PÍCARO, 8, 7, 10, 15);
         System.out.println("Valientes iniciales creados");
     }
 
