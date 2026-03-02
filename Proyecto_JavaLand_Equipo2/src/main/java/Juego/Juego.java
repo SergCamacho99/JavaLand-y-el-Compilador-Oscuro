@@ -215,8 +215,19 @@ public class Juego implements JuegoInterface {
                 default -> {
 
                 }
+                
+                
+                
             }
-
+            
+            if (v.getVida() <= 0){
+            
+            System.out.println("Vida agotada. Has perdido");
+            terminar = true;
+        }
+            if (terminar){
+                creacionOEleccionValiente();
+            }
         }
     }
 
