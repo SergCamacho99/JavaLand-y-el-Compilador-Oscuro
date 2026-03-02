@@ -53,6 +53,8 @@ public class Combate implements CombateInterface {
             calculo = 4 * monstruo.getHabilidad() - (valiente.getDefensaTotal()); //
             if (numeroAleatorio < calculo && stun == 1) {
                 System.out.println("El monstruo no puede atacar, está estuneado");
+                                System.out.println(" "+monstruo.getNombre()+" nivel: "+monstruo.getNivel()+", fuerza: "+monstruo.getFuerza()+", defensa: "+monstruo.getDefensa()+", habilidad: "+monstruo.getHabilidad()+", velocidad: "+monstruo.getVelocidad());
+
                 stun = 0;
             } else if (numeroAleatorio < calculo) {
 
@@ -62,8 +64,12 @@ public class Combate implements CombateInterface {
             } else if (numeroAleatorio > calculo) {
 
                 System.out.println("El ataque ha fallado");
+                                System.out.println(" "+monstruo.getNombre()+" nivel: "+monstruo.getNivel()+", fuerza: "+monstruo.getFuerza()+", defensa: "+monstruo.getDefensa()+", habilidad: "+monstruo.getHabilidad()+", velocidad: "+monstruo.getVelocidad());
+
             } else if (numeroAleatorio == calculo) {
                 System.out.println("El ataque ha fallado");
+                                System.out.println(" "+monstruo.getNombre()+" nivel: "+monstruo.getNivel()+", fuerza: "+monstruo.getFuerza()+", defensa: "+monstruo.getDefensa()+", habilidad: "+monstruo.getHabilidad()+", velocidad: "+monstruo.getVelocidad());
+
             }
         } else if (this.orden == 1) {
             //aqui es lo que pasa en el turno del valiente
