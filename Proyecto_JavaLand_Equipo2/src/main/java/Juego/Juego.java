@@ -25,7 +25,6 @@ public class Juego implements JuegoInterface {
     Mapa map;
     Inventario inventario;
     Scanner teclado = new Scanner(System.in);
-    Objeto obj = new Espada(15);
 
     @Override
     public void iniciarJuego() {
@@ -75,7 +74,6 @@ public class Juego implements JuegoInterface {
                     gvi.crearValientesIniciales();
                     Valiente inicial = gvi.getListaValientes()[0];
                     this.inventario = new Inventario();
-                    inventario.agregarObjeto(obj);
                     this.map = new Mapa(inicial, this.inventario);
                     jugar(inicial, this.inventario);
                 }
@@ -143,7 +141,7 @@ public class Juego implements JuegoInterface {
 
     @Override
     public void mostrarEstadoJuego() {
-        
+
     }
 
     private void mostrarMenuInicio() {
@@ -234,7 +232,8 @@ public class Juego implements JuegoInterface {
 
         System.out.printf("        |  Nombre: %-33s |\n", v.getNombre());
         System.out.println("        |                                            |");
-
+        System.out.printf("        |  Tipo: %-33s |\n", v.getTipo());
+        System.out.println("        |                                            |");
         System.out.printf("        |  Nivel: %-34d |\n", v.getNivel());
         System.out.println("        |                                            |");
 
