@@ -211,11 +211,12 @@ public class Combate implements CombateInterface {
                     //if (valiente.getVida() == valiente.getVidaMaxima()) {
                       //  System.out.println("Tu vida esta al maximo, no puedes usar el objeto");
                         //noHayPlanta = true;
-                    /*} else*/ if (inventario.hayPlanta("Planta curativa") == true && valiente.getVida()<=(valiente.getVidaMaxima()-(valiente.getVidaMaxima()/4))) {
+                    /*} else*/ if (inventario.hayPlanta("Planta curativa") == true && valiente.getVida()<=(valiente.getVidaMaxima()*0.75)) {
 
                         Objeto objeto = new PlantaCurativa(valiente.getVidaMaxima()/4);
                         objeto.usar(valiente);
                         inventario.eliminarObjetoInventario(objeto.getnombre());
+                        System.out.println("Te has curado"+valiente.getVidaMaxima()*0.75+" de vida, tu vida actual es: "+valiente.getVida());
                         
                         
                         /*if(valiente.getVida()<=(valiente.getVidaMaxima()-25)){
@@ -230,9 +231,10 @@ public class Combate implements CombateInterface {
                     }*/
                     //esto es nuevo
                     }else{
-                        Objeto objeto = new PlantaCurativa(10);
+                        Objeto objeto = new PlantaCurativa(valiente.getVidaMaxima()/4);
                         valiente.setVida(valiente.getVidaMaxima());
                         inventario.eliminarObjetoInventario(objeto.getnombre());
+                        System.out.println("Te has curado, tu vida esta al maximo");
                         
                     }
                     break;
