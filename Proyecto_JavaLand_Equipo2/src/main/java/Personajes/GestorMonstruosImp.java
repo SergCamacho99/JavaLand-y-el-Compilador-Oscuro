@@ -10,15 +10,9 @@ import java.util.Random;
 import Mapa.Mapa;
 
 /**
-<<<<<<< Updated upstream
- *
  * Implementación de la clase para gestionar los monstruos . Esta clase se
  * encarga de generar monstruos según el nivel del jugador y llevar un conteo de
  * cuántos monstruos se han creado
- *
-=======
- * 
->>>>>>> Stashed changes
  * @author Leila
  */
 public class GestorMonstruosImp implements GestoresInterface {
@@ -75,7 +69,7 @@ public class GestorMonstruosImp implements GestoresInterface {
      */
     @Override
     public void eliminarMonstruo(Monstruo m) {
-        System.out.println("El monstruo " + m.getNombre() + " ha sido eliminado y desaparece del mapa");
+        System.out.println("El monstruo " + m.getNombre() + " de nivel " + m.getNivel() + " ha sido eliminado y desaparece del mapa");
     }
 
     /**

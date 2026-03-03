@@ -10,7 +10,6 @@ import interfaces.PersonajesInterface;
  * Clase que representa a un Monstruo dentro del juego Extiende de Personaje e
  * implementa PersonajesInterface Los monstruos tienen estadísticas que escalan
  * automáticamente según su nivel
- *
  * @author Leila
  */
 public class Monstruo extends Personaje implements PersonajesInterface {

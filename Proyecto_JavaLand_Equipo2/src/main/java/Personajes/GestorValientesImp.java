@@ -8,11 +8,9 @@ import Enumerados.TipoClase;
 import interfaces.GestoresInterface;
 
 /**
- *
  * Implementación de la clase para gestionar los valientes. Esta clase se
  * encarga de crear y administrar los personajes jugables que estarán
  * disponibles en el juego
- *
  * @author Leila
  */
 public class GestorValientesImp implements GestoresInterface {

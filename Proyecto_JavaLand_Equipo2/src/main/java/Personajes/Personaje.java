@@ -8,7 +8,6 @@ package Personajes;
  * Clase abstracta que representa un personaje genérico dentro del juego Sirve
  * como base para Valientes y Monstruos Contiene atributos comunes y métodos que
  * deben implementar las subclases
- *
  * @author Leila
  */
 public abstract class Personaje {

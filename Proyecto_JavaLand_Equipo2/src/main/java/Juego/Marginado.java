@@ -29,7 +29,7 @@ public class Marginado extends Valiente{
         
 
         while (puntosRestantes > 0) {
-//anadir que pasa si eleccion es menor que 1 o mayor que 4
+//añadir que pasa si eleccion es menor que 1 o mayor que 4
             int eleccion = 0;
             System.out.println("Elige en que quieres invertir tus puntos: (Puntos restantes " + puntosRestantes + ")");
             System.out.println("1. Fuerza");

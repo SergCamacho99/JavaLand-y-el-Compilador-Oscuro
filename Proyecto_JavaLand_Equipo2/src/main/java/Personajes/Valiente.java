@@ -15,7 +15,6 @@ import java.util.Scanner;
  * Clase que representa a un Valiente Extiende de Personaje e implementa
  * PersonajesInterface Cada valiente tiene una clase (GUERRERO, MAGO, etc.) y
  * puede usar armas, escudos y habilidades especiales.
- *
  * @author dam125
  */
 public class Valiente extends Personaje implements PersonajesInterface {
