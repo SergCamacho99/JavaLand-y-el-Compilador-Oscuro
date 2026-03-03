@@ -5,7 +5,6 @@
 package Mapa;
 
 import Objetos.Arma;
-import Objetos.Consumible;
 import Objetos.Escudo;
 import Objetos.Espada;
 import Objetos.Inventario;
@@ -16,9 +15,6 @@ import Personajes.GestorMonstruosImp;
 import Personajes.GestorValientesImp;
 import Personajes.Monstruo;
 import Personajes.Valiente;
-import interfaces.CombateInterface;
-import interfaces.JuegoInterface;
-import interfaces.ObjetoInterface;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -57,6 +53,10 @@ public class Mapa {
         actualizarMapaVisible();
     }
 
+    /**
+     * Autor: Sergio C
+     * Inicializa el juego con ambos mapas, el real es donde se encuentran los enemigos, cofres y muros, el otro muestra la niebla de guerra.
+     */
     public void inicializarMapa() {
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 12; j++) {
@@ -67,6 +67,10 @@ public class Mapa {
         }
     }
 
+    /**
+     * Autor: Sergio C
+     * Con random coloca los enemigos y dibuja el símbolo que los representa.
+     */
     public void colocarEnemigos(int cantidad) {
 
         int colocados = 0;
@@ -80,6 +84,10 @@ public class Mapa {
         }
     }
 
+    /**
+     * Autor: Sergio C
+     * Con random colocas los cofres y dibuja el símbolo.
+     */
     public void colocarCofres(int cantidad) {
         int colocados = 0;
         while (colocados < cantidad) {
@@ -92,6 +100,10 @@ public class Mapa {
         }
     }
 
+    /**
+     * Autor: Sergio C
+     * Con random colocas los obstáculos y dibuja el símbolo.
+     */
     public void colocarObstaculos(int cantidad) {
         int colocados = 0;
         while (colocados < cantidad) {
@@ -104,6 +116,12 @@ public class Mapa {
         }
     }
 
+    /**
+     * Autor: Sergio C
+     * Este método contiene el símbolo que representa al jugador, a sus lados, despeja la niebla de guerra 
+     * de las casillas adyacentes de manera perpendicular del ,apa Visible y muestra el mapa real.
+     * Se utilizan las coordenadas con X e Y dependiendo de donde se encuentre el símbolo del jugador.
+     */
     public void actualizarMapaVisible() {
 
         for (int i = 0; i < 12; i++) {
@@ -130,6 +148,13 @@ public class Mapa {
 
     }
 
+    /**
+     * Autor: Sergio C
+     * Con un switch leemos la tecla y con cada una hace que el personaje se mueva a la coordenada correspondiente.
+     * Dentro de este mismo método está puesta la limitación para que el personaje no pueda atravesar los muros del mapa y las diferentes interacciones con el entorno.
+     * Si entramos en la casilla de enemigo, hace que comience el combate llamando al método correspondiente y lo mismo con los cofres. Ambas cosas tras terminar el evento
+     * asignado, hace que desaparezcan del mapa.
+     */
     public void moverPersonaje(char direccion) {
 
         int nuevaX = x;
@@ -170,7 +195,7 @@ public class Mapa {
                 CompiladorOscuro BossFinal = new CompiladorOscuro(12, 12, monstruos.getContadorMonstruos());
                 Combate combate = new Combate(inventario);
                 combate.iniciarCombate(valiente, BossFinal);
-                
+
                 mapaReal[nuevaX][nuevaY] = ' ';
             }
             x = nuevaX;
@@ -180,6 +205,9 @@ public class Mapa {
         }
     }
 
+    /**
+     * Autor: Sergio C y David
+     */
     public void mostrarMapa() {
         for (int i = 0; i < 12; i++) {
             System.out.println();
@@ -195,6 +223,9 @@ public class Mapa {
         System.out.println("╚═══════════════════════════════════════════════════════════════╝");
     }
 
+    /**
+     * Autor: David
+     */
     private void crearObjetoAleatorio(Inventario inventario) {
 
         int objetoAleatorio = (int) random.nextInt(3);

@@ -51,24 +51,24 @@ public class Combate implements CombateInterface {
             //y dependiendo del numero aleatorio ataca o falla
             numeroAleatorio = random.nextInt(101);
             calculo = 4 * monstruo.getHabilidad() - (valiente.getDefensaTotal()); //
-            if (numeroAleatorio < calculo && stun == 1) {
+            if ( stun == 1) {
                 System.out.println("El monstruo no puede atacar, está estuneado");
-                System.out.println(" " + monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
+                System.out.println(monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
 
                 stun = 0;
             } else if (numeroAleatorio < calculo) {
 
                 monstruo.atacar(valiente);
-                System.out.println(" " + monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
+                System.out.println(monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
 
             } else if (numeroAleatorio > calculo) {
 
                 System.out.println("El ataque ha fallado");
-                System.out.println(" " + monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
+                System.out.println(monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
 
             } else if (numeroAleatorio == calculo) {
                 System.out.println("El ataque ha fallado");
-                System.out.println(" " + monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
+                System.out.println(monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
 
             }
         } else if (this.orden == 1) {
@@ -211,11 +211,12 @@ public class Combate implements CombateInterface {
                     //if (valiente.getVida() == valiente.getVidaMaxima()) {
                       //  System.out.println("Tu vida esta al maximo, no puedes usar el objeto");
                         //noHayPlanta = true;
-                    /*} else*/ if (inventario.hayPlanta("Planta curativa") == true && valiente.getVida()<=(valiente.getVidaMaxima()-(valiente.getVidaMaxima()/4))) {
+                    /*} else*/ if (inventario.hayPlanta("Planta curativa") == true && valiente.getVida()<=(valiente.getVidaMaxima()*0.75)) {
 
-                        Objeto objeto = new PlantaCurativa(10);
+                        Objeto objeto = new PlantaCurativa(valiente.getVidaMaxima()/4);
                         objeto.usar(valiente);
                         inventario.eliminarObjetoInventario(objeto.getnombre());
+                        System.out.println("Te has curado"+valiente.getVidaMaxima()*0.75+" de vida, tu vida actual es: "+valiente.getVida());
                         
                         
                         /*if(valiente.getVida()<=(valiente.getVidaMaxima()-25)){
@@ -230,9 +231,10 @@ public class Combate implements CombateInterface {
                     }*/
                     //esto es nuevo
                     }else{
-                        Objeto objeto = new PlantaCurativa(10);
+                        Objeto objeto = new PlantaCurativa(valiente.getVidaMaxima()/4);
                         valiente.setVida(valiente.getVidaMaxima());
                         inventario.eliminarObjetoInventario(objeto.getnombre());
+                        System.out.println("Te has curado, tu vida esta al maximo");
                         
                     }
                     break;
