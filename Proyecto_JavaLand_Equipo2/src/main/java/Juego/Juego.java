@@ -279,10 +279,10 @@ public class Juego implements JuegoInterface {
         System.out.printf("        |  Vida actual: %-35d |\n", v.getVida());
         System.out.println("        |                                            |");
 
-        System.out.printf("        |  Espada: %-33s |\n", v.getArma());
+        System.out.printf("        |  Espada: %-33s |\n", v.getValorArma());
         System.out.println("        |                                            |");
 
-        System.out.printf("        |  Escudo: %-33s |\n", v.getEscudo());
+        System.out.printf("        |  Escudo: %-33s |\n", v.getValorEscudo());
         System.out.println("        |                                            |");
 
         System.out.println("        +--------------------------------------------+");

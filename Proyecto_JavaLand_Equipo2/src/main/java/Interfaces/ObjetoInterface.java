@@ -4,12 +4,15 @@
  */
 package interfaces;
 
+import Objetos.Objeto;
+import Personajes.Valiente;
+
 /**
  *
  * @author dam125
  */
 public interface ObjetoInterface {
     
-    public void equipar();
+    public void equipar(Valiente valiente, Objeto objeto);
     
 }
