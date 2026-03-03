@@ -181,7 +181,20 @@ public class Juego implements JuegoInterface {
                     explorarMapa(direccion, v);
                 }
                 case 'j' -> {
+                    boolean salir = false;
+                    while (!salir){
                     mostrarValiente(v, inventario);
+                        System.out.println("Para salir del inventario pulse 0.");
+                        int salida = teclado.nextInt();
+                        
+                        if (salida == 0){
+                            
+                            salir = true;
+                            System.out.println("Saliendo del menu....");
+                        } else if (salida != 0){
+                            System.out.println("Por favor pulse 0 para salir.") ;
+                        }
+                    }
                     map.mostrarMapa();
                 }
                 case 'k' -> {
@@ -214,7 +227,7 @@ public class Juego implements JuegoInterface {
 
                 }
                 
-                
+               
                 
             }
             

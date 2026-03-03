@@ -5,7 +5,6 @@ Objetos\Escudo.class
 Personajes\GestorMonstruosImp.class
 interfaces\ObjetoInterface.class
 Personajes\VidaMaximoException.class
-Juego\CompiladorOscuro.class
 Objetos\Arma.class
 Objetos\Inventario.class
 interfaces\MapaInterface.class
