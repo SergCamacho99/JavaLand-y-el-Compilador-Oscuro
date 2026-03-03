@@ -60,9 +60,14 @@ public class Inventario {
         for (int i = 0; i< cantidad ; i++){
                 
                 if (Objetos[i].getnombre().equalsIgnoreCase(nombre)) {
-                Objetos[i].usar(valiente);
-                System.out.println("Objeto usado");
-                return;
+                    if(valiente.getVida()==valiente.getVidaMaxima()){
+                        System.out.println("Tu vida esta al maximo, no puedes usar el objeto");
+                    }else{
+                        Objetos[i].usar(valiente);
+                        System.out.println("Objeto usado");
+                        return;
+                    }
+                
             }
         }
         System.out.println("No tienes ese objeto");
