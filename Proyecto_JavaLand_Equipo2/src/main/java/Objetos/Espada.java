@@ -17,13 +17,14 @@ public class Espada extends Arma {
 
 @Override
     public void usar(Valiente valiente){
-    valiente.setFuerza(valiente.getFuerza() + valor);
-   System.out.println("Equipaste una espada. Fuerza aumentada");
+    
 }
 
     @Override
-    public void equipar() {
+    public void equipar(Valiente valiente, Objeto objeto) {
        
+        valiente.setArma((Arma) objeto);
+        
     }
 }
     

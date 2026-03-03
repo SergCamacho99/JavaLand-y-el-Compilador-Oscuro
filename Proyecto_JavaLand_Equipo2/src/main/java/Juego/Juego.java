@@ -273,14 +273,16 @@ public class Juego implements JuegoInterface {
 
         System.out.printf("        |  Habilidad: %-30d |\n", v.getHabilidad());
         System.out.println("        |                                            |");
-
-        System.out.printf("        |  Vida: %-35d |\n", v.getVida());
+        System.out.printf("        |  Vida maxima: %-35d |\n", v.getVidaMaxima());
         System.out.println("        |                                            |");
 
-        System.out.printf("        |  Espada: %-33s |\n", v.getArma());
+        System.out.printf("        |  Vida actual: %-35d |\n", v.getVida());
         System.out.println("        |                                            |");
 
-        System.out.printf("        |  Escudo: %-33s |\n", v.getEscudo());
+        System.out.printf("        |  Espada: %-33s |\n", v.getValorArma());
+        System.out.println("        |                                            |");
+
+        System.out.printf("        |  Escudo: %-33s |\n", v.getValorEscudo());
         System.out.println("        |                                            |");
 
         System.out.println("        +--------------------------------------------+");
