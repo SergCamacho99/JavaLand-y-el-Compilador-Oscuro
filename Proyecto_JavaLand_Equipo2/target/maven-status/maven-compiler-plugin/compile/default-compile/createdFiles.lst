@@ -4,6 +4,7 @@ Juego\Juego.class
 Objetos\Escudo.class
 Personajes\GestorMonstruosImp.class
 interfaces\ObjetoInterface.class
+Personajes\VidaMaximoException.class
 Juego\CompiladorOscuro.class
 Objetos\Arma.class
 Objetos\Inventario.class
@@ -19,6 +20,7 @@ Personajes\Personaje.class
 Enumerados\TipoClase.class
 interfaces\InventarioInterface.class
 Personajes\Combate$1.class
+Personajes\NoHayPlantaException.class
 Personajes\Monstruo.class
 Personajes\Combate.class
 Objetos\PlantaCurativa.class

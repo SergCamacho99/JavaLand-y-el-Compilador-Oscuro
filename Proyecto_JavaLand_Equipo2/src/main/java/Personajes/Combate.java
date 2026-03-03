@@ -36,7 +36,7 @@ public class Combate implements CombateInterface {
         orden = 0;
         contadorEspecial = 0;
         stun = 0;
-        noHayPlanta = false;
+        
     }
 
     @Override
@@ -53,22 +53,22 @@ public class Combate implements CombateInterface {
             calculo = 4 * monstruo.getHabilidad() - (valiente.getDefensaTotal()); //
             if (numeroAleatorio < calculo && stun == 1) {
                 System.out.println("El monstruo no puede atacar, está estuneado");
-                                System.out.println(" "+monstruo.getNombre()+" nivel: "+monstruo.getNivel()+", fuerza: "+monstruo.getFuerza()+", defensa: "+monstruo.getDefensa()+", habilidad: "+monstruo.getHabilidad()+", velocidad: "+monstruo.getVelocidad());
+                System.out.println(" " + monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
 
                 stun = 0;
             } else if (numeroAleatorio < calculo) {
 
                 monstruo.atacar(valiente);
-                System.out.println(" "+monstruo.getNombre()+" nivel: "+monstruo.getNivel()+", fuerza: "+monstruo.getFuerza()+", defensa: "+monstruo.getDefensa()+", habilidad: "+monstruo.getHabilidad()+", velocidad: "+monstruo.getVelocidad());
+                System.out.println(" " + monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
 
             } else if (numeroAleatorio > calculo) {
 
                 System.out.println("El ataque ha fallado");
-                                System.out.println(" "+monstruo.getNombre()+" nivel: "+monstruo.getNivel()+", fuerza: "+monstruo.getFuerza()+", defensa: "+monstruo.getDefensa()+", habilidad: "+monstruo.getHabilidad()+", velocidad: "+monstruo.getVelocidad());
+                System.out.println(" " + monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
 
             } else if (numeroAleatorio == calculo) {
                 System.out.println("El ataque ha fallado");
-                                System.out.println(" "+monstruo.getNombre()+" nivel: "+monstruo.getNivel()+", fuerza: "+monstruo.getFuerza()+", defensa: "+monstruo.getDefensa()+", habilidad: "+monstruo.getHabilidad()+", velocidad: "+monstruo.getVelocidad());
+                System.out.println(" " + monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
 
             }
         } else if (this.orden == 1) {
@@ -80,142 +80,158 @@ public class Combate implements CombateInterface {
             }
             //aqui tengo dos do while, el de dentro te hace que se repita el menu si no has introducido un numero valido con varios try catch para prevenir fallos
             //el de fuera es para que si escoges una opcion que no se puede usar(habilidad en cooldown o no tener planta curativa) que se repita el menusin pasar de turno
+
             do {
                 try {
-                    do {
+                    noHayPlanta=false;
+                    System.out.println("╔════════════════════════════════════════════════╗");
+                    System.out.println("║             Menu de acciones:            ║");
+                    System.out.println("║                                          ║");
+                    System.out.println("║ 1. Ataque normal                         ║");
+                    System.out.println("║                                          ║");
+                    System.out.println("║ 2. Ataque especial                       ║");
+                    System.out.println("║  (doble de posibilidades de acertar)     ║");
+                    System.out.println("║  (el explorador no puede fallar)         ║");
+                    System.out.println("║                                          ║");
+                    System.out.println("║ 3. Usar Planta curativa                  ║");
+                    System.out.println("║                                          ║");
+                    System.out.println("╚════════════════════════════════════════════════╝\n");
 
-                        System.out.println("╔════════════════════════════════════════════════╗");
-                        System.out.println("║             Menu de acciones:            ║");
-                        System.out.println("║                                          ║");
-                        System.out.println("║ 1. Ataque normal                         ║");
-                        System.out.println("║                                          ║");
-                        System.out.println("║ 2. Ataque especial                       ║");
-                        System.out.println("║  (doble de posibilidades de acertar)     ║");
-                        System.out.println("║  (el explorador no puede fallar)         ║");
-                        System.out.println("║                                          ║");
-                        System.out.println("║ 3. Usar Planta curativa                  ║");
-                        System.out.println("║                                          ║");
-                        System.out.println("╚════════════════════════════════════════════════╝\n");
-
-                        System.out.println("Introduce tu accion deseada:");
-                        num = Integer.parseInt(teclado.nextLine());
-                        if (contadorEspecial != 0 && num == 2) {
-                            throw new CooldownException("");
-                        }
-                        if (num < 1 || num > 3) {
-                            throw new IllegalArgumentException("");
-                        }
-                    } while (num < 1 || num > 3);
+                    System.out.println("Introduce tu accion deseada:");
+                    num = Integer.parseInt(teclado.nextLine());
+                    if(inventario.hayPlanta("Planta curativa") == true && valiente.getVida() == valiente.getVidaMaxima() && num==3){
+                        throw new VidaMaximoException("");
+                    }
+                    
+                    if (contadorEspecial != 0 && num == 2) {
+                        throw new CooldownException("");
+                    }
+                    if (num < 1 || num > 3) {
+                        throw new IllegalArgumentException("");
+                    }
+                    if(inventario.hayPlanta("Planta curativa") == false && num==3){
+                        throw new NoHayPlantaException("");
+                    }
+                    
+                    
+                        
+                }catch (VidaMaximoException e){
+                    System.out.println("Tu vida esta al maximo, no puedes usar el objeto");
                 } catch (NumberFormatException e) {
                     System.out.println("Has introducido una letra en vez de un número");
                 } catch (IllegalArgumentException e) {
                     System.out.println("Has introducido un valor no válido");
                 } catch (CooldownException e) {
                     System.out.println("La habilidad está en cooldown, podras usarla en " + contadorEspecial + " turnos. Escoge otra opción");
+                } catch (NoHayPlantaException e) {
+                    System.out.println("No hay planta curativa, escoge otra opcion");
                 }
-                //menu con 3 opciones
-                switch (num) {
-                    // case 1 es el ataque normal del valiente que puede fallar o acertar dependiendo del numeroaleatorio y el calculo
-                    case 1:
-                        numeroAleatorio = random.nextInt(101);
-                        calculo = 4 * valiente.getHabilidad() - (monstruo.getDefensa());
-                        if (numeroAleatorio < calculo) {
-                            noHayPlanta = false;
-                            valiente.atacar(monstruo);
-                        } else if (numeroAleatorio > calculo) {
-                            noHayPlanta = false;
-                            System.out.println("El ataque ha fallado");
-                        } else if (numeroAleatorio == calculo) {
-                            noHayPlanta = false;
-                            System.out.println("El ataque ha fallado");
-                        }
-                        break;
-                    case 2:
-                        //en el case 2 es la habilidad especial, calculamos si acierta y dependiendo del tipo de valiente hace lo que haga la habilidad
-                        numeroAleatorioEspecial = random.nextInt(51);
-                        calculo = 4 * valiente.getHabilidad() - (monstruo.getDefensa());
-                        switch (valiente.getTipo()) {
-                            case GUERRERO:
-                                if (numeroAleatorioEspecial > calculo) {
-                                    System.out.println("La habilidad falló");
-                                    contadorEspecial = 3;
-                                    noHayPlanta = false;
-                                } else if (numeroAleatorioEspecial <= calculo) {
-                                    valiente.usarHabilidadEspecial(monstruo);
-                                    stun = 1;
-                                    contadorEspecial = 3;
-                                    noHayPlanta = false;
-                                }
-                                break;
-                            case PALADÍN:
-                                if (numeroAleatorioEspecial > calculo) {
-                                    System.out.println("La habilidad falló");
-                                    contadorEspecial = 3;
-                                    noHayPlanta = false;
-                                } else if (numeroAleatorioEspecial <= calculo) {
-                                    valiente.usarHabilidadEspecial(monstruo);
-                                    contadorEspecial = 3;
-                                    noHayPlanta = false;
-                                }
-                                break;
-                            case EXPLORADOR:
+            } while (num < 1 || num > 3 || contadorEspecial != 0 && num == 2 ||  inventario.hayPlanta("Planta curativa") == true && valiente.getVida() == valiente.getVidaMaxima() && num==3 || inventario.hayPlanta("Planta curativa") == false && num==3);
 
+            //menu con 3 opciones
+            switch (num) {
+                // case 1 es el ataque normal del valiente que puede fallar o acertar dependiendo del numeroaleatorio y el calculo
+                case 1:
+                    numeroAleatorio = random.nextInt(101);
+                    calculo = 4 * valiente.getHabilidad() - (monstruo.getDefensa());
+                    if (numeroAleatorio < calculo) {
+                        noHayPlanta = false;
+                        valiente.atacar(monstruo);
+                    } else if (numeroAleatorio > calculo) {
+                        noHayPlanta = false;
+                        System.out.println("El ataque ha fallado");
+                    } else if (numeroAleatorio == calculo) {
+                        noHayPlanta = false;
+                        System.out.println("El ataque ha fallado");
+                    }
+                    break;
+                case 2:
+                    //en el case 2 es la habilidad especial, calculamos si acierta y dependiendo del tipo de valiente hace lo que haga la habilidad
+                    numeroAleatorioEspecial = random.nextInt(51);
+                    calculo = 4 * valiente.getHabilidad() - (monstruo.getDefensa());
+                    switch (valiente.getTipo()) {
+                        case GUERRERO:
+                            if (numeroAleatorioEspecial > calculo) {
+                                System.out.println("La habilidad falló");
+                                contadorEspecial = 3;
+                                noHayPlanta = false;
+                            } else if (numeroAleatorioEspecial <= calculo) {
+                                valiente.usarHabilidadEspecial(monstruo);
+                                stun = 1;
+                                contadorEspecial = 3;
+                                noHayPlanta = false;
+                            }
+                            break;
+                        case PALADÍN:
+                            if (numeroAleatorioEspecial > calculo) {
+                                System.out.println("La habilidad falló");
+                                contadorEspecial = 3;
+                                noHayPlanta = false;
+                            } else if (numeroAleatorioEspecial <= calculo) {
                                 valiente.usarHabilidadEspecial(monstruo);
                                 contadorEspecial = 3;
                                 noHayPlanta = false;
-                                break;
-                            case MAGO:
-                                if (numeroAleatorioEspecial > calculo) {
-                                    System.out.println("La habilidad falló");
-                                    contadorEspecial = 3;
-                                    noHayPlanta = false;
-                                } else if (numeroAleatorioEspecial <= calculo) {
-                                    valiente.usarHabilidadEspecial(monstruo);
-                                    contadorEspecial = 3;
-                                    noHayPlanta = false;
-                                }
+                            }
+                            break;
+                        case EXPLORADOR:
 
-                                break;
-                            case PÍCARO:
-                                if (numeroAleatorioEspecial > calculo) {
-                                    System.out.println("La habilidad falló");
-                                    contadorEspecial = 3;
-                                    noHayPlanta = false;
-                                } else if (numeroAleatorioEspecial <= calculo) {
-                                    valiente.usarHabilidadEspecial(monstruo);
-                                    contadorEspecial = 3;
-                                    noHayPlanta = false;
-                                }
-                                break;
-
-                        }
-                        break;
-                    case 3:
-                        //el case 3 es para usar la planta curativa, si la vida del valiente esta al maximo o si no hay planta, te dice que no se puede usar
-                        //si tienes planta y te falta vida, te pone en maximo de vida si la planta cura mas de lo que falta y si te falta mas que lo qu cura, te cura todo lo que puede curar
-                        if (valiente.getVida() == valiente.getVidaMaxima()) {
-                            System.out.println("Tu vida esta al maximo, no puedes usar el objeto");
-                            noHayPlanta = true;
-                        } else if (inventario.hayPlanta("Planta curativa") == true) {
-
-                            Objeto objeto = new PlantaCurativa(10);
-                            objeto.usar(valiente);
-                            inventario.eliminarObjetoInventario(objeto.getnombre());
+                            valiente.usarHabilidadEspecial(monstruo);
+                            contadorEspecial = 3;
                             noHayPlanta = false;
-                            /*if(valiente.getVida()<=(valiente.getVidaMaxima()-25)){
+                            break;
+                        case MAGO:
+                            if (numeroAleatorioEspecial > calculo) {
+                                System.out.println("La habilidad falló");
+                                contadorEspecial = 3;
+                                noHayPlanta = false;
+                            } else if (numeroAleatorioEspecial <= calculo) {
+                                valiente.usarHabilidadEspecial(monstruo);
+                                contadorEspecial = 3;
+                                noHayPlanta = false;
+                            }
+
+                            break;
+                        case PÍCARO:
+                            if (numeroAleatorioEspecial > calculo) {
+                                System.out.println("La habilidad falló");
+                                contadorEspecial = 3;
+                                noHayPlanta = false;
+                            } else if (numeroAleatorioEspecial <= calculo) {
+                                valiente.usarHabilidadEspecial(monstruo);
+                                contadorEspecial = 3;
+                                noHayPlanta = false;
+                            }
+                            break;
+
+                    }
+                    break;
+                case 3:
+                    //el case 3 es para usar la planta curativa, si la vida del valiente esta al maximo o si no hay planta, te dice que no se puede usar
+                    //si tienes planta y te falta vida, te pone en maximo de vida si la planta cura mas de lo que falta y si te falta mas que lo qu cura, te cura todo lo que puede curar
+                    //if (valiente.getVida() == valiente.getVidaMaxima()) {
+                      //  System.out.println("Tu vida esta al maximo, no puedes usar el objeto");
+                        //noHayPlanta = true;
+                    /*} else*/ if (inventario.hayPlanta("Planta curativa") == true) {
+
+                        Objeto objeto = new PlantaCurativa(10);
+                        objeto.usar(valiente);
+                        inventario.eliminarObjetoInventario(objeto.getnombre());
+                        
+                        
+                        /*if(valiente.getVida()<=(valiente.getVidaMaxima()-25)){
                                 valiente.setVida(valiente.getVida()+25);
                                 
                             }else{
                                 valiente.setVida(valiente.getVidaMaxima());
                             }*/
-                        } else {
-                            System.out.println("No hay planta curativa, escoge otra opcion");
-                            noHayPlanta = true;
-                        }
-                        break;
-                }
-            } while (noHayPlanta == true);
-
+                    /*} else {
+                        System.out.println("No hay planta curativa, escoge otra opcion");
+                        noHayPlanta = true;
+                    }*/
+                    break;
+            
+                    }
+            }
         }
 
     }
@@ -302,3 +318,4 @@ public class Combate implements CombateInterface {
     }
 
 }
+
