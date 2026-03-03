@@ -116,6 +116,7 @@ public class Valiente extends Personaje implements PersonajesInterface {
     public void subirNivel() {
         this.nivel++;
         this.vidaMaxima += 10;
+        this.vida+=10;
         this.fuerza++;
         this.defensa++;
         this.habilidad++;
