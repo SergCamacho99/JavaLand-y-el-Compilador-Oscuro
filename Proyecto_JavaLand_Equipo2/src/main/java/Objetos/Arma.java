@@ -7,6 +7,10 @@ import Personajes.Valiente;
 /**
  *
  * @author dam118
+ * @author Kateh barreto Ramirez
+ * //Clase abstrac que representa las armas del juego
+ * //Hereda de objeto y contiene el valor del arma
+ * // Espada y escudo heredan de esta clase
  */
 public abstract class Arma extends Objeto{ 
 // Valor del arma (fuerza o defensa)

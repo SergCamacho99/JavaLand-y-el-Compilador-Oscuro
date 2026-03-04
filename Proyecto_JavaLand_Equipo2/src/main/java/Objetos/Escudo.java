@@ -5,32 +5,33 @@
 package Objetos;
 import Personajes.Valiente;
 /**
- *
- * @author DAM118
- */
-/**
- * 
- * @author DAM118
+ * @author Kateh Barreto Ramirez
+ * // Clase que representa un escudo 
+ * //Hereda de arma, Cuando se usa o se equipa aumenta la defensa del Valiente
  **/
 
 public class Escudo extends Arma {
-    //Escudo aumenta la defena del valiente
+    
+    //Recibe el nombre objeto y el valor de defensa
     public Escudo (String nombre, int defensa ){
         super(nombre, defensa);
     }
-    
+    //metodo qye se ejecuta cuando cuando el jugador usa el escudo
+    /**
+     * @author Kateh barreto
+     * @param Valiente 
+     */
     @Override
     public void usar(Valiente Valiente){
-        Valiente.setDefensa(Valiente.getDefensa() + valor);
+        Valiente.setDefensa(Valiente.getDefensa() + valor); // aumenta la defensa del valiente sumando el valor del escudo
         System.out.print("Equipado un escudo. Defensa aumentada");
     }
 
     @Override
     public void equipar(Valiente valiente, Objeto objeto) {
-        valiente.setEscudo((Escudo) objeto);
+        valiente.setEscudo((Escudo) objeto); //asigna el escudo al valiente
     }
-    
-    
+    //devuelve el nombre del escudo
     public String getNombre(){
         return nombre;
     }

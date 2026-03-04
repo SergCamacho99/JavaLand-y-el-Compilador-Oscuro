@@ -8,8 +8,7 @@ import interfaces.ObjetoInterface;
 /**
  *
  * @author kateh barreto
- *
- * clase padre, representando cualquier objeto 
+ * //clase de todos los objetos del juego
  */
 public abstract class Objeto implements ObjetoInterface{
     protected String nombre;
@@ -19,6 +18,10 @@ public abstract class Objeto implements ObjetoInterface{
         this.nombre = nombre;
     }
     //Devuelve el nombre del Objeto 
+    /**
+     * @author Kateh barreto
+     * @return 
+     */
    public String getnombre(){
        return nombre;
    }

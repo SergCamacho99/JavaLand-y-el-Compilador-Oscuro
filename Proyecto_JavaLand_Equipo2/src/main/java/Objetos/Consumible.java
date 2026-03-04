@@ -7,12 +7,14 @@ import Personajes.Valiente;
 
 /**
  *
- * @author dam118
+ * @author Kateh Barreto Ramirez
  */
+//Clase abstract para objetos consumibles
 public abstract class Consumible extends Objeto {
     // Objeto que consume al utilizar 
         protected int efecto;
         
+        //Recibe el nombre del objeto y el efecto que tendra al usarse
         public Consumible( String nombre , int efecto){
             super(nombre);
        this.efecto = efecto;
