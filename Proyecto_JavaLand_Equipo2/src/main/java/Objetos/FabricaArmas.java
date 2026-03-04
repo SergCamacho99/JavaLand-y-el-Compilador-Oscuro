@@ -23,7 +23,7 @@ public class FabricaArmas {
 
         Escudo[] listaEscudos = new Escudo[5];
 
-        listaEscudos[0] = new Escudo("Escudo de Soldado",10);
+        listaEscudos[0] = new Escudo("Escudo de SOLDADO",10);
         listaEscudos[1] = new Escudo("Escudo de Caballero",20);
         listaEscudos[2] = new Escudo("Escudo Hyliano",30);
         listaEscudos[3] = new Escudo("Escudo Real",40);

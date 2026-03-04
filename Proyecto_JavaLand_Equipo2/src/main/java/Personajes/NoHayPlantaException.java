@@ -5,8 +5,8 @@
 package Personajes;
 
 /**
- *
- * @author migue
+ * Aqui creo una excepcion personalizada para el menu de combate, ene ste caso es para cuando no hay planta curativa
+ * @author Miguel Martinez Revuelta
  */
 public class NoHayPlantaException extends Exception {
     public NoHayPlantaException (String mensaje){

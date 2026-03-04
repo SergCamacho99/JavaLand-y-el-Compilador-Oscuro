@@ -87,6 +87,14 @@ public class Inventario {
 
     //verifica que si existe una planta en el iventario
    
+
+    /**
+     * Este metodo te recorre el array de inventario para validar si hay una planta curativa o si no hay, devolviendo un boolean para gestionar en otros metodos, como por ejemplo en combate
+     * @author Miguel Martinez Revuelta
+     * @param nombre
+     * @return 
+     */
+
     public boolean hayPlanta(String nombre) {
         boolean hayPlanta = false;
         if (cantidad == 0) {
