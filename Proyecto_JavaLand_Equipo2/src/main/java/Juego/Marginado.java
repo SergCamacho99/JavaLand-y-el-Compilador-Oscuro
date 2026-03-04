@@ -17,6 +17,9 @@ public class Marginado extends Valiente{
     Scanner teclado = new Scanner(System.in);
 
     private int puntosRestantes;
+    public static final String RESET = "\u001B[0m";
+    public static final String CYAN = "\u001B[36m";
+    
 
     public Marginado(String nombre, TipoClase tipo, int fuerza, int defensa, int habilidad, int velocidad) throws IllegalArgumentException {
         super(nombre, tipo, fuerza, defensa, habilidad, velocidad);
@@ -31,7 +34,7 @@ public class Marginado extends Valiente{
         while (puntosRestantes > 0) {
 //añadir que pasa si eleccion es menor que 1 o mayor que 4
             int eleccion = 0;
-            System.out.println("Elige en que quieres invertir tus puntos: (Puntos restantes " + puntosRestantes + ")");
+            System.out.println(CYAN + "Elige en que quieres invertir tus puntos: (Puntos restantes " + puntosRestantes + ")"+ RESET);
             System.out.println("1. Fuerza");
             System.out.println("2. Defensa");
             System.out.println("3. Velocidad");
