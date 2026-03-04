@@ -4,7 +4,6 @@
  */
 package Mapa;
 
-import Objetos.Arma;
 import Objetos.Escudo;
 import Objetos.Espada;
 import Objetos.FabricaArmas;
@@ -27,12 +26,9 @@ public class Mapa {
 
     Scanner teclado = new Scanner(System.in);
 
-    
     private Espada[] espadas;
     private Escudo[] escudos;
-    
-   
-    
+
     GestorMonstruosImp monstruos = new GestorMonstruosImp();
     GestorValientesImp valientes = new GestorValientesImp();
     CompiladorOscuro compiladorOscuro;
@@ -45,6 +41,15 @@ public class Mapa {
     private int x = 1;
     private int y = 1;
     private Random random = new Random();
+    
+    public static final String RESET = "\u001B[0m";
+    public static final String ROJO = "\u001B[31m";
+    public static final String VERDE = "\u001B[32m";
+    public static final String AMARILLO = "\u001B[33m";
+    public static final String AZUL = "\u001B[34m";
+    public static final String MORADO = "\u001B[35m";
+    public static final String CYAN = "\u001B[36m";
+    public static final String BLANCO = "\u001B[37m";
 
 //Constructor de mapa con los parámetros para poder inicializarlo.
     public Mapa(Valiente v, Inventario inventario) {
@@ -63,8 +68,9 @@ public class Mapa {
     }
 
     /**
-     * Autor: Sergio C
-     * Inicializa el juego con ambos mapas, el real es donde se encuentran los enemigos, cofres y muros, el otro muestra la niebla de guerra.
+     * Autor: Sergio C Inicializa el juego con ambos mapas, el real es donde se
+     * encuentran los enemigos, cofres y muros, el otro muestra la niebla de
+     * guerra.
      */
     public void inicializarMapa() {
         for (int i = 0; i < 12; i++) {
@@ -77,8 +83,8 @@ public class Mapa {
     }
 
     /**
-     * Autor: Sergio C
-     * Con random coloca los enemigos y dibuja el símbolo que los representa.
+     * Autor: Sergio C Con random coloca los enemigos y dibuja el símbolo que
+     * los representa.
      */
     public void colocarEnemigos(int cantidad) {
 
@@ -94,8 +100,7 @@ public class Mapa {
     }
 
     /**
-     * Autor: Sergio C
-     * Con random colocas los cofres y dibuja el símbolo.
+     * Autor: Sergio C Con random colocas los cofres y dibuja el símbolo.
      */
     public void colocarCofres(int cantidad) {
         int colocados = 0;
@@ -110,8 +115,7 @@ public class Mapa {
     }
 
     /**
-     * Autor: Sergio C
-     * Con random colocas los obstáculos y dibuja el símbolo.
+     * Autor: Sergio C Con random colocas los obstáculos y dibuja el símbolo.
      */
     public void colocarObstaculos(int cantidad) {
         int colocados = 0;
@@ -126,10 +130,11 @@ public class Mapa {
     }
 
     /**
-     * Autor: Sergio C
-     * Este método contiene el símbolo que representa al jugador, a sus lados, despeja la niebla de guerra 
-     * de las casillas adyacentes de manera perpendicular del ,apa Visible y muestra el mapa real.
-     * Se utilizan las coordenadas con X e Y dependiendo de donde se encuentre el símbolo del jugador.
+     * Autor: Sergio C Este método contiene el símbolo que representa al
+     * jugador, a sus lados, despeja la niebla de guerra de las casillas
+     * adyacentes de manera perpendicular del ,apa Visible y muestra el mapa
+     * real. Se utilizan las coordenadas con X e Y dependiendo de donde se
+     * encuentre el símbolo del jugador.
      */
     public void actualizarMapaVisible() {
 
@@ -158,11 +163,13 @@ public class Mapa {
     }
 
     /**
-     * Autor: Sergio C
-     * Con un switch leemos la tecla y con cada una hace que el personaje se mueva a la coordenada correspondiente.
-     * Dentro de este mismo método está puesta la limitación para que el personaje no pueda atravesar los muros del mapa y las diferentes interacciones con el entorno.
-     * Si entramos en la casilla de enemigo, hace que comience el combate llamando al método correspondiente y lo mismo con los cofres. Ambas cosas tras terminar el evento
-     * asignado, hace que desaparezcan del mapa.
+     * Autor: Sergio C Con un switch leemos la tecla y con cada una hace que el
+     * personaje se mueva a la coordenada correspondiente. Dentro de este mismo
+     * método está puesta la limitación para que el personaje no pueda atravesar
+     * los muros del mapa y las diferentes interacciones con el entorno. Si
+     * entramos en la casilla de enemigo, hace que comience el combate llamando
+     * al método correspondiente y lo mismo con los cofres. Ambas cosas tras
+     * terminar el evento asignado, hace que desaparezcan del mapa.
      */
     public void moverPersonaje(char direccion) {
 
@@ -188,18 +195,18 @@ public class Mapa {
         if (nuevaX >= 0 && nuevaX < 12 && nuevaY >= 0 && nuevaY < 12 && mapaReal[nuevaX][nuevaY] != '■') {
 
             if (mapaReal[nuevaX][nuevaY] == '⊟') {
-                System.out.println("¡Has abierto un cofre!");
+                System.out.println(VERDE + "¡Has abierto un cofre!" + RESET);
                 crearObjetoAleatorio(inventario);
                 mapaReal[nuevaX][nuevaY] = ' ';
             }
             if (mapaReal[nuevaX][nuevaY] == '☻') {
-                System.out.println("¡Te encuentras con un enemigo!");
+                System.out.println(ROJO + "¡Te encuentras con un enemigo!" + RESET);
                 Combate combate = new Combate(inventario);
                 combate.iniciarCombate(valiente, monstruos.generarMonstruos(nuevaY));
                 mapaReal[nuevaX][nuevaY] = ' ';
             }
             if (mapaReal[nuevaX][nuevaY] == '☠') {
-                System.out.println("¡Te enfrentas al Compilador Oscuro!");
+                System.out.println(MORADO + "¡Te enfrentas al Compilador Oscuro!" + RESET);
                 //El compilador está colocador en la última casilla con -1, -1.
                 CompiladorOscuro BossFinal = new CompiladorOscuro(12, 12, monstruos.getContadorMonstruos());
                 Combate combate = new Combate(inventario);
@@ -225,11 +232,11 @@ public class Mapa {
             }
             System.out.println();
         }
-        System.out.println("╔═══════════════════════════════════════════════════════════════╗");
-        System.out.println("║                                                       ║");
-        System.out.println("║ j. Mostrar Valiente   k. Usar Objeto   p. salir       ║");
-        System.out.println("║                                                       ║");
-        System.out.println("╚═══════════════════════════════════════════════════════════════╝");
+        System.out.println(AMARILLO+"╔═══════════════════════════════════════════════════════════════"+ RESET);
+        System.out.println(AMARILLO+"║                                                       "+ RESET);
+        System.out.println(AMARILLO+"║ j. Mostrar Valiente   k. Usar Objeto   p. salir       "+ RESET);
+        System.out.println(AMARILLO+"║                                                       "+ RESET);
+        System.out.println(AMARILLO+"╚═══════════════════════════════════════════════════════════════"+ RESET);
     }
 
     /**
@@ -237,65 +244,65 @@ public class Mapa {
      */
     private void crearObjetoAleatorio(Inventario inventario) {
 
-    int objetoAleatorio = random.nextInt(3);
-    int aleatorizadorObjeto = random.nextInt(espadas.length);
-    boolean eleccion = false;
-    int equipar;
+        int objetoAleatorio = random.nextInt(3);
+        int aleatorizadorObjeto = random.nextInt(espadas.length);
+        boolean eleccion = false;
+        int equipar;
 
-    if (objetoAleatorio == 0){
-        
-        Espada espada = espadas[aleatorizadorObjeto];
-        System.out.println("Has encontrado: " + espada.getNombre());
+        if (objetoAleatorio == 0) {
 
-        do {
-            System.out.println("¿Quieres equipar este objeto ahora?");
-            System.out.println("1. Si | 2. No");
-            equipar = teclado.nextInt();
+            Espada espada = espadas[aleatorizadorObjeto];
+            System.out.println(VERDE + "Has encontrado: " + espada.getNombre()+""+RESET);
 
-            if (equipar == 1){
-                espada.equipar(valiente, espada);
-                eleccion = true;
+            do {
+                System.out.println(VERDE+"¿Quieres equipar este objeto ahora?"+RESET);
+                System.out.println("1. Si | 2. No");
+                equipar = teclado.nextInt();
 
-            } else if (equipar == 2){
-                inventario.agregarObjeto(espada);
-                eleccion = true;
+                if (equipar == 1) {
+                    espada.equipar(valiente, espada);
+                    eleccion = true;
 
-            } else {
-                System.out.println("Introduce una opción válida.");
-            }
+                } else if (equipar == 2) {
+                    inventario.agregarObjeto(espada);
+                    eleccion = true;
 
-        } while (!eleccion);
+                } else {
+                    System.out.println("Introduce una opción válida.");
+                }
 
-    } else if (objetoAleatorio == 1){
+            } while (!eleccion);
 
-        Escudo escudo = escudos[aleatorizadorObjeto];
-        System.out.println("Has encontrado: " + escudo.getNombre());
+        } else if (objetoAleatorio == 1) {
 
-        do {
-            System.out.println("¿Quieres equipar este objeto ahora?");
-            System.out.println("1. Si | 2. No");
-            equipar = teclado.nextInt();
+            Escudo escudo = escudos[aleatorizadorObjeto];
+            System.out.println(VERDE+"Has encontrado: " + escudo.getNombre()+""+RESET);
 
-            if (equipar == 1){
-                escudo.equipar(valiente, escudo);
-                eleccion = true;
+            do {
+                System.out.println(VERDE+"¿Quieres equipar este objeto ahora?"+RESET);
+                System.out.println("1. Si | 2. No");
+                equipar = teclado.nextInt();
 
-            } else if (equipar == 2){
-                inventario.agregarObjeto(escudo);
-                eleccion = true;
+                if (equipar == 1) {
+                    escudo.equipar(valiente, escudo);
+                    eleccion = true;
 
-            } else {
-                System.out.println("Introduce una opción válida.");
-            }
+                } else if (equipar == 2) {
+                    inventario.agregarObjeto(escudo);
+                    eleccion = true;
 
-        } while (!eleccion);
+                } else {
+                    System.out.println("Introduce una opción válida.");
+                }
 
-    } else {
+            } while (!eleccion);
 
-        Objeto obj = new PlantaCurativa(10);
-        System.out.println("Has encontrado una planta curativa!");
-        inventario.agregarObjeto(obj);
+        } else {
+
+            Objeto obj = new PlantaCurativa(10);
+            System.out.println(VERDE+"¡Has encontrado una planta curativa!"+RESET);
+            inventario.agregarObjeto(obj);
+        }
     }
-}
 
 }
