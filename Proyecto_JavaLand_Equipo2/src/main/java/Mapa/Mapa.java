@@ -241,6 +241,7 @@ public class Mapa {
 
     /**
      * Autor: David
+     * Metodo que genera un objeto aleatorio mediante un random.
      */
     private void crearObjetoAleatorio(Inventario inventario) {
 

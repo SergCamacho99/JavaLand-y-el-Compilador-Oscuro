@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author dam125
+ * @author David Alonso
  */
 public class Juego implements JuegoInterface {
 
@@ -33,6 +33,12 @@ public class Juego implements JuegoInterface {
 
     }
 
+    /**
+     * 
+     * Autor: David Alonso
+     * Metodo que se muestra al inicio del juego para seleccionar el valiente que quieres utilizar o crear el tuyo propio.
+     * Desde aqui arranca todo.
+     */
     @Override
     public void creacionOEleccionValiente() {
 
@@ -129,6 +135,14 @@ public class Juego implements JuegoInterface {
 
     }
 
+    
+    /**
+     * 
+     * Autor: David Alonso
+     * Metodo para controlar la direccion a la que se mueve el jugador.
+     * @param direccion
+     * @param v 
+     */
     @Override
     public void explorarMapa(char direccion, Valiente v) {
 
@@ -143,7 +157,12 @@ public class Juego implements JuegoInterface {
     public void mostrarEstadoJuego() {
 
     }
-
+    
+    /**
+     * 
+     * Autor: David Alonso
+     * Metodo que muestra al usuario el menu de opciones inicial cuando arranca el juego.
+     */
     private void mostrarMenuInicio() {
 
         System.out.println("╔════════════════════════════════════════════════╗");
@@ -167,7 +186,15 @@ public class Juego implements JuegoInterface {
         System.out.println("╚════════════════════════════════════════════════╝");
 
     }
-
+    
+    
+    /**
+     * 
+     * Autor: David Alonso
+     * Metodo que da el ritmo al juego, desde aqui se controla todo el juego asi como se llama a los metodos necesarios en cada momento.
+     * @param v
+     * @param inventario 
+     */
     public void jugar(Valiente v, Inventario inventario) {
 
         boolean terminar = false;
@@ -249,6 +276,14 @@ public class Juego implements JuegoInterface {
 
     }
 
+    /**
+     * 
+     * Autor: David Alonso
+     * Metodo que muestra las estadisticas del valiente.
+     * @param v
+     * @param inventario 
+     */
+    
     private void mostrarValiente(Valiente v, Inventario inventario) {
 
         System.out.println("        +--------------------------------------------+");

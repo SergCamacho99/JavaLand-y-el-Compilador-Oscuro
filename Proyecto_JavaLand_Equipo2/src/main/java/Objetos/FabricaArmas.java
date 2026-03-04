@@ -5,7 +5,12 @@ public class FabricaArmas {
     Espada[] espadas;
     Escudo[] escudos;
     
-    
+    /**
+     * 
+     * Autor: David Alonso
+     * Metodo para crear el array de espadas que puede obtener el jugador.
+     * @return 
+     */
     public static Espada[] crearEspadas() {
 
         Espada[] listaEspadas = new Espada[5];
@@ -18,7 +23,13 @@ public class FabricaArmas {
 
         return listaEspadas;
     }
-
+    
+    
+    /**
+     * Autor: David Alonso
+     * Metodo para crear el array de escudos que puede obtener el jugador.
+     * @return 
+     */
     public static Escudo[] crearEscudos() {
 
         Escudo[] listaEscudos = new Escudo[5];

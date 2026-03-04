@@ -103,6 +103,13 @@ public class Inventario {
         return hayPlanta;
     }
 
+    
+    /**
+     * Autor: David Alonso
+     * Metodo que selecciona el objeto que el jugador quiere utilizar del inventario asi como la validacion en caso de que no tenga nada en el mismo.
+     * @param objetoElegido
+     * @param valiente 
+     */
     public void seleccionarObjeto(int objetoElegido, Valiente valiente) {
 
         objetoElegido -= 1;
@@ -135,7 +142,13 @@ public class Inventario {
             }
         }
     }
-
+    
+    
+    /**
+     * Autor: David Alonso
+     * Metodo para eliminar los objetos del arrray de objetos una vez el usuario los ha utilizado.
+     * @param nombre 
+     */
     public void eliminarObjetoInventario(String nombre) {
 
         for (int i = 0; i < cantidad; i++) {
