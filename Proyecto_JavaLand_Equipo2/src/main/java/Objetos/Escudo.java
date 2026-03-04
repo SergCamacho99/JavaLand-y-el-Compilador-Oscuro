@@ -15,8 +15,8 @@ import Personajes.Valiente;
 
 public class Escudo extends Arma {
     //Escudo aumenta la defena del valiente
-    public Escudo (int defensa ){
-        super("Escudo", defensa);
+    public Escudo (String nombre, int defensa ){
+        super(nombre, defensa);
     }
     
     @Override
@@ -27,7 +27,12 @@ public class Escudo extends Arma {
 
     @Override
     public void equipar(Valiente valiente, Objeto objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        valiente.setEscudo((Escudo) objeto);
+    }
+    
+    
+    public String getNombre(){
+        return nombre;
     }
   
 }

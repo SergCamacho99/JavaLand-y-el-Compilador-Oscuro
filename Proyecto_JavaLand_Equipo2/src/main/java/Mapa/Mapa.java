@@ -7,6 +7,7 @@ package Mapa;
 import Objetos.Arma;
 import Objetos.Escudo;
 import Objetos.Espada;
+import Objetos.FabricaArmas;
 import Objetos.Inventario;
 import Objetos.Objeto;
 import Objetos.PlantaCurativa;
@@ -26,6 +27,12 @@ public class Mapa {
 
     Scanner teclado = new Scanner(System.in);
 
+    
+    private Espada[] espadas;
+    private Escudo[] escudos;
+    
+   
+    
     GestorMonstruosImp monstruos = new GestorMonstruosImp();
     GestorValientesImp valientes = new GestorValientesImp();
     CompiladorOscuro compiladorOscuro;
@@ -44,6 +51,8 @@ public class Mapa {
         this.inventario = inventario;
         this.valiente = v;
 
+        espadas = FabricaArmas.crearEspadas();
+        escudos = FabricaArmas.crearEscudos();
         inicializarMapa();
         colocarEnemigos(15);
         colocarCofres(10);
@@ -228,45 +237,65 @@ public class Mapa {
      */
     private void crearObjetoAleatorio(Inventario inventario) {
 
-        int objetoAleatorio = (int) random.nextInt(3);
+    int objetoAleatorio = random.nextInt(3);
+    int aleatorizadorObjeto = random.nextInt(espadas.length);
+    boolean eleccion = false;
+    int equipar;
 
-        if (objetoAleatorio == 0) {
+    if (objetoAleatorio == 0){
+        
+        Espada espada = espadas[aleatorizadorObjeto];
+        System.out.println("Has encontrado: " + espada.getNombre());
 
-            int valor = valiente.getNivel() + 5;
-            Arma obj = new Espada(valor);
-            int decision = 0;
-            System.out.println("Has encontrado una espada!");
-            while (decision != 1 && decision != 2) {
-                System.out.println("Quieres equipar el objeto ahora?");
-                System.out.println("1. Si | 2. No");
-                decision = teclado.nextInt();
-            }
-            if (decision == 1) {
-                valiente.setArma(obj);
-            } else if (decision == 2) {
-                inventario.agregarObjeto(obj);
-            }
-
-        } else if (objetoAleatorio == 1) {
-            int valor = valiente.getNivel() + 5;
-            Escudo obj = new Escudo(valor);
-            System.out.println("Has encontrado un escudo!");
-            System.out.println("Quieres equipar el objeto ahora?");
+        do {
+            System.out.println("¿Quieres equipar este objeto ahora?");
             System.out.println("1. Si | 2. No");
-            int decision = teclado.nextInt();
-            if (decision == 1) {
-                valiente.setEscudo(obj);
-            } else if (decision == 2) {
-                inventario.agregarObjeto(obj);
+            equipar = teclado.nextInt();
+
+            if (equipar == 1){
+                espada.equipar(valiente, espada);
+                eleccion = true;
+
+            } else if (equipar == 2){
+                inventario.agregarObjeto(espada);
+                eleccion = true;
+
+            } else {
+                System.out.println("Introduce una opción válida.");
             }
 
-        } else {
+        } while (!eleccion);
 
-            Objeto obj = new PlantaCurativa(10);
-            System.out.println("Has encontrado una planta curativa!");
-            inventario.agregarObjeto(obj);
-        }
+    } else if (objetoAleatorio == 1){
 
+        Escudo escudo = escudos[aleatorizadorObjeto];
+        System.out.println("Has encontrado: " + escudo.getNombre());
+
+        do {
+            System.out.println("¿Quieres equipar este objeto ahora?");
+            System.out.println("1. Si | 2. No");
+            equipar = teclado.nextInt();
+
+            if (equipar == 1){
+                escudo.equipar(valiente, escudo);
+                eleccion = true;
+
+            } else if (equipar == 2){
+                inventario.agregarObjeto(escudo);
+                eleccion = true;
+
+            } else {
+                System.out.println("Introduce una opción válida.");
+            }
+
+        } while (!eleccion);
+
+    } else {
+
+        Objeto obj = new PlantaCurativa(10);
+        System.out.println("Has encontrado una planta curativa!");
+        inventario.agregarObjeto(obj);
     }
+}
 
 }

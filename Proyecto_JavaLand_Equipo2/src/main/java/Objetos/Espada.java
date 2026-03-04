@@ -11,8 +11,8 @@ import Personajes.Valiente;
  * Espada aumenta la fuerza del  valiente
  */
 public class Espada extends Arma {
-    public Espada(int fuerza){
-     super("Espada", fuerza);
+    public Espada(String nombre, int fuerza){
+     super(nombre, fuerza);
 }
 
 @Override
@@ -25,6 +25,11 @@ public class Espada extends Arma {
        
         valiente.setArma((Arma) objeto);
         
+    }
+    
+    
+    public String getNombre(){
+        return nombre;
     }
 }
     
