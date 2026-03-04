@@ -11,13 +11,14 @@ import Personajes.Valiente;
 
 /**
  *
- * @author DAM118
+ * @author Kateh Barreto Ramirez
+ * //Clase que representa el inventario del jugador , Permite guardar, mostrar , usar y elimar objetos
  */
 public class Inventario {
 
     // guarda los objestos del jugador 
     private Objeto[] Objetos; //array para guardar objetos
-    private int cantidad;
+    private int cantidad; // numero de objetos guardados
 
     //Constructor 
     //Inventario con espacio para 5 Objetos
@@ -38,6 +39,9 @@ public class Inventario {
     }
 //metodo mostrar inventario
 //muestra los objetos guardados 
+   /**
+    * @author Kateh Barreto 
+    */
 
     public void mostrarInventario() {
         System.out.println("        +----------------------+");
@@ -46,7 +50,7 @@ public class Inventario {
 
         if (cantidad == 0) {
             System.out.println("        | Vacio                |");
-        } else {
+        } else { //recorre el array mostrando cada objeto
             for (int i = 0; i < cantidad; i++) {
                 // Asegúrate de que el nombre del objeto esté alineado
                 System.out.printf("        | %2d. %s\n", (i + 1), Objetos[i].getnombre());
@@ -59,11 +63,16 @@ public class Inventario {
 
     //metodo usar objeto
     //permite usar un objeto buscandolo por su nombre
+    /**
+     * @author Kateh barreto
+     * @param nombre
+     * @param valiente 
+     */
     public void usarObjeto(String nombre, Valiente valiente) {
         for (int i = 0; i < cantidad; i++) {
 
-            if (Objetos[i].getnombre().equalsIgnoreCase(nombre)) {
-                if (valiente.getVida() == valiente.getVidaMaxima()) {
+            if (Objetos[i].getnombre().equalsIgnoreCase(nombre)) { // comprueba si el objeto con el nombre
+                if (valiente.getVida() == valiente.getVidaMaxima()) { 
                     System.out.println("Tu vida esta al maximo, no puedes usar el objeto");
                 } else {
                     Objetos[i].usar(valiente);
@@ -77,6 +86,7 @@ public class Inventario {
     }
 
     //verifica que si existe una planta en el iventario
+   
     public boolean hayPlanta(String nombre) {
         boolean hayPlanta = false;
         if (cantidad == 0) {
@@ -97,7 +107,10 @@ public class Inventario {
 
         return hayPlanta;
     }
-
+//Permite seleccionar un objeto del inventario por su posicion
+    /**
+     * @author David alonso
+    */
     public void seleccionarObjeto(int objetoElegido, Valiente valiente) {
 
         objetoElegido -= 1;
@@ -130,7 +143,11 @@ public class Inventario {
             }
         }
     }
-
+// Elimina un objeto del inventario
+    /**
+     * @author David alonso
+     * @param nombre 
+     */
     public void eliminarObjetoInventario(String nombre) {
 
         for (int i = 0; i < cantidad; i++) {

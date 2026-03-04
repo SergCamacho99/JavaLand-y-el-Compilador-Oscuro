@@ -1,6 +1,7 @@
 Mapa\Mapa.class
 Juego\Juego.class
 Objetos\Escudo.class
+Objetos\FabricaArmas.class
 Personajes\GestorMonstruosImp.class
 interfaces\ObjetoInterface.class
 Personajes\VidaMaximoException.class
