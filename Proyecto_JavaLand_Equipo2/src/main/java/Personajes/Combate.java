@@ -66,22 +66,22 @@ public class Combate implements CombateInterface {
             calculo = 4 * monstruo.getHabilidad() - (valiente.getDefensaTotal()); //
             if ( stun == 1) {
                 System.out.println("El monstruo no puede atacar, está estuneado");
-                System.out.println(monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
+                System.out.println(monstruo.getNombre() +", vida: "+monstruo.getVida()+ " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
 
                 stun = 0;
             } else if (numeroAleatorio < calculo) {
 
                 monstruo.atacar(valiente);
-                System.out.println(monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
+                System.out.println(monstruo.getNombre() +", vida: "+monstruo.getVida()+ " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
 
             } else if (numeroAleatorio > calculo) {
 
                 System.out.println("El ataque ha fallado");
-                System.out.println(monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
+                System.out.println(monstruo.getNombre() +", vida: "+monstruo.getVida()+ " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
 
             } else if (numeroAleatorio == calculo) {
                 System.out.println("El ataque ha fallado");
-                System.out.println(monstruo.getNombre() + " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
+                System.out.println(monstruo.getNombre() +", vida: "+monstruo.getVida()+ " nivel: " + monstruo.getNivel() + ", fuerza: " + monstruo.getFuerza() + ", defensa: " + monstruo.getDefensa() + ", habilidad: " + monstruo.getHabilidad() + ", velocidad: " + monstruo.getVelocidad());
 
             }
         } else if (this.orden == 1) {
