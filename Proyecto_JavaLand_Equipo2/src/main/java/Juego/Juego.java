@@ -72,8 +72,8 @@ public class Juego implements JuegoInterface {
                     Marginado m1 = new Marginado("Marginado", TipoClase.MARGINADO, 0, 0, 0, 0);
                     System.out.println("====[###]");
                     System.out.println("Se ha creado un Marginado con las siguientes estadisticas\n:" + m1.toString());
-                    this.map = new Mapa(m1, inventario);
                     this.inventario = new Inventario();
+                    this.map = new Mapa(m1, inventario);
                     jugar(m1, inventario);
                 }
                 case 2 -> {
