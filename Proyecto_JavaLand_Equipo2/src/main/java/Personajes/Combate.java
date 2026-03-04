@@ -14,7 +14,7 @@ import java.util.Set;
 
 /**
  *
- * @author dam125
+ * @author Miguel Martínez Revuelta
  */
 public class Combate implements CombateInterface {
 
@@ -28,8 +28,14 @@ public class Combate implements CombateInterface {
     public int contadorEspecial;
     public int stun;
     public boolean noHayPlanta;
+    //no hay planta no se usa realmente porque con el metodo hayplanta se puede hacer lo mismo de una manera mas eficiente
 
-    //en el constructor introducimos el inventario para poder usar la planta curativa e inicializo los atributos a lo que se necesita para empezar un combate
+    
+    /**
+     * este es el constructor en el que introducimos el inventario para poder usar la planta curativa e inicializo los atributos a lo que se necesita para empezar un combate
+     * @author Miguel Martínez Revuelta
+     * @param inventario 
+     */
     public Combate(Inventario inventario) {
         this.inventario = inventario;
         this.tieneExito = false;
@@ -38,7 +44,14 @@ public class Combate implements CombateInterface {
         stun = 0;
         
     }
-
+    /**
+     * El metodo turno es el mas extenso de todos, primero te valida si aciertas o no dependiendo de la formula dada en el enunciado, y dependiendo del orden validado en iniciarcombate te hace el ataque del monstruo, validando si esta estuneado por una habilidad, o te hace el ataque del valiente
+     * En el ataque del valiente te reduce el cooldown de la habilidad si esta en cooldown, te muestra el menu de opciones con varios try catch y excepciones personalizadas, y hay un switch de 3 opciones dependiendo de lo que escogieses en el menu ataca normal, calculando si aciertas o no, atacas con habilidad calculando
+     * si acierta o no con el doble de probabilidad que un ataque normal y dependiedno de que clase de valiente seas hace loq ue cada habilidad hace, poniendo en cooldown la habilidad. Y en el caso de planta curativa, te suma la vida validando que nunca supere la vida maxima.
+     * @author Miguel Martínez Revuelta
+     * @param valiente
+     * @param monstruo 
+     */
     @Override
     public void turno(Valiente valiente, Monstruo monstruo) {
         //estos dos atributos son numeros para saber si se acierta, la habilidad especial tiene el doble de posibilidades de acertar
@@ -244,7 +257,12 @@ public class Combate implements CombateInterface {
         }
 
     }
-
+    /**
+     * El metodo combate terminado dependiando de quien haya muerto(mediante comprobacion de la vida), te muestra que has perdido o que has ganado y en caso de ganar llama a subirNivel() y te muestra tus estadisticas despues de la subida de nivel 
+     * @author Miguel Martínez Revuelta
+     * @param valiente
+     * @param monstruo 
+     */
     @Override
     public void combateTerminado(Valiente valiente, Monstruo monstruo) {
         if (monstruo.getVida() <= 0) {
@@ -257,6 +275,7 @@ public class Combate implements CombateInterface {
             valiente.subirNivel();
             System.out.println("Tu nivel es: " + valiente.getNivel());
             System.out.println("Tu fuerza es: " + valiente.getFuerza());
+            System.out.println("Tu vida maxima es: "+valiente.getVidaMaxima());
             System.out.println("Tu vida es: " + valiente.getVida());
             System.out.println("Tu defensa es: " + valiente.getDefensa());
             System.out.println("Tu habilidad es: " + valiente.getHabilidad());
@@ -273,9 +292,10 @@ public class Combate implements CombateInterface {
     }
 
     /**
-     *
+     * El metodo iniarCombate te muestra que ha comenzado, realiza la validacion del orden de los turnos con la formula que salia y dentro del orden, llamo a atacar con un if para que en el caso de que alguien muera, que no entre en el turno del otro para que no hagan daño estando muerto. Tod esto dentro de un do while mientras que la vida de los dos sea mayor que 0
+     * @author Miguel Martínez Revuelta
      * @param valiente
-     * @param monstruo
+     * @param monstruo 
      */
     @Override
     public void iniciarCombate(Valiente valiente, Monstruo monstruo) {

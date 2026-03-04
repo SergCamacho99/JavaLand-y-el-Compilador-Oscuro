@@ -5,8 +5,8 @@
 package Personajes;
 
 /**
- *
- * @author DAM116
+ * Aqui he creado una excepcion personalizada para usar en el menu del combate, en este caso es para el cooldown de las habilidades
+ * @author Miguel Martinez Revuelta
  */
 public class CooldownException extends Exception {
     public CooldownException (String mensaje){
