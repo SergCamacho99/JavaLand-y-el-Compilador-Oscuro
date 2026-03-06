@@ -72,9 +72,10 @@ public class Valiente extends Personaje implements PersonajesInterface {
      * @param enemigo
      */
     public void usarHabilidadEspecial(Monstruo enemigo) {
+        double danioTotal;
         switch (this.tipo) {
             case GUERRERO -> {
-                System.out.println(nombre + " usa 'Golpe de Acero' (Fuerza x 1.5, estunea 1 turno al rival)");
+                System.out.println(nombre + " usa 'Golpe de Acero' (Fuerza x 2, estunea 1 turno al rival)");
                 if (arma != null){
                 enemigo.recibirDaño((int) (fuerza * 2) + arma.getValor());
             } else {
@@ -103,6 +104,11 @@ public class Valiente extends Personaje implements PersonajesInterface {
                 System.out.println(nombre + " usa 'Ojo del Halcón'");
                 System.out.println("Revelando casillas adyacentes y permitiendo movimiento diagonal");
                 enemigo.recibirDaño(fuerza + velocidad);
+            }
+            case MARGINADO -> {
+                danioTotal=fuerza*3;
+                System.out.println(nombre+" usa 'Ataque Triple' causando "+danioTotal+" de daño");
+                enemigo.recibirDaño(fuerza*3);
             }
         }
     }
