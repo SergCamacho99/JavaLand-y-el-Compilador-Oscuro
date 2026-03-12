@@ -233,9 +233,9 @@ public class Mapa {
             System.out.println();
         }
         System.out.println(AMARILLO+"╔═══════════════════════════════════════════════════════════════"+ RESET);
-        System.out.println(AMARILLO+"║                                                       "+ RESET);
-        System.out.println(AMARILLO+"║ j. Mostrar Valiente   k. Usar Objeto   p. salir       "+ RESET);
-        System.out.println(AMARILLO+"║                                                       "+ RESET);
+        System.out.println(AMARILLO+"                                                       "+ RESET);
+        System.out.println(AMARILLO+" j. Mostrar Valiente   k. Usar Objeto   p. salir       "+ RESET);
+        System.out.println(AMARILLO+"                                                       "+ RESET);
         System.out.println(AMARILLO+"╚═══════════════════════════════════════════════════════════════"+ RESET);
     }
 

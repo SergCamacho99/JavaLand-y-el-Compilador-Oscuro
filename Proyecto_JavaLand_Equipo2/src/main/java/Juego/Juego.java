@@ -34,9 +34,9 @@ public class Juego implements JuegoInterface {
     }
 
     /**
-     * 
-     * Autor: David Alonso
-     * Metodo que se muestra al inicio del juego para seleccionar el valiente que quieres utilizar o crear el tuyo propio.
+     *
+     * Autor: David Alonso Metodo que se muestra al inicio del juego para
+     * seleccionar el valiente que quieres utilizar o crear el tuyo propio.
      * Desde aqui arranca todo.
      */
     @Override
@@ -135,13 +135,13 @@ public class Juego implements JuegoInterface {
 
     }
 
-    
     /**
-     * 
-     * Autor: David Alonso
-     * Metodo para controlar la direccion a la que se mueve el jugador.
+     *
+     * Autor: David Alonso Metodo para controlar la direccion a la que se mueve
+     * el jugador.
+     *
      * @param direccion
-     * @param v 
+     * @param v
      */
     @Override
     public void explorarMapa(char direccion, Valiente v) {
@@ -157,43 +157,44 @@ public class Juego implements JuegoInterface {
     public void mostrarEstadoJuego() {
 
     }
-    
+
     /**
-     * 
-     * Autor: David Alonso
-     * Metodo que muestra al usuario el menu de opciones inicial cuando arranca el juego.
+     *
+     * Autor: David Alonso Metodo que muestra al usuario el menu de opciones
+     * inicial cuando arranca el juego.
      */
     private void mostrarMenuInicio() {
 
         System.out.println("╔════════════════════════════════════════════════╗");
-        System.out.println("║          Bienvenido a JavaLand:          ║");
-        System.out.println("║    La tierra de los codigos olvidados    ║");
-        System.out.println("║                                          ║");
-        System.out.println("║ Elige como quieres empezar tu aventura:  ║");
-        System.out.println("║                                          ║");
-        System.out.println("║ 1. Marginado (Clase personalizada)       ║");
-        System.out.println("║                                          ║");
-        System.out.println("║ 2. Guerrero                              ║");
-        System.out.println("║                                          ║");
-        System.out.println("║ 3. Paladin                               ║");
-        System.out.println("║                                          ║");
-        System.out.println("║ 4. Mago/a                                ║");
-        System.out.println("║                                          ║");
-        System.out.println("║ 5. Picaro/a                              ║");
-        System.out.println("║                                          ║");
-        System.out.println("║ 6. Huir                                  ║");
-        System.out.println("║                                          ║");
+        System.out.println("          Bienvenido a JavaLand:          ");
+        System.out.println("    La tierra de los codigos olvidados    ");
+        System.out.println("                                          ");
+        System.out.println(" Elige como quieres empezar tu aventura:  ");
+        System.out.println("                                          ");
+        System.out.println(" 1. Marginado (Clase personalizada)       ");
+        System.out.println("                                          ");
+        System.out.println(" 2. Guerrero                              ");
+        System.out.println("                                          ");
+        System.out.println(" 3. Paladin                               ");
+        System.out.println("                                          ");
+        System.out.println(" 4. Mago/a                                ");
+        System.out.println("                                          ");
+        System.out.println(" 5. Picaro/a                              ");
+        System.out.println("                                          ");
+        System.out.println(" 6. Huir                                  ");
+        System.out.println("                                          ");
         System.out.println("╚════════════════════════════════════════════════╝");
 
     }
-    
-    
+
     /**
-     * 
-     * Autor: David Alonso
-     * Metodo que da el ritmo al juego, desde aqui se controla todo el juego asi como se llama a los metodos necesarios en cada momento.
+     *
+     * Autor: David Alonso Metodo que da el ritmo al juego, desde aqui se
+     * controla todo el juego asi como se llama a los metodos necesarios en cada
+     * momento.
+     *
      * @param v
-     * @param inventario 
+     * @param inventario
      */
     public void jugar(Valiente v, Inventario inventario) {
 
@@ -209,17 +210,17 @@ public class Juego implements JuegoInterface {
                 }
                 case 'j' -> {
                     boolean salir = false;
-                    while (!salir){
-                    mostrarValiente(v, inventario);
+                    while (!salir) {
+                        mostrarValiente(v, inventario);
                         System.out.println("Para salir del inventario pulse 0.");
                         int salida = teclado.nextInt();
-                        
-                        if (salida == 0){
-                            
+
+                        if (salida == 0) {
+
                             salir = true;
                             System.out.println("Saliendo del menu....");
-                        } else if (salida != 0){
-                            System.out.println("Por favor pulse 0 para salir.") ;
+                        } else if (salida != 0) {
+                            System.out.println("Por favor pulse 0 para salir.");
                         }
                     }
                     map.mostrarMapa();
@@ -253,17 +254,15 @@ public class Juego implements JuegoInterface {
                 default -> {
 
                 }
-                
-               
-                
+
             }
-            
-            if (v.getVida() <= 0){
-            
-            System.out.println("Vida agotada. Has perdido");
-            terminar = true;
-        }
-            if (terminar){
+
+            if (v.getVida() <= 0) {
+
+                System.out.println("Vida agotada. Has perdido");
+                terminar = true;
+            }
+            if (terminar) {
                 creacionOEleccionValiente();
             }
 
@@ -277,48 +276,50 @@ public class Juego implements JuegoInterface {
     }
 
     /**
-     * 
-     * Autor: David Alonso
-     * Metodo que muestra las estadisticas del valiente.
+     *
+     * Autor: David Alonso Metodo que muestra las estadisticas del valiente.
+     *
      * @param v
-     * @param inventario 
+     * @param inventario
      */
-    
     private void mostrarValiente(Valiente v, Inventario inventario) {
 
         System.out.println("        +--------------------------------------------+");
-        System.out.println("        |               ESTADISTICAS                 |");
-        System.out.println("        |                                            |");
+        System.out.println("                     ESTADISTICAS");
+        System.out.println();
 
-        System.out.printf("        |  Nombre: %-33s |\n", v.getNombre());
-        System.out.println("        |                                            |");
-        System.out.printf("        |  Tipo: %-33s |\n", v.getTipo());
-        System.out.println("        |                                            |");
-        System.out.printf("        |  Nivel: %-34d |\n", v.getNivel());
-        System.out.println("        |                                            |");
+        System.out.printf("        Nombre: %s%n", v.getNombre());
+        System.out.println();
 
-        System.out.printf("        |  Fuerza: %-33d |\n", v.getFuerza());
-        System.out.println("        |                                            |");
+        System.out.printf("        Tipo: %s%n", v.getTipo());
+        System.out.println();
 
-        System.out.printf("        |  Defensa: %-32d |\n", v.getDefensa());
-        System.out.println("        |                                            |");
+        System.out.printf("        Nivel: %d%n", v.getNivel());
+        System.out.println();
 
-        System.out.printf("        |  Velocidad: %-30d |\n", v.getVelocidad());
-        System.out.println("        |                                            |");
+        System.out.printf("        Fuerza: %d%n", v.getFuerza());
+        System.out.println();
 
-        System.out.printf("        |  Habilidad: %-30d |\n", v.getHabilidad());
-        System.out.println("        |                                            |");
-        System.out.printf("        |  Vida maxima: %-35d |\n", v.getVidaMaxima());
-        System.out.println("        |                                            |");
+        System.out.printf("        Defensa: %d%n", v.getDefensa());
+        System.out.println();
 
-        System.out.printf("        |  Vida actual: %-35d |\n", v.getVida());
-        System.out.println("        |                                            |");
+        System.out.printf("        Velocidad: %d%n", v.getVelocidad());
+        System.out.println();
 
-        System.out.printf("        |  Espada: %-33s |\n", v.getValorArma());
-        System.out.println("        |                                            |");
+        System.out.printf("        Habilidad: %d%n", v.getHabilidad());
+        System.out.println();
 
-        System.out.printf("        |  Escudo: %-33s |\n", v.getValorEscudo());
-        System.out.println("        |                                            |");
+        System.out.printf("        Vida Maxima: %d%n", v.getVidaMaxima());
+        System.out.println();
+
+        System.out.printf("        Vida Actual: %d%n", v.getVida());
+        System.out.println();
+
+        System.out.printf("        Valor Arma: %d%n", v.getValorArma());
+        System.out.println();
+
+        System.out.printf("        Valor Escudo: %d%n", v.getValorEscudo());
+        System.out.println();
 
         System.out.println("        +--------------------------------------------+");
         System.out.println();
